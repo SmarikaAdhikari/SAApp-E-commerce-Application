@@ -108,29 +108,23 @@ class _FirstpageState extends State<Firstpage> {
                     ),
         ), 
         
-      SizedBox(
-          // height: 200,
+      GridView.builder(
+        
+      shrinkWrap: true,
+        physics: const AlwaysScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 300,
+        childAspectRatio: 3 / 2,
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
           
-          child: GridView.builder(
-            // scrollDirection: Axis.vertical,
-          // height: 200,
-          shrinkWrap: true,
-            physics: const AlwaysScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 300,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
-              
-              ),
-          itemBuilder: (context, index) {
-            return searchWidget();
-          },
-          itemCount: 6,
-          
+          ),
+      itemBuilder: (context, index) {
+        return searchWidget();
+      },
+      itemCount: 6,
+      
         ),
-
-      ),
         
       
       ]),

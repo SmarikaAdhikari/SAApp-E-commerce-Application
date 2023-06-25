@@ -13,7 +13,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
   body:GridView.builder(
-          // height: 200,
+          
           shrinkWrap: true,
             physics:const AlwaysScrollableScrollPhysics(),
             gridDelegate:const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -34,10 +34,3 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 }
-//  GridView.builder(
-//             shrinkWrap: true,
-//             physics: AlwaysScrollableScrollPhysics(),
-//       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-//       itemBuilder: (_, index) => FlutterLogo(),
-//       itemCount: 12,
-//       ),

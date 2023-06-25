@@ -54,7 +54,19 @@ void onItemTapped(int index){
     return Scaffold(
       
      drawer: const Drawer(
-    
+     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        
+      SizedBox( height: 80,
+        child: Text("Trending Books",style: TextStyle(fontSize: 20),)),
+      SizedBox(height: 80,
+      child: Text("Best Sellers",style: TextStyle(fontSize: 20),)),
+      SizedBox(height: 80,
+        child: Text("New Releases",style: TextStyle(fontSize: 20),)),
+      SizedBox(height: 80,
+        child: Text("Popular Authors",style: TextStyle(fontSize: 20),)),
+     ]),
      ),
       appBar: AppBar(
         title: const Text("E-library",style: TextStyle(color: Colors.black),),
