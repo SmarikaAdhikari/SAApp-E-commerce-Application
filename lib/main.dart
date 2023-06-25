@@ -57,6 +57,7 @@ void onItemTapped(int index){
     
      ),
       appBar: AppBar(
+        title: const Text("E-library",style: TextStyle(color: Colors.black),),
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -64,10 +65,10 @@ void onItemTapped(int index){
       icon: Icon(
         Icons.notification_add,
         color: Colors.black,
-      ),
+        ),
       onPressed: () {
       
-      },
+          },
     )
   ],       
       ),
@@ -84,7 +85,7 @@ void onItemTapped(int index){
           ),  
           BottomNavigationBarItem(  
             icon: Icon(Icons.favorite),  
-            label: 'Profile',  
+            label: 'Favorite',  
           ),  
           BottomNavigationBarItem(  
             icon: Icon(Icons.person),  

@@ -1,3 +1,4 @@
+import 'package:app/widgets/searchwidget.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
@@ -10,6 +11,33 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+  body:GridView.builder(
+          // height: 200,
+          shrinkWrap: true,
+            physics: AlwaysScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 300,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+              
+              ),
+          itemBuilder: (context, index) {
+            return searchWidget();
+          },
+          itemCount: 14,
+          
+        ),
+
+
+    );
   }
 }
+//  GridView.builder(
+//             shrinkWrap: true,
+//             physics: AlwaysScrollableScrollPhysics(),
+//       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+//       itemBuilder: (_, index) => FlutterLogo(),
+//       itemCount: 12,
+//       ),
