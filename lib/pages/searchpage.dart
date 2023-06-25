@@ -15,8 +15,8 @@ class _SearchPageState extends State<SearchPage> {
   body:GridView.builder(
           // height: 200,
           shrinkWrap: true,
-            physics: AlwaysScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            physics:const AlwaysScrollableScrollPhysics(),
+            gridDelegate:const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 300,
             childAspectRatio: 3 / 2,
             crossAxisSpacing: 20,

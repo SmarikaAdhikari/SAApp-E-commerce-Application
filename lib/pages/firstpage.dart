@@ -85,14 +85,12 @@ class _FirstpageState extends State<Firstpage> {
            const SizedBox(
             height: 20,
           ),
-        Container(
+        SizedBox(
           height: 120,
           
           child: ListView.builder(
             
             scrollDirection: Axis.horizontal,
-            
-                  
                     itemCount: 20,
                     
                     itemBuilder: (context, index) {
@@ -110,15 +108,15 @@ class _FirstpageState extends State<Firstpage> {
                     ),
         ), 
         
-      Container(
+      SizedBox(
           // height: 200,
           
           child: GridView.builder(
             // scrollDirection: Axis.vertical,
           // height: 200,
           shrinkWrap: true,
-            physics: AlwaysScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            physics: const AlwaysScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 300,
             childAspectRatio: 3 / 2,
             crossAxisSpacing: 20,
