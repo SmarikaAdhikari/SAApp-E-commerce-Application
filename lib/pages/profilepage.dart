@@ -76,25 +76,21 @@ class _ProfilePageState extends State<ProfilePage>
               ],
             ),
       TabBar(
-              unselectedLabelColor: Colors.black,
-              labelColor: Colors.red,
+              unselectedLabelColor: Colors.grey,
+              labelColor: Colors.black,
               tabs: const [
                  Tab(
                   icon: Icon(Icons.bookmark_added),
+                  text: "Reading List",
                 ),
                 Tab(
-                  icon: Icon(Icons.credit_card),  
+                  icon: Icon(Icons.credit_card), 
+                  text: "My Orders", 
                 )
               ],
               controller: _tabController,
               indicatorSize: TabBarIndicatorSize.tab,
       ),
-            Expanded(
-              child: TabBarView( 
-                controller: _tabController,
-                children: [const Text('Reading list'), const Text('My Orders')],
-              ),
-            ),
       ], ),
      ),
     ); 
