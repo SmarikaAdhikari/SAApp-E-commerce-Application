@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/widgets/searchwidget.dart';
 
 class Firstpage extends StatefulWidget {
   const Firstpage({super.key});
@@ -28,7 +29,7 @@ class _FirstpageState extends State<Firstpage> {
               
             
               
-              decoration:  InputDecoration(
+              decoration: const InputDecoration(
                 prefixIcon: Icon(
                   Icons.search,
                   size:30 ,
@@ -46,7 +47,7 @@ class _FirstpageState extends State<Firstpage> {
                                       ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
       
@@ -56,20 +57,20 @@ class _FirstpageState extends State<Firstpage> {
                  padding: const EdgeInsets.only(top: 20),
                  child: Container(
                                height: 200,
-                               color: Colors.blue,
+                               color: Colors.green[400],
                              ),
                ),
                 Positioned(
-               top: 0,
-               right: 0,
-
+               bottom:10 ,
+               right: 10,
+                
                 
 
                  
                   child: Image.asset(
-                    'view/bookl.png',
+                    'view/kitabalaya.png',
                     fit: BoxFit.cover,
-                    height: 180,
+                    height: 150,
                     width: 180,
                           
                           
@@ -81,11 +82,11 @@ class _FirstpageState extends State<Firstpage> {
             ],
           
           ),
-           SizedBox(
+           const SizedBox(
             height: 20,
           ),
         Container(
-          height: 80,
+          height: 120,
           
           child: ListView.builder(
             
@@ -100,7 +101,7 @@ class _FirstpageState extends State<Firstpage> {
                         child: Container(
                           height: 20,
                           width: 20,
-                          color: Colors.red,
+                          color: Colors.blue,
                         ),
                       );
                      
@@ -113,13 +114,25 @@ class _FirstpageState extends State<Firstpage> {
           // height: 200,
           
           child: GridView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemBuilder: (_, index) => FlutterLogo(),
-      itemCount: 6,
-      ),
+            // scrollDirection: Axis.vertical,
+          // height: 200,
+          shrinkWrap: true,
+            physics: AlwaysScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 300,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+              
+              ),
+          itemBuilder: (context, index) {
+            return searchWidget();
+          },
+          itemCount: 6,
+          
         ),
+
+      ),
         
       
       ]),

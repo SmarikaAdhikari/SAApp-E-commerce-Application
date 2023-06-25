@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       
-      home: const MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
@@ -53,7 +53,7 @@ void onItemTapped(int index){
     
     return Scaffold(
       
-     drawer: Drawer(
+     drawer: const Drawer(
     
      ),
       appBar: AppBar(
@@ -62,7 +62,7 @@ void onItemTapped(int index){
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [ IconButton(
-      icon: Icon(
+      icon: const Icon(
         Icons.notification_add,
         color: Colors.black,
         ),
