@@ -10,7 +10,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage>
  with SingleTickerProviderStateMixin 
  {
-   TabController _tabController;
+   late TabController _tabController ;
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
