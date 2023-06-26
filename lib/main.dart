@@ -136,15 +136,6 @@ void onItemTapped(int index){
         backgroundColor: Colors.black,
 
       ),  
-    );  
-
-    
-  
-
-
-
-
-
-  
+    ); 
   }
 }
