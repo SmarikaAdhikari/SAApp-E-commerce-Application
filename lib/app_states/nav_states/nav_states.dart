@@ -1,15 +1,14 @@
-import 'package:equatable/equatable.dart';
+// import 'package:equatable/equatable.dart';
 
-class NavStates extends Equatable  { 
+// class NavStates extends Equatable  { 
   
-  const NavStates({ this.index = 0 });
- final int index;
- NavStates copyWith({
- int? index,
- })
+//   const NavStates({ this.index = 0 });
+//  final int index;
+//  NavStates copyWith({
+//  int? index,
+//  })
 
-  @override
-  List<Object?> get props => throw UnimplementedError();
+//   @override
+//   List<Object?> get props => throw UnimplementedError();
   
  
-}

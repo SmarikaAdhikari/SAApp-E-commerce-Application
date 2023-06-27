@@ -97,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ]),
       ),
       appBar: AppBar(
+        centerTitle: true,
         title: const Text(
           "E-library",
           style: TextStyle(color: Colors.black),
@@ -114,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      //this is for learning only 
+      //this is for learning only
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
