@@ -114,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
+      //this is for learning only 
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
