@@ -8,16 +8,14 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage>
- with SingleTickerProviderStateMixin 
- {
-   late TabController _tabController ;
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +26,10 @@ class _ProfilePageState extends State<ProfilePage>
             Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 0,bottom:50),
+                  padding: const EdgeInsets.only(top: 0, bottom: 50),
                   child: Container(
                     height: 120,
-                    color: Colors.blue,
+                    color: Colors.blue[100],
                   ),
                 ),
                 const Positioned(
@@ -45,11 +43,11 @@ class _ProfilePageState extends State<ProfilePage>
                 ),
               ],
             ),
-           const  SizedBox(),
-           const Row(
+            const SizedBox(),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                 Text(
+                Text(
                   "Username:",
                   style: TextStyle(color: Colors.black),
                 ),
@@ -63,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage>
               "Bio:",
               style: TextStyle(fontSize: 15),
             ),
-            const Row( 
+            const Row(
               children: [
                 Icon(
                   Icons.calendar_month_outlined,
@@ -75,24 +73,25 @@ class _ProfilePageState extends State<ProfilePage>
                 ),
               ],
             ),
-      TabBar(
+            TabBar(
               unselectedLabelColor: Colors.grey,
               labelColor: Colors.black,
               tabs: const [
-                 Tab(
+                Tab(
                   icon: Icon(Icons.bookmark_added),
                   text: "Reading List",
                 ),
                 Tab(
-                  icon: Icon(Icons.credit_card), 
-                  text: "My Orders", 
+                  icon: Icon(Icons.credit_card),
+                  text: "My Orders",
                 )
               ],
               controller: _tabController,
               indicatorSize: TabBarIndicatorSize.tab,
+            ),
+          ],
+        ),
       ),
-      ], ),
-     ),
-    ); 
+    );
   }
 }
