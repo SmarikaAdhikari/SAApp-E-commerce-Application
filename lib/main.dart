@@ -1,3 +1,4 @@
+import 'package:app/app_states/nav_states/nav_notifier.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
 import 'package:app/pages/profilepage.dart';
@@ -8,9 +9,10 @@ import 'package:app/screens/notificationbar.dart';
 import 'package:app/screens/popularauthors.dart';
 import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,15 +27,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends ConsumerStatefulWidget {
   const MyHomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  ConsumerState<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int currentIndex = 0;
+class _MyHomePageState extends ConsumerState<MyHomePage> {
   final screens = [
     const Firstpage(),
     const SearchPage(),
@@ -41,14 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
     const ProfilePage()
   ];
 
-  void onItemTapped(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final currentIndex = ref.watch(navProvider).index;
     return Scaffold(
       drawer: Drawer(
         //
@@ -118,6 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ]),
       ),
       appBar: AppBar(
+        centerTitle: true,
         title: const Text(
           "E-library",
           style: TextStyle(color: Colors.black),
@@ -135,6 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
+      //this is for learning only
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -156,12 +154,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         type: BottomNavigationBarType.fixed,
-        currentIndex: currentIndex,
+        currentIndex: ref.watch(navProvider).index,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
         iconSize: 30,
-        onTap: onItemTapped,
-        elevation: 29,
+        onTap: (value) {
+          ref.read(navProvider.notifier).onIndexChanged(value);
+        },
+        elevation: 5,
         backgroundColor: Colors.black,
       ),
     );

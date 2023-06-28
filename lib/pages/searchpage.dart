@@ -12,25 +12,20 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  body:GridView.builder(
-          
-          shrinkWrap: true,
-            physics:const AlwaysScrollableScrollPhysics(),
-            gridDelegate:const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 300,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
-              
-              ),
-          itemBuilder: (context, index) {
-            return searchWidget();
-          },
-          itemCount: 14,
-          
+      body: GridView.builder(
+        shrinkWrap: true,
+        physics: const AlwaysScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 300,
+          childAspectRatio: 3 / 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
         ),
-
-
+        itemBuilder: (context, index) {
+          return searchWidget();
+        },
+        itemCount: 14,
+      ),
     );
   }
 }
