@@ -2,6 +2,11 @@ import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
 import 'package:app/pages/profilepage.dart';
 import 'package:app/pages/searchpage.dart';
+import 'package:app/screens/bestsellers.dart';
+import 'package:app/screens/newreleases.dart';
+import 'package:app/screens/notificationbar.dart';
+import 'package:app/screens/popularauthors.dart';
+import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -45,54 +50,70 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(
+      drawer: Drawer(
         //
         key: Key("E-library"),
         backgroundColor: Color.fromARGB(255, 190, 229, 247),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           SizedBox(
               height: 80,
-              child: Row(
-                children: [
-                  Icon(Icons.trending_up),
-                  Text(
-                    "Trending Books",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ],
+              child: InkWell(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Trendingscreen())),
+                child: Row(
+                  children: [
+                    IconButton(onPressed: () {}, icon: Icon(Icons.trending_up)),
+                    Text(
+                      "Trending",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
               )),
           SizedBox(
               height: 80,
-              child: Row(
-                children: [
-                  Icon(Icons.star_border),
-                  Text(
-                    "Best Sellers",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ],
+              child: InkWell(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Bestsellers())),
+                child: Row(
+                  children: [
+                    IconButton(onPressed: () {}, icon: Icon(Icons.star)),
+                    Text(
+                      "Best Sellers",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
               )),
           SizedBox(
               height: 80,
-              child: Row(
-                children: [
-                  Icon(Icons.book_sharp),
-                  Text(
-                    "New Releases",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ],
+              child: InkWell(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Newreleases())),
+                child: Row(
+                  children: [
+                    IconButton(onPressed: () {}, icon: Icon(Icons.book)),
+                    Text(
+                      "New Releases",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
               )),
           SizedBox(
               height: 80,
-              child: Row(
-                children: [
-                  Icon(Icons.person),
-                  Text(
-                    "Popular Authors",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ],
+              child: InkWell(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Popularauthors())),
+                child: Row(
+                  children: [
+                    IconButton(onPressed: () {}, icon: Icon(Icons.person)),
+                    Text(
+                      "Popular Authors",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
               )),
         ]),
       ),
@@ -106,15 +127,14 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0,
         actions: [
           IconButton(
-            icon: const Icon(
-              Icons.notification_add,
-              color: Colors.black,
-            ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Notificationbar()));
+            },
+            icon: Icon(Icons.notification_add),
           )
         ],
       ),
-      //this is for learning only 
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -141,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
         unselectedItemColor: Colors.grey,
         iconSize: 30,
         onTap: onItemTapped,
-        elevation: 5,
+        elevation: 29,
         backgroundColor: Colors.black,
       ),
     );
