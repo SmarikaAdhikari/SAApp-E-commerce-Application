@@ -1,4 +1,4 @@
-import 'package:app/main.dart';
+// import 'package:app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,11 +13,11 @@ class _BestsellersState extends State<Bestsellers> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: IconButton(
-        icon: const Icon(Icons.arrow_back_ios),
+      child: ElevatedButton(
         onPressed: () {
-          Get.off(() => const MyHomePage());
+          Get.back();
         },
+        child: const Text('Go back!'),
       ),
     );
   }
