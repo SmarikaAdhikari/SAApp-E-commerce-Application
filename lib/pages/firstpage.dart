@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:app/widgets/searchwidget.dart';
 
+import '../widgets/listswidget.dart';
+
 class Firstpage extends StatefulWidget {
   const Firstpage({super.key});
 
@@ -33,9 +35,6 @@ class _FirstpageState extends State<Firstpage> {
                       border: InputBorder.none),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
               Stack(
                 children: [
                   Padding(
@@ -60,23 +59,30 @@ class _FirstpageState extends State<Firstpage> {
               const SizedBox(
                 height: 20,
               ),
+              Text("Best Sellers",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold)),
               SizedBox(
                 height: 120,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 20,
+                  shrinkWrap: true,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: EdgeInsets.only(left: 5, right: 5),
+                  itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 20,
-                        width: 20,
-                        color: Colors.blue[100],
-                      ),
-                    );
+                    return listswidget();
                   },
                 ),
               ),
+              SizedBox(height: 30),
+              Text("New Releases",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold)),
               GridView.builder(
                 shrinkWrap: true,
                 physics: const AlwaysScrollableScrollPhysics(),
