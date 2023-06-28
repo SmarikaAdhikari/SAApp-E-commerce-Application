@@ -51,20 +51,21 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
 
       drawer: Drawer(
         //
-        key: Key("E-library"),
-        backgroundColor: Color.fromARGB(255, 190, 229, 247),
+        key: const Key("E-library"),
+        backgroundColor: const Color.fromARGB(255, 190, 229, 247),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           SizedBox(
               height: 80,
               child: InkWell(
-                onTap: () => Get.to(() => Trendingscreen()),
+                onTap: () => Get.to(() => const Trendingscreen()),
 
                 // Navigator.push(context,
                 //     MaterialPageRoute(builder: (context) => Trendingscreen())),
                 child: Row(
                   children: [
-                    IconButton(onPressed: () {}, icon: Icon(Icons.trending_up)),
-                    Text(
+                    IconButton(
+                        onPressed: () {}, icon: const Icon(Icons.trending_up)),
+                    const Text(
                       "Trending",
                       style: TextStyle(fontSize: 20),
                     ),
@@ -74,11 +75,11 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           SizedBox(
               height: 80,
               child: InkWell(
-                onTap: () => Get.to(() => Bestsellers()),
+                onTap: () => Get.to(() => const Bestsellers()),
                 child: Row(
                   children: [
-                    IconButton(onPressed: () {}, icon: Icon(Icons.star)),
-                    Text(
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.star)),
+                    const Text(
                       "Best Sellers",
                       style: TextStyle(fontSize: 20),
                     ),
@@ -88,11 +89,11 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           SizedBox(
               height: 80,
               child: InkWell(
-                onTap: () => Get.to(() => Newreleases()),
+                onTap: () => Get.to(() => const Newreleases()),
                 child: Row(
                   children: [
-                    IconButton(onPressed: () {}, icon: Icon(Icons.book)),
-                    Text(
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.book)),
+                    const Text(
                       "New Releases",
                       style: TextStyle(fontSize: 20),
                     ),
@@ -102,11 +103,12 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           SizedBox(
               height: 80,
               child: InkWell(
-                onTap: () => Get.to(() => Popularauthors()),
+                onTap: () => Get.to(() => const Popularauthors()),
                 child: Row(
                   children: [
-                    IconButton(onPressed: () {}, icon: Icon(Icons.person)),
-                    Text(
+                    IconButton(
+                        onPressed: () {}, icon: const Icon(Icons.person)),
+                    const Text(
                       "Popular Authors",
                       style: TextStyle(fontSize: 20),
                     ),
@@ -127,10 +129,12 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Notificationbar()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Notificationbar()));
             },
-            icon: Icon(Icons.notification_add),
+            icon: const Icon(Icons.notification_add),
           )
         ],
       ),
