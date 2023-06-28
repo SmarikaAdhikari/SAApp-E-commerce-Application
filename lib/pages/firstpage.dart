@@ -72,15 +72,18 @@ class _FirstpageState extends State<Firstpage> {
                   //   listswidget()
                   // }
 
-                  //     ListView.builder(
-                  //   scrollDirection: Axis.horizontal,
-                  //   shrinkWrap: true,
-                  //   physics: const NeverScrollableScrollPhysics(),
-                  //   padding: EdgeInsets.only(left: 0, right: 0),
-                  //   itemCount: 10,
-                  //   itemBuilder: (context, index) {
-                  //     return listswidget();
-                  //   },
+                  // Container(
+                  //   height: 130,
+                  //   child: ListView.builder(
+                  //     scrollDirection: Axis.horizontal,
+                  //     shrinkWrap: true,
+                  //     physics: const NeverScrollableScrollPhysics(),
+                  //     padding: EdgeInsets.only(left: 0, right: 0),
+                  //     itemCount: 10,
+                  //     itemBuilder: (context, index) {
+                  //       return listswidget();
+                  //     },
+                  //   ),
                   // ),
                   ),
               SizedBox(height: 10),

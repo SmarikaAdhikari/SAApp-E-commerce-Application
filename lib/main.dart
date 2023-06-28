@@ -47,6 +47,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   Widget build(BuildContext context) {
     final currentIndex = ref.watch(navProvider).index;
     return Scaffold(
+      // singleChildScrollView: true,
+
       drawer: Drawer(
         //
         key: Key("E-library"),
