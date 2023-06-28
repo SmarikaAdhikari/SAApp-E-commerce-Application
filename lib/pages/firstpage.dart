@@ -64,20 +64,26 @@ class _FirstpageState extends State<Firstpage> {
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
-              SizedBox(
-                height: 120,
-                child: ListView.builder(
+              SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.only(left: 5, right: 5),
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return listswidget();
-                  },
-                ),
-              ),
-              SizedBox(height: 30),
+                  child:
+                      Row(children: List.generate(10, (index) => listswidget()))
+                  // for(int i=0;i<10;i++){
+                  //   listswidget()
+                  // }
+
+                  //     ListView.builder(
+                  //   scrollDirection: Axis.horizontal,
+                  //   shrinkWrap: true,
+                  //   physics: const NeverScrollableScrollPhysics(),
+                  //   padding: EdgeInsets.only(left: 0, right: 0),
+                  //   itemCount: 10,
+                  //   itemBuilder: (context, index) {
+                  //     return listswidget();
+                  //   },
+                  // ),
+                  ),
+              SizedBox(height: 10),
               Text("New Releases",
                   style: TextStyle(
                       color: Colors.black,
@@ -85,8 +91,8 @@ class _FirstpageState extends State<Firstpage> {
                       fontWeight: FontWeight.bold)),
               GridView.builder(
                 shrinkWrap: true,
-                physics: const AlwaysScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                physics: ScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 300,
                   childAspectRatio: 3 / 2,
                   crossAxisSpacing: 20,
