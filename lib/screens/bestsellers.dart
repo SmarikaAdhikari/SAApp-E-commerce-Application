@@ -14,9 +14,9 @@ class _BestsellersState extends State<Bestsellers> {
   Widget build(BuildContext context) {
     return Drawer(
       child: IconButton(
-        icon: Icon(Icons.arrow_back_ios),
+        icon: const Icon(Icons.arrow_back_ios),
         onPressed: () {
-          Get.off(() => MyHomePage());
+          Get.off(() => const MyHomePage());
         },
       ),
     );

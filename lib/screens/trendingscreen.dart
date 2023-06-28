@@ -15,9 +15,9 @@ class _TrendingscreenState extends State<Trendingscreen> {
     return Drawer(
       child: ElevatedButton(
         onPressed: () {
-          Get.off(MyHomePage());
+          Get.off(const MyHomePage());
         },
-        child: Text('Go back!'),
+        child: const Text('Go back!'),
       ),
       //     child: Center(
       //   child: Text("Trending"),

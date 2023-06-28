@@ -21,7 +21,7 @@ class _FirstpageState extends State<Firstpage> {
             child: Column(children: [
               Container(
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 225, 243, 252),
+                    color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(40)),
                 child: TextFormField(
                   decoration: const InputDecoration(
@@ -59,43 +59,25 @@ class _FirstpageState extends State<Firstpage> {
               const SizedBox(
                 height: 20,
               ),
-              Text("Best Sellers",
+              const Text("Best Sellers",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
               SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child:
-                      Row(children: List.generate(10, (index) => listswidget()))
-                  // for(int i=0;i<10;i++){
-                  //   listswidget()
-                  // }
-
-                  // Container(
-                  //   height: 130,
-                  //   child: ListView.builder(
-                  //     scrollDirection: Axis.horizontal,
-                  //     shrinkWrap: true,
-                  //     physics: const NeverScrollableScrollPhysics(),
-                  //     padding: EdgeInsets.only(left: 0, right: 0),
-                  //     itemCount: 10,
-                  //     itemBuilder: (context, index) {
-                  //       return listswidget();
-                  //     },
-                  //   ),
-                  // ),
-                  ),
-              SizedBox(height: 10),
-              Text("New Releases",
+                  child: Row(
+                      children: List.generate(10, (index) => listswidget()))),
+              const SizedBox(height: 10),
+              const Text("New Releases",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
               GridView.builder(
                 shrinkWrap: true,
-                physics: ScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                physics: const ScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 300,
                   childAspectRatio: 3 / 2,
                   crossAxisSpacing: 20,

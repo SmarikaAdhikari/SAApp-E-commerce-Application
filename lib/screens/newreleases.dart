@@ -16,9 +16,9 @@ class _NewreleasesState extends State<Newreleases> {
     return Drawer(
       child: ElevatedButton(
         onPressed: () {
-          Get.off(MyHomePage());
+          Get.off(const MyHomePage());
         },
-        child: Text('Go back!'),
+        child: const Text('Go back!'),
       ),
     );
   }
