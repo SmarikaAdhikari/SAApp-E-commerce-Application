@@ -154,7 +154,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           ),
         ],
         type: BottomNavigationBarType.fixed,
-        currentIndex: ref.watch(navProvider).index,
+        currentIndex: currentIndex,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
         iconSize: 30,
