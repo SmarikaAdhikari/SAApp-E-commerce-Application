@@ -1,4 +1,6 @@
+import 'package:app/main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Bestsellers extends StatefulWidget {
   const Bestsellers({super.key});
@@ -11,14 +13,12 @@ class _BestsellersState extends State<Bestsellers> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: ElevatedButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      child: Row(children: [
-        Icon(Icons.arrow_back_ios),
-        Text('Back to home page'),
-      ]),
-    ));
+      child: IconButton(
+        icon: Icon(Icons.arrow_back_ios),
+        onPressed: () {
+          Get.off(() => MyHomePage());
+        },
+      ),
+    );
   }
 }

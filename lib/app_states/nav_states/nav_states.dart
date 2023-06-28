@@ -1,4 +1,4 @@
-// import 'package:equatable/equatable.dart';
+import 'package:equatable/equatable.dart';
 
 class NavStates extends Equatable {
   const NavStates({this.index = 0});

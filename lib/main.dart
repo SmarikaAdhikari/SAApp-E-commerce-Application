@@ -10,6 +10,7 @@ import 'package:app/screens/popularauthors.dart';
 import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -54,8 +55,10 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           SizedBox(
               height: 80,
               child: InkWell(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Trendingscreen())),
+                onTap: () => Get.to(() => Trendingscreen()),
+
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => Trendingscreen())),
                 child: Row(
                   children: [
                     IconButton(onPressed: () {}, icon: Icon(Icons.trending_up)),
@@ -69,8 +72,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           SizedBox(
               height: 80,
               child: InkWell(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Bestsellers())),
+                onTap: () => Get.to(() => Bestsellers()),
                 child: Row(
                   children: [
                     IconButton(onPressed: () {}, icon: Icon(Icons.star)),
@@ -84,8 +86,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           SizedBox(
               height: 80,
               child: InkWell(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Newreleases())),
+                onTap: () => Get.to(() => Newreleases()),
                 child: Row(
                   children: [
                     IconButton(onPressed: () {}, icon: Icon(Icons.book)),
@@ -99,8 +100,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           SizedBox(
               height: 80,
               child: InkWell(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Popularauthors())),
+                onTap: () => Get.to(() => Popularauthors()),
                 child: Row(
                   children: [
                     IconButton(onPressed: () {}, icon: Icon(Icons.person)),
@@ -132,7 +132,6 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           )
         ],
       ),
-      //this is for learning only
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

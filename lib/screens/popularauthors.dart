@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../main.dart';
 
 class Popularauthors extends StatefulWidget {
   const Popularauthors({super.key});
@@ -11,8 +14,12 @@ class _PopularauthorsState extends State<Popularauthors> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: Center(
-      child: Text("Popular Authors"),
-    ));
+      child: ElevatedButton(
+        onPressed: () {
+          Get.off((MyHomePage()));
+        },
+        child: Text('Go back!'),
+      ),
+    );
   }
 }
