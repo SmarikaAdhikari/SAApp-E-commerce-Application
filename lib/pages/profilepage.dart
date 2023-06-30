@@ -1,7 +1,6 @@
-import 'dart:async';
-
 import 'package:app/screens/edits.dart';
 import 'package:app/widgets/bio.dart';
+import 'package:app/widgets/date.dart';
 import 'package:app/widgets/new.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +8,7 @@ import 'package:get/get.dart';
 // import '../widgets/bio.dart';
 
 class ProfilePage extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
   ProfilePage({super.key});
 
   @override
@@ -18,7 +18,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage>
     with SingleTickerProviderStateMixin {
   // StreamController<String> streamController = StreamController<String>();
-  TextEditingController textEditingController = TextEditingController();
+  // TextEditingController textEditingController = TextEditingController();
   late TabController _tabController;
 
   @override
@@ -81,32 +81,40 @@ class _ProfilePageState extends State<ProfilePage>
                       if (snapshot.hasData) {
                         return Text(
                           snapshot.data.toString(),
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
+                          style: const TextStyle(fontSize: 15),
                         );
                       } else {
                         return const Text(
                           "---",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
+                          style: TextStyle(fontSize: 15),
                         );
                       }
                     }),
-
-                // Text(
-                //   "Bio:",
-                //   style: TextStyle(fontSize: 15),
-                // ),
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.calendar_month_outlined,
                       size: 15,
                     ),
-                    Text(
+                    const Text(
                       "Joined Date:",
                       style: TextStyle(fontSize: 15),
                     ),
+                    StreamBuilder<String>(
+                        stream: datecontroller.stream,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              snapshot.data.toString(),
+                              style: const TextStyle(fontSize: 15),
+                            );
+                          } else {
+                            return const Text(
+                              "---",
+                              style: TextStyle(fontSize: 15),
+                            );
+                          }
+                        }),
                   ],
                 ),
               ],
