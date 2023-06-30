@@ -1,11 +1,9 @@
 import 'dart:async';
 
 import 'package:app/pages/profilepage.dart';
+import 'package:app/widgets/bio.dart';
 import 'package:app/widgets/new.dart';
 import 'package:flutter/material.dart';
-// void main() {
-//   runApp(Edits());
-// }
 
 class Edits extends StatefulWidget {
   Edits({super.key});
@@ -15,7 +13,9 @@ class Edits extends StatefulWidget {
 }
 
 class _EditsState extends State<Edits> {
-  TextEditingController textEditingController = TextEditingController();
+  TextEditingController nameEditingController = TextEditingController();
+  TextEditingController bioEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,32 +23,24 @@ class _EditsState extends State<Edits> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // StreamBuilder<String>(
-          //     stream: streamController.stream,
-          //     builder: (context, snapshot) {
-          //       if (snapshot.hasData) {
-          //         return Text(
-          //           snapshot.data.toString(),
-          //           style: const TextStyle(
-          //               fontWeight: FontWeight.bold, fontSize: 20),
-          //         );
-          //       } else {
-          //         return const Text(
-          //           "No Data",
-          //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          //         );
-          //       }
-          //     }),
           const SizedBox(height: 10),
           SizedBox(
             width: 200,
             child: TextField(
-              controller: textEditingController,
+              controller: nameEditingController,
+            ),
+          ),
+          const SizedBox(height: 10),
+          SizedBox(
+            width: 200,
+            child: TextField(
+              controller: bioEditingController,
             ),
           ),
           ElevatedButton(
               onPressed: () {
-                newcontroller.add(textEditingController.text);
+                newcontroller.add(nameEditingController.text);
+                biocontroller.add(bioEditingController.text);
               },
               child: const Text("Done"))
         ],

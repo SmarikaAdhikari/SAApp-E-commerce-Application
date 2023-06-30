@@ -1,9 +1,12 @@
 import 'dart:async';
 
 import 'package:app/screens/edits.dart';
+import 'package:app/widgets/bio.dart';
 import 'package:app/widgets/new.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+// import '../widgets/bio.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({super.key});
@@ -72,10 +75,28 @@ class _ProfilePageState extends State<ProfilePage>
                         );
                       }
                     }),
-                Text(
-                  "Bio:",
-                  style: TextStyle(fontSize: 15),
-                ),
+                StreamBuilder<String>(
+                    stream: biocontroller.stream,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(
+                          snapshot.data.toString(),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        );
+                      } else {
+                        return const Text(
+                          "---",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        );
+                      }
+                    }),
+
+                // Text(
+                //   "Bio:",
+                //   style: TextStyle(fontSize: 15),
+                // ),
                 Row(
                   children: [
                     Icon(
