@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
+import 'pages/loginpage.dart';
+
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: Loginpage(),
     );
   }
 }

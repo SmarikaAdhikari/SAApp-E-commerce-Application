@@ -28,6 +28,15 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   @override
+  void dispose() {
+    newcontroller.close();
+    biocontroller.close();
+    datecontroller.close();
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
