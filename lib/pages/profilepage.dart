@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:app/screens/edits.dart';
+import 'package:app/widgets/new.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -11,7 +14,10 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage>
     with SingleTickerProviderStateMixin {
+  // StreamController<String> streamController = StreamController<String>();
+  TextEditingController textEditingController = TextEditingController();
   late TabController _tabController;
+
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
@@ -43,38 +49,54 @@ class _ProfilePageState extends State<ProfilePage>
             ),
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(children: [
-          Column(
-            children: [
-              Text(
-                "Username:",
-                style: TextStyle(color: Colors.black),
-              ),
-              const Text(
-                "Bio:",
-                style: TextStyle(fontSize: 15),
-              ),
-              const Row(
-                children: [
-                  Icon(
-                    Icons.calendar_month_outlined,
-                    size: 15,
-                  ),
-                  Text(
-                    "Joined Date:",
-                    style: TextStyle(fontSize: 15),
-                  ),
-                ],
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                StreamBuilder<String>(
+                    stream: newcontroller.stream,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(
+                          snapshot.data.toString(),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        );
+                      } else {
+                        return const Text(
+                          "---",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        );
+                      }
+                    }),
+                Text(
+                  "Bio:",
+                  style: TextStyle(fontSize: 15),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.calendar_month_outlined,
+                      size: 15,
+                    ),
+                    Text(
+                      "Joined Date:",
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-          SizedBox(width: 220),
+          const SizedBox(width: 40),
           ElevatedButton(
               onPressed: () {
                 Get.to(() => Edits());
               },
-              child: Text("Edits"),
+              child: const Text("Edits"),
               style: ElevatedButton.styleFrom(
                 primary: Colors.grey[100],
                 onPrimary: Colors.black,

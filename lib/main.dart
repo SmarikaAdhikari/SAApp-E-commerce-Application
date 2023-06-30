@@ -40,7 +40,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     const Firstpage(),
     const SearchPage(),
     const FavoritePage(),
-    const ProfilePage()
+    ProfilePage()
   ];
 
   @override
