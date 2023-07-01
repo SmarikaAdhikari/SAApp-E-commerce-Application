@@ -12,9 +12,8 @@ Widget listswidget() {
       child: Column(
         children: [
           Image.asset("pics/north.jpeg", height: 60, width: 110),
-          const Text("GENREw"),
-          const Text("GENREw"),
-          const Text("GENREw"),
+          const Text("GENRE"),
+          const Text("Price"),
         ],
       ),
     ),

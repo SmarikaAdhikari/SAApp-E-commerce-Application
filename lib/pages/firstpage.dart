@@ -16,33 +16,15 @@ class _FirstpageState extends State<Firstpage> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 225, 243, 252),
-                    borderRadius: BorderRadius.circular(40)),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.search,
-                        size: 30,
-                        color: Colors.black,
-                      ),
-                      hintText: "what are you looking for?",
-                      hintStyle: TextStyle(color: Colors.black, fontSize: 18),
-                      border: InputBorder.none),
-                ),
-              ),
               Stack(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Container(
-                      height: 200,
-                      color: Colors.blue[100],
-                    ),
+                  Container(
+                    height: 200,
+                    color: Colors.blue[100],
                   ),
                   Positioned(
                     bottom: 10,
@@ -86,7 +68,7 @@ class _FirstpageState extends State<Firstpage> {
                 itemBuilder: (context, index) {
                   return searchWidget();
                 },
-                itemCount: 6,
+                itemCount: 8,
               ),
             ]),
           ),

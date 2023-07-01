@@ -12,9 +12,9 @@ class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-   body:ListView.builder(
-    
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
           itemBuilder: (context, position) {
             return Card(
               child: Padding(
@@ -23,14 +23,9 @@ class _FavoritePageState extends State<FavoritePage> {
               ),
             );
           },
-          
           itemCount: 15,
         ),
-
-
-
-
-
+      ),
     );
   }
 }

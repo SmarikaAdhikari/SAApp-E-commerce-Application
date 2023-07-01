@@ -28,15 +28,6 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   @override
-  void dispose() {
-    newcontroller.close();
-    biocontroller.close();
-    datecontroller.close();
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
@@ -64,69 +55,72 @@ class _ProfilePageState extends State<ProfilePage>
         const SizedBox(height: 10),
         Row(children: [
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                StreamBuilder<String>(
-                    stream: newcontroller.stream,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return Text(
-                          snapshot.data.toString(),
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        );
-                      } else {
-                        return const Text(
-                          "---",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        );
-                      }
-                    }),
-                StreamBuilder<String>(
-                    stream: biocontroller.stream,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return Text(
-                          snapshot.data.toString(),
-                          style: const TextStyle(fontSize: 15),
-                        );
-                      } else {
-                        return const Text(
-                          "---",
-                          style: TextStyle(fontSize: 15),
-                        );
-                      }
-                    }),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.calendar_month_outlined,
-                      size: 15,
-                    ),
-                    const Text(
-                      "Joined Date:",
-                      style: TextStyle(fontSize: 15),
-                    ),
-                    StreamBuilder<String>(
-                        stream: datecontroller.stream,
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            return Text(
-                              snapshot.data.toString(),
-                              style: const TextStyle(fontSize: 15),
-                            );
-                          } else {
-                            return const Text(
-                              "---",
-                              style: TextStyle(fontSize: 15),
-                            );
-                          }
-                        }),
-                  ],
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  StreamBuilder<String>(
+                      stream: newcontroller.stream,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text(
+                            snapshot.data.toString(),
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          );
+                        } else {
+                          return const Text(
+                            "---",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          );
+                        }
+                      }),
+                  StreamBuilder<String>(
+                      stream: biocontroller.stream,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text(
+                            snapshot.data.toString(),
+                            style: const TextStyle(fontSize: 15),
+                          );
+                        } else {
+                          return const Text(
+                            "---",
+                            style: TextStyle(fontSize: 15),
+                          );
+                        }
+                      }),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.calendar_month_outlined,
+                        size: 15,
+                      ),
+                      const Text(
+                        "Joined Date:",
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      StreamBuilder<String>(
+                          stream: datecontroller.stream,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return Text(
+                                snapshot.data.toString(),
+                                style: const TextStyle(fontSize: 15),
+                              );
+                            } else {
+                              return const Text(
+                                "---",
+                                style: TextStyle(fontSize: 15),
+                              );
+                            }
+                          }),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(width: 40),
@@ -144,21 +138,24 @@ class _ProfilePageState extends State<ProfilePage>
               )),
         ]),
 
-        TabBar(
-          unselectedLabelColor: Colors.grey,
-          labelColor: Colors.black,
-          tabs: const [
-            Tab(
-              icon: Icon(Icons.bookmark_added),
-              text: "Reading List",
-            ),
-            Tab(
-              icon: Icon(Icons.credit_card),
-              text: "My Orders",
-            )
-          ],
-          controller: _tabController,
-          indicatorSize: TabBarIndicatorSize.tab,
+        SizedBox(
+          height: 55,
+          child: TabBar(
+            unselectedLabelColor: Colors.grey,
+            labelColor: Colors.black,
+            tabs: const [
+              Tab(
+                icon: Icon(Icons.bookmark_added),
+                text: "Reading List",
+              ),
+              Tab(
+                icon: Icon(Icons.credit_card),
+                text: "My Orders",
+              )
+            ],
+            controller: _tabController,
+            indicatorSize: TabBarIndicatorSize.tab,
+          ),
         ),
         //   ],
         // ),

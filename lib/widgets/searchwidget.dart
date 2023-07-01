@@ -10,8 +10,9 @@ Widget searchWidget() {
     ),
     child: Column(
       children: [
-        Image.asset("pics/north.jpeg", height: 80, width: 140),
+        Image.asset("pics/north.jpeg", height: 65, width: 140),
         const Text("GENRE"),
+        const Text("The Price"),
       ],
     ),
   );

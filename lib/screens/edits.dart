@@ -1,7 +1,10 @@
+import 'package:app/pages/firstpage.dart';
+import 'package:app/pages/profilepage.dart';
 import 'package:app/widgets/bio.dart';
 import 'package:app/widgets/date.dart';
 import 'package:app/widgets/new.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Edits extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
@@ -53,12 +56,14 @@ class _EditsState extends State<Edits> {
             ),
           ),
           ElevatedButton(
-              onPressed: () {
-                newcontroller.add(nameEditingController.text);
-                biocontroller.add(bioEditingController.text);
-                datecontroller.add(dateEditingController.text);
-              },
-              child: const Text("Done"))
+            onPressed: () {
+              newcontroller.add(nameEditingController.text);
+              biocontroller.add(bioEditingController.text);
+              datecontroller.add(dateEditingController.text);
+              Get.to(() => ProfilePage());
+            },
+            child: const Text("Done"),
+          ),
         ],
       )),
     );
