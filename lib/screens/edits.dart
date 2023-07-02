@@ -1,4 +1,4 @@
-import 'package:app/pages/firstpage.dart';
+import 'package:app/main.dart';
 import 'package:app/pages/profilepage.dart';
 import 'package:app/widgets/bio.dart';
 import 'package:app/widgets/date.dart';
@@ -60,7 +60,7 @@ class _EditsState extends State<Edits> {
               newcontroller.add(nameEditingController.text);
               biocontroller.add(bioEditingController.text);
               datecontroller.add(dateEditingController.text);
-              Get.to(() => ProfilePage());
+              Get.back();
             },
             child: const Text("Done"),
           ),
