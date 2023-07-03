@@ -56,6 +56,7 @@ class _FirstpageState extends State<Firstpage> {
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
+              const SizedBox(height: 10),
               GridView.builder(
                 shrinkWrap: true,
                 physics: const ScrollPhysics(),

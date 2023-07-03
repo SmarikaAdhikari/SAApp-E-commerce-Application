@@ -1,5 +1,5 @@
-import 'package:app/main.dart';
-import 'package:app/pages/profilepage.dart';
+// import 'package:app/main.dart';
+// import 'package:app/pages/profilepage.dart';
 import 'package:app/widgets/bio.dart';
 import 'package:app/widgets/date.dart';
 import 'package:app/widgets/new.dart';
