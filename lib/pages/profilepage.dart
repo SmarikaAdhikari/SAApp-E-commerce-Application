@@ -139,7 +139,7 @@ class _ProfilePageState extends State<ProfilePage>
         ]),
 
         SizedBox(
-          height: 55,
+          height: 60,
           child: TabBar(
             unselectedLabelColor: Colors.grey,
             labelColor: Colors.black,

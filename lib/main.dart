@@ -23,7 +23,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 174, 211, 241)),
+        useMaterial3: true,
+      ),
       debugShowCheckedModeBanner: false,
       home: Loginpage(),
     );

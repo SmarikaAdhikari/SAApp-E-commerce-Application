@@ -16,37 +16,61 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 174, 211, 241),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Name'),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your name.';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _name = value!;
-                },
+              SizedBox(
+                height: 200,
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Password'),
-                obscureText: true,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter a password.';
-                  }
+              Container(
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 225, 243, 252),
+                    borderRadius: BorderRadius.circular(10)),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: InputBorder.none,
+                      labelText: 'Name'),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your name.';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _name = value!;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 225, 243, 252),
+                    borderRadius: BorderRadius.circular(10)),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: InputBorder.none,
+                      labelText: 'Password'),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter a password.';
+                    }
 
-                  return null;
-                },
-                onSaved: (value) {
-                  _password = value!;
-                },
+                    return null;
+                  },
+                  onSaved: (value) {
+                    _password = value!;
+                  },
+                ),
               ),
               SizedBox(height: 16.0),
               ElevatedButton(
