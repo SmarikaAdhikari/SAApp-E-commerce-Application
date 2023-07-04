@@ -1,4 +1,5 @@
 import 'package:app/main.dart';
+import 'package:app/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,16 +17,20 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromARGB(255, 174, 211, 241),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(
-                height: 200,
+                height: 80,
+              ),
+              Image(image: AssetImage('view/BSS.png'), height: 150, width: 200),
+              SizedBox(
+                height: 20,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -48,7 +53,7 @@ class _LoginpageState extends State<Loginpage> {
                 ),
               ),
               SizedBox(
-                height: 15,
+                height: 20,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -72,9 +77,15 @@ class _LoginpageState extends State<Loginpage> {
                   },
                 ),
               ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 20),
               ElevatedButton(
-                child: Text('Submit'),
+                child: Padding(
+                  padding: const EdgeInsets.all(13.0),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     Get.to(() => const MyHomePage());
@@ -85,6 +96,27 @@ class _LoginpageState extends State<Loginpage> {
                     print('Password: $_password');
                   }
                 },
+              ),
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account?",
+                    style: TextStyle(color: Colors.blue[800], fontSize: 15),
+                  ),
+                  SizedBox(width: 10),
+                  ElevatedButton(
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                        'Signup',
+                        style: TextStyle(fontSize: 13),
+                      ),
+                    ),
+                    onPressed: () => Get.to(() => const Signup()),
+                  ),
+                ],
               ),
             ],
           ),

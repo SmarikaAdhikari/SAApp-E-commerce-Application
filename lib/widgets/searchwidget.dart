@@ -12,7 +12,7 @@ Widget searchWidget() {
       children: [
         Image.asset("pics/north.jpeg", height: 65, width: 140),
         const Text("GENRE"),
-        const Text("The Price"),
+        // const Text("The Price"),
       ],
     ),
   );
