@@ -1,3 +1,4 @@
+import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget listswidget() {
@@ -7,7 +8,7 @@ Widget listswidget() {
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(9),
-        color: Colors.blue[100],
+        color: mainColor,
       ),
       child: Column(
         children: [

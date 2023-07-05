@@ -1,3 +1,5 @@
+import 'package:app/Views/bookdetails.dart';
+// import 'package:app/Views/page1.dart';
 import 'package:app/app_states/nav_states/nav_notifier.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
@@ -5,7 +7,7 @@ import 'package:app/pages/profilepage.dart';
 import 'package:app/pages/searchpage.dart';
 import 'package:app/screens/bestsellers.dart';
 import 'package:app/screens/newreleases.dart';
-import 'package:app/screens/notificationbar.dart';
+// import 'package:app/screens/notificationbar.dart';
 import 'package:app/screens/popularauthors.dart';
 import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
@@ -136,10 +138,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const Notificationbar()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Pageone()));
             },
             icon: const Icon(Icons.notification_add),
           )
