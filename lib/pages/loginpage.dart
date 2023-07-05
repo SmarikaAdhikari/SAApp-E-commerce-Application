@@ -103,7 +103,7 @@ class _LoginpageState extends State<Loginpage> {
                 children: [
                   Text(
                     "Don't have an account?",
-                    style: TextStyle(color: Colors.blue[800], fontSize: 15),
+                    style: TextStyle(color: Colors.blue[900], fontSize: 15),
                   ),
                   SizedBox(width: 10),
                   ElevatedButton(
