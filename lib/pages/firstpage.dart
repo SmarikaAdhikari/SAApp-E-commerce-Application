@@ -1,3 +1,4 @@
+import 'package:app/widgets/listswidget.dart';
 import 'package:flutter/material.dart';
 import 'package:app/widgets/searchwidget.dart';
 
@@ -61,8 +62,8 @@ class _FirstpageState extends State<Firstpage> {
                 shrinkWrap: true,
                 physics: const ScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 300,
-                  childAspectRatio: 3 / 2,
+                  maxCrossAxisExtent: 350,
+                  childAspectRatio: 2 / 2,
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20,
                 ),

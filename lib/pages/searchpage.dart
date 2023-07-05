@@ -1,4 +1,5 @@
-import 'package:app/widgets/searchwidget.dart';
+import 'package:app/widgets/genrewidget.dart';
+// import 'package:app/widgets/searchwidget.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
@@ -42,7 +43,7 @@ class _SearchPageState extends State<SearchPage> {
               mainAxisSpacing: 20,
             ),
             itemBuilder: (context, index) {
-              return searchWidget();
+              return genreWidget();
             },
             itemCount: 14,
           ),
