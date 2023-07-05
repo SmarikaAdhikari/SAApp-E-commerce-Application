@@ -1,3 +1,4 @@
+import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget searchWidget() {
@@ -10,7 +11,7 @@ Widget searchWidget() {
     ),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(9),
-      color: Colors.blue[100],
+      color: mainColor,
     ),
     child: Column(
       children: [

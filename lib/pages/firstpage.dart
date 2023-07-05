@@ -2,6 +2,8 @@ import 'package:app/widgets/listswidget.dart';
 import 'package:flutter/material.dart';
 import 'package:app/widgets/searchwidget.dart';
 
+import '../widgets/constants.dart';
+
 class Firstpage extends StatefulWidget {
   const Firstpage({super.key});
 
@@ -23,7 +25,7 @@ class _FirstpageState extends State<Firstpage> {
                 children: [
                   Container(
                     height: 200,
-                    color: Colors.blue[100],
+                    color: mainColor,
                   ),
                   Positioned(
                     bottom: 10,

@@ -1,6 +1,7 @@
 import 'package:app/widgets/genrewidget.dart';
-// import 'package:app/widgets/searchwidget.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/constants.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -16,8 +17,7 @@ class _SearchPageState extends State<SearchPage> {
         body: Column(children: [
       Container(
         decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 225, 243, 252),
-            borderRadius: BorderRadius.circular(40)),
+            color: mainColor, borderRadius: BorderRadius.circular(40)),
         child: TextFormField(
           decoration: const InputDecoration(
               prefixIcon: Icon(
@@ -45,7 +45,7 @@ class _SearchPageState extends State<SearchPage> {
             itemBuilder: (context, index) {
               return genreWidget();
             },
-            itemCount: 14,
+            itemCount: 18,
           ),
         ),
       ),

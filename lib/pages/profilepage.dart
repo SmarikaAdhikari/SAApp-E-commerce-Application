@@ -5,6 +5,8 @@ import 'package:app/widgets/new.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../widgets/constants.dart';
+
 // import '../widgets/bio.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -38,7 +40,7 @@ class _ProfilePageState extends State<ProfilePage>
               padding: const EdgeInsets.only(top: 0, bottom: 50),
               child: Container(
                 height: 120,
-                color: Colors.blue[100],
+                color: mainColor,
               ),
             ),
             const Positioned(
