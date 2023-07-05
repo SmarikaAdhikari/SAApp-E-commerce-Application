@@ -5,14 +5,13 @@ import 'package:get/get.dart';
 
 class Loginpage extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _LoginpageState createState() => _LoginpageState();
   const Loginpage({super.key});
 }
 
 class _LoginpageState extends State<Loginpage> {
   final _formKey = GlobalKey<FormState>();
-  late String _name;
-  late String _password;
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +19,17 @@ class _LoginpageState extends State<Loginpage> {
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromARGB(255, 174, 211, 241),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
-              Image(image: AssetImage('view/BSS.png'), height: 150, width: 200),
-              SizedBox(
+              const Image(
+                  image: AssetImage('view/BSS.png'), height: 150, width: 200),
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -37,7 +37,7 @@ class _LoginpageState extends State<Loginpage> {
                     color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
                       labelText: 'Name'),
@@ -47,12 +47,10 @@ class _LoginpageState extends State<Loginpage> {
                     }
                     return null;
                   },
-                  onSaved: (value) {
-                    _name = value!;
-                  },
+                  onSaved: (value) {},
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -60,7 +58,7 @@ class _LoginpageState extends State<Loginpage> {
                     color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
                       labelText: 'Password'),
@@ -72,15 +70,13 @@ class _LoginpageState extends State<Loginpage> {
 
                     return null;
                   },
-                  onSaved: (value) {
-                    _password = value!;
-                  },
+                  onSaved: (value) {},
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
-                child: Padding(
-                  padding: const EdgeInsets.all(13.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(13.0),
                   child: Text(
                     'Login',
                     style: TextStyle(fontSize: 15),
@@ -91,13 +87,13 @@ class _LoginpageState extends State<Loginpage> {
                     Get.to(() => const MyHomePage());
                     _formKey.currentState?.save();
 
-                    print('Name: $_name');
+                    // print('Name: $_name');
 
-                    print('Password: $_password');
+                    // print('Password: $_password');
                   }
                 },
               ),
-              Spacer(),
+              const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -105,10 +101,10 @@ class _LoginpageState extends State<Loginpage> {
                     "Don't have an account?",
                     style: TextStyle(color: Colors.blue[900], fontSize: 15),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   ElevatedButton(
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(5.0),
                       child: Text(
                         'Signup',
                         style: TextStyle(fontSize: 13),
