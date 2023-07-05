@@ -1,3 +1,4 @@
+import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget genreWidget() {
@@ -10,7 +11,7 @@ Widget genreWidget() {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(9),
-        color: Colors.blue[100],
+        color: mainColor,
       ),
       child: Column(
         children: [

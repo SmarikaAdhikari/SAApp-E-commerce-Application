@@ -41,7 +41,7 @@ class _EditsState extends State<Edits> {
             width: 200,
             child: TextField(
               controller: bioEditingController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Bio",
               ),
             ),
@@ -50,7 +50,7 @@ class _EditsState extends State<Edits> {
             width: 200,
             child: TextField(
               controller: dateEditingController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Date?",
               ),
             ),

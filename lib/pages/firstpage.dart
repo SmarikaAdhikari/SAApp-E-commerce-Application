@@ -2,8 +2,6 @@ import 'package:app/widgets/listswidget.dart';
 import 'package:flutter/material.dart';
 import 'package:app/widgets/searchwidget.dart';
 
-import '../widgets/listswidget.dart';
-
 class Firstpage extends StatefulWidget {
   const Firstpage({super.key});
 

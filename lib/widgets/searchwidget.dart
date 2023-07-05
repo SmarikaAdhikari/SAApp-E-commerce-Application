@@ -19,11 +19,11 @@ Widget searchWidget() {
           "pics/north.jpeg",
           fit: BoxFit.cover,
         )),
-        Column(
+        const Column(
           children: [
-            const Text("Book Name"),
-            const Text("Author Name"),
-            const Text("\$ 1000"),
+            Text("Book Name"),
+            Text("Author Name"),
+            Text("\$ 1000"),
           ],
         ),
       ],

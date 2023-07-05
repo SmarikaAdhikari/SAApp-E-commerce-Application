@@ -125,17 +125,18 @@ class _ProfilePageState extends State<ProfilePage>
           ),
           const SizedBox(width: 40),
           ElevatedButton(
-              onPressed: () {
-                Get.to(() => Edits());
-              },
-              child: const Text("Edits"),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.grey[100],
-                onPrimary: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(32.0),
-                ),
-              )),
+            onPressed: () {
+              Get.to(() => Edits());
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey[100],
+              foregroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(32.0),
+              ),
+            ),
+            child: const Text("Edits"),
+          ),
         ]),
 
         SizedBox(
