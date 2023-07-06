@@ -10,6 +10,8 @@ class Pagethree extends StatefulWidget {
 class _PagethreeState extends State<Pagethree> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

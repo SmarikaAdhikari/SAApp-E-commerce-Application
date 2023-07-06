@@ -1,4 +1,5 @@
 import 'package:app/Views/bookdetails.dart';
+import 'package:app/Views/listgenre.dart';
 // import 'package:app/Views/page1.dart';
 import 'package:app/app_states/nav_states/nav_notifier.dart';
 import 'package:app/pages/favoritepage.dart';
@@ -139,7 +140,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           IconButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Pageone()));
+                  MaterialPageRoute(builder: (context) => const Pagetwo()));
             },
             icon: const Icon(Icons.notification_add),
           )

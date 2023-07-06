@@ -4,7 +4,7 @@ Widget author() {
   return Row(
     children: [
       CircleAvatar(
-        radius: 30.0,
+        radius: 40.0,
         backgroundColor: Colors.transparent,
         backgroundImage: AssetImage("pics/daisy.jpeg"),
       ),
