@@ -1,5 +1,5 @@
 import 'package:app/widgets/genrelist.dart';
-import 'package:app/widgets/genrewidget.dart';
+// import 'package:app/widgets/genrewidget.dart';
 import 'package:flutter/material.dart';
 
 // import '../widgets/favouritewidget.dart';
