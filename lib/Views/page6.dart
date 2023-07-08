@@ -10,6 +10,8 @@ class Pagesix extends StatefulWidget {
 class _PagesixState extends State<Pagesix> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }
