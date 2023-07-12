@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
-import '../main.dart';
+// import '../main.dart';
 import '../widgets/genrelist.dart';
 
 class Popularauthors extends StatefulWidget {

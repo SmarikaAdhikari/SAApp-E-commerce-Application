@@ -1,6 +1,6 @@
-import 'package:app/main.dart';
+// import 'package:app/main.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 import '../widgets/genrelist.dart';
 

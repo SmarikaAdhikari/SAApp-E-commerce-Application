@@ -27,9 +27,6 @@ class _SignupState extends State<Signup> {
           child: Form(
             key: _formKey,
             child: Column(children: <Widget>[
-              const SizedBox(
-                height: 20,
-              ),
               const Image(
                   image: AssetImage('view/BSS.png'), height: 150, width: 200),
               const SizedBox(
@@ -108,6 +105,25 @@ class _SignupState extends State<Signup> {
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                     FormBuilderValidators.minLength(5),
+                  ]),
+                  onSaved: (value) {},
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 225, 243, 252),
+                    borderRadius: BorderRadius.circular(10)),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: InputBorder.none,
+                      labelText: 'Location'),
+                  obscureText: true,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
                   ]),
                   onSaved: (value) {},
                 ),
