@@ -38,10 +38,10 @@ class _PageoneState extends State<Pageone> {
                     height: 150,
                     width: 180,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 70,
                   ),
-                  Column(
+                  const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -75,31 +75,31 @@ class _PageoneState extends State<Pageone> {
             // SizedBox(
             //   height: 20,
             // ),
-            Text(
+            const Text(
               "Reviews",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
-            Container(
+            SizedBox(
               height: 90,
               child: ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     leading: CircleAvatar(
-                      backgroundImage: AssetImage('pics/daisy.jpeg'),
+                      backgroundImage: const AssetImage('pics/daisy.jpeg'),
                       child: Text(items[index]),
                     ),
                     title: Text('Item ${items[index]}'),
-                    subtitle: Text('Item description'),
+                    subtitle: const Text('Item description'),
                   );
                 },
               ),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               "Recommendation",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
@@ -107,28 +107,28 @@ class _PageoneState extends State<Pageone> {
                 scrollDirection: Axis.horizontal,
                 child:
                     Row(children: List.generate(10, (index) => listswidget()))),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Card(
               child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
+                  const Padding(
+                    padding: EdgeInsets.all(5.0),
                     child: Text(
                       "Buy Now",
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
                     onPressed: () {
-                      Get.to(() => Pagethree());
+                      Get.to(() => const Pagethree());
                     },
                     icon: const Icon(Icons.add),
                   ),
-                  Icon(Icons.attach_money),
+                  const Icon(Icons.attach_money),
                 ],
               ),
             ),

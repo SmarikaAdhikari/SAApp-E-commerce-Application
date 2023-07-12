@@ -20,23 +20,23 @@ Widget GenreList() {
           ),
         ],
       ),
-      SizedBox(
+      const SizedBox(
         width: 50,
       ),
       Row(
         children: [
-          Text(
+          const Text(
             "Add to cart",
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
-          Spacer(),
+          const Spacer(),
           IconButton(
             onPressed: () {
-              Get.to(() => Pageone());
+              Get.to(() => const Pageone());
             },
             icon: const Icon(Icons.add),
           ),
-          Icon(Icons.shopping_cart_outlined),
+          const Icon(Icons.shopping_cart_outlined),
         ],
       ),
     ],

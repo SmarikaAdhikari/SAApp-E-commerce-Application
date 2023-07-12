@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget author() {
-  return Row(
+  return const Row(
     children: [
       CircleAvatar(
         radius: 40.0,
