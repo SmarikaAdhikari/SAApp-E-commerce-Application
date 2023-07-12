@@ -7,8 +7,6 @@ import 'package:get/get.dart';
 
 import '../widgets/constants.dart';
 
-// import '../widgets/bio.dart';
-
 class ProfilePage extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
   ProfilePage({super.key});
@@ -19,8 +17,6 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage>
     with SingleTickerProviderStateMixin {
-  // StreamController<String> streamController = StreamController<String>();
-  // TextEditingController textEditingController = TextEditingController();
   late TabController _tabController;
 
   @override

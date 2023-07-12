@@ -1,6 +1,8 @@
 // import 'package:app/main.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
+
+import '../widgets/genrelist.dart';
 
 class Bestsellers extends StatefulWidget {
   const Bestsellers({super.key});
@@ -12,13 +14,30 @@ class Bestsellers extends StatefulWidget {
 class _BestsellersState extends State<Bestsellers> {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ElevatedButton(
-        onPressed: () {
-          Get.back();
-        },
-        child: const Text('Go back!'),
-      ),
-    );
+    return Scaffold(
+        appBar: AppBar(),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemBuilder: (context, position) {
+              return Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: GenreList(),
+                ),
+              );
+            },
+            itemCount: 15,
+          ),
+        ));
+
+    // return Drawer(
+    //   child: ElevatedButton(
+    //     onPressed: () {
+    //       Get.back();
+    //     },
+    //     child: const Text('Go back!'),
+    //   ),
+    // );
   }
 }

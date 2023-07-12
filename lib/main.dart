@@ -1,6 +1,4 @@
-// import 'package:app/Views/bookdetails.dart';
 import 'package:app/Views/listgenre.dart';
-// import 'package:app/Views/page1.dart';
 import 'package:app/app_states/nav_states/nav_notifier.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
@@ -8,7 +6,6 @@ import 'package:app/pages/profilepage.dart';
 import 'package:app/pages/searchpage.dart';
 import 'package:app/screens/bestsellers.dart';
 import 'package:app/screens/newreleases.dart';
-// import 'package:app/screens/notificationbar.dart';
 import 'package:app/screens/popularauthors.dart';
 import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
@@ -57,10 +54,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   Widget build(BuildContext context) {
     final currentIndex = ref.watch(navProvider).index;
     return Scaffold(
-      // singleChildScrollView: true,
-
       drawer: Drawer(
-        //
         key: const Key("E-library"),
         backgroundColor: const Color.fromARGB(255, 190, 229, 247),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -68,9 +62,6 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               height: 80,
               child: InkWell(
                 onTap: () => Get.to(() => const Trendingscreen()),
-
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) => Trendingscreen())),
                 child: Row(
                   children: [
                     IconButton(
@@ -142,7 +133,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const Pagetwo()));
             },
-            icon: const Icon(Icons.notification_add),
+            icon: const Icon(Icons.person_2_outlined),
           )
         ],
       ),

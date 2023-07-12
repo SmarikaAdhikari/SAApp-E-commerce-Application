@@ -86,10 +86,6 @@ class _LoginpageState extends State<Loginpage> {
                   if (_formKey.currentState!.validate()) {
                     Get.to(() => const MyHomePage());
                     _formKey.currentState?.save();
-
-                    // print('Name: $_name');
-
-                    // print('Password: $_password');
                   }
                 },
               ),
