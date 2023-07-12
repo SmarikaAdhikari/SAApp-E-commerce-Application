@@ -85,33 +85,6 @@ class _PagethreeState extends State<Pagethree> {
                 ),
               ),
               const SizedBox(height: 20),
-              const Text("Bank Details",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            hintText: "Account holder name",
-                            hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 15),
-                            border: InputBorder.none),
-                      ),
-                      Divider(color: Colors.grey.shade400, height: 0.5),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            hintText: "Account Number",
-                            hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 15),
-                            border: InputBorder.none),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
               const Text("Total Cost",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               Card(
