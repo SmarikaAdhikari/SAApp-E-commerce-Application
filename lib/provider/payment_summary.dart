@@ -5,10 +5,10 @@ class ExpansionStateNotifier extends StateNotifier<String> {
   ExpansionStateNotifier() : super("choose");
 
   //set string
-  void setPayment(String payment) {
-    print("gayo");
-    state = state;
-  }
+  // void setPayment(String payment) {
+  //   print("gayo");
+  //   state = state;
+  // }
 }
 
 // do uing change notifier
