@@ -1,3 +1,4 @@
+import 'package:app/Views/bookdetails.dart';
 import 'package:app/Views/listgenre.dart';
 import 'package:app/app_states/nav_states/nav_notifier.dart';
 import 'package:app/pages/favoritepage.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
+import 'Views/page8.dart';
 import 'pages/loginpage.dart';
 
 void main() {
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Loginpage(),
+      home: const Pagenine(),
     );
   }
 }

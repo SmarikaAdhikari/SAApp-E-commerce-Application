@@ -93,6 +93,7 @@ class Pagethree extends ConsumerWidget {
                           ref
                               .read(paymentProvider.notifier)
                               .setPayment('Cash on delivery');
+                          expansionTileController.collapse();
                         },
                         title: const Text('Cash on delivery'),
                       ),
