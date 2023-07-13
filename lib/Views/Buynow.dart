@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, must_be_immutable
 
 import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
@@ -18,49 +18,53 @@ class Pagethree extends ConsumerWidget {
     });
     // ignore: unused_local_variable
     final paymentData = ref.watch(expansionStateProvider);
-
-    // final expansionStateProvider =
-    //     ref.watch(StateNotifierProvider((ref) => ExpansionStateNotifier()));
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: const Center(child: Text("Payment Summary  ")),
+        ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(bottom: 8.0, right: 8.0, left: 8.0),
           child: SingleChildScrollView(
             child: Column(children: [
-              ListView.builder(
-                physics: const ScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return Card(
-                    color: mainColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Row(children: [
-                        Image.asset(
-                          "pics/north.jpeg",
-                          height: 100,
-                          width: 100,
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        const Column(
-                          children: [
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text("Name:", style: TextStyle(fontSize: 15)),
-                            Text("Price:", style: TextStyle(fontSize: 15)),
-                            Text("Quality:", style: TextStyle(fontSize: 15)),
-                          ],
-                        ),
-                      ]),
-                    ),
-                  );
-                },
+              SizedBox(
+                height: 350,
+                child: ListView.builder(
+                  physics: const ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      color: mainColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Row(children: [
+                          Image.asset(
+                            "pics/north.jpeg",
+                            height: 100,
+                            width: 100,
+                          ),
+                          const SizedBox(
+                            width: 30,
+                          ),
+                          const Column(
+                            children: [
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text("Name:", style: TextStyle(fontSize: 15)),
+                              Text("Price:", style: TextStyle(fontSize: 15)),
+                              Text("Quality:", style: TextStyle(fontSize: 15)),
+                            ],
+                          ),
+                        ]),
+                      ),
+                    );
+                  },
+                ),
               ),
-              // const Spacer(),
+              const SizedBox(
+                height: 10,
+              ),
               const Text('Order Summary',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               Container(
@@ -87,12 +91,13 @@ class Pagethree extends ConsumerWidget {
                         },
                         title: const Text('E-payment'),
                       ),
+                      Divider(color: Colors.grey.shade400, height: 1),
                       ListTile(
                         onTap: () {
-                          // print(paymentData);
                           ref
                               .read(paymentProvider.notifier)
                               .setPayment('Cash on delivery');
+                          expansionTileController.collapse();
                         },
                         title: const Text('Cash on delivery'),
                       ),
@@ -100,42 +105,9 @@ class Pagethree extends ConsumerWidget {
                   ),
                 ),
               ),
-
-              //  ExpansionTile(
-              //   title: const Text(
-              //     'Select Payment Method',
-              //     style: TextStyle(color: Colors.grey),
-              //   ),
-              //   children: <Widget>[
-              //     Container(
-              //       alignment: Alignment.center,
-              //       padding: const EdgeInsets.all(5),
-              //       child: TextButton(
-              //           onPressed: () {},
-              //           child: const Text('E-payment',
-              //               style: TextStyle(color: Colors.black))),
-              //     ),
-              //     Divider(color: Colors.grey.shade400, height: 0.5),
-              //     Container(
-              //       alignment: Alignment.center,
-              //       padding: const EdgeInsets.all(5),
-              //       child: TextButton(
-              //           onPressed: () {},
-              //           child: const Text('Cash on delivery',
-              //               style: TextStyle(color: Colors.black))),
-              //     ),
-              //     Divider(color: Colors.grey.shade400, height: 0.5),
-              //     Container(
-              //       alignment: Alignment.center,
-              //       padding: const EdgeInsets.all(5),
-              //       child: TextButton(
-              //           onPressed: () {},
-              //           child: const Text('Pay on pickup',
-              //               style: TextStyle(color: Colors.black))),
-              //     ),
-              //   ],
-              // ),
-
+              const SizedBox(
+                height: 10,
+              ),
               const Text("Total Cost",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               Card(
