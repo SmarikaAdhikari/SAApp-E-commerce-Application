@@ -1,4 +1,3 @@
-// import 'package:app/Views/Buynow.dart';
 import 'package:app/Views/listgenre.dart';
 import 'package:app/app_states/nav_states/nav_notifier.dart';
 import 'package:app/pages/favoritepage.dart';
