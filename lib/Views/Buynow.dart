@@ -62,13 +62,13 @@ class Pagethree extends ConsumerWidget {
                 data: Theme.of(context)
                     .copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
-                  title: Text(paymentData,
+                  title: Text(ref.watch(paymentProvider).payment,
                       style: const TextStyle(color: Colors.grey)),
                   children: [
                     ListTile(
                       onTap: () {
                         ref
-                            .read(expansionStateProvider.notifier)
+                            .read(paymentProvider.notifier)
                             .setPayment('E-payment');
                       },
                       title: const Text('E-payment'),
@@ -77,7 +77,7 @@ class Pagethree extends ConsumerWidget {
                       onTap: () {
                         // print(paymentData);
                         ref
-                            .read(expansionStateProvider.notifier)
+                            .read(paymentProvider.notifier)
                             .setPayment('Cash on delivery');
                       },
                       title: const Text('Cash on delivery'),
