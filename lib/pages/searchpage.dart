@@ -1,6 +1,5 @@
 import 'package:app/widgets/genrewidget.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/constants.dart';
 
 class SearchPage extends StatefulWidget {
