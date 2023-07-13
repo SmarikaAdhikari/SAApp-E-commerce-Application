@@ -72,9 +72,6 @@ class _PageoneState extends State<Pageone> {
               child: author(),
             ),
 
-            // SizedBox(
-            //   height: 20,
-            // ),
             const Text(
               "Reviews",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
