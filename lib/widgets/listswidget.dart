@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 Widget listswidget() {
   return Padding(
-    padding: const EdgeInsets.only(left: 0, right: 10, top: 10, bottom: 10),
+    padding: const EdgeInsets.only(left: 0, top: 10, bottom: 10),
     child: TextButton(
       onPressed: () {
         Get.to(() => const Pageone());

@@ -19,7 +19,7 @@ class _FirstpageState extends State<Firstpage> {
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(5.0),
             child: Column(children: [
               Stack(
                 children: [
@@ -51,7 +51,7 @@ class _FirstpageState extends State<Firstpage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                       children: List.generate(10, (index) => listswidget()))),
-              const SizedBox(height: 10),
+              // const SizedBox(height: 10),
               const Text("New Releases",
                   style: TextStyle(
                       color: Colors.black,
@@ -64,8 +64,8 @@ class _FirstpageState extends State<Firstpage> {
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 350,
                   childAspectRatio: 2 / 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 5,
                 ),
                 itemBuilder: (context, index) {
                   return searchWidget();
