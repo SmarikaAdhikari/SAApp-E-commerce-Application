@@ -136,7 +136,6 @@ class _ProfilePageState extends State<ProfilePage>
             child: const Text("Edits"),
           ),
         ]),
-
         SizedBox(
           height: 60,
           child: TabBar(
@@ -154,10 +153,9 @@ class _ProfilePageState extends State<ProfilePage>
             ],
             controller: _tabController,
             indicatorSize: TabBarIndicatorSize.tab,
+            indicatorColor: Colors.black,
           ),
         ),
-        //   ],
-        // ),
       ]),
     ));
   }
