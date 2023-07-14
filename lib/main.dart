@@ -2,6 +2,7 @@ import 'package:app/Views/listgenre.dart';
 import 'package:app/app_states/nav_states/nav_notifier.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
+import 'package:app/pages/loginpage.dart';
 import 'package:app/pages/profilepage.dart';
 import 'package:app/pages/searchpage.dart';
 import 'package:app/screens/bestsellers.dart';
@@ -12,8 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-import 'Views/page8.dart';
-import 'pages/loginpage.dart';
+// import 'Views/page8.dart';
+// import 'pages/loginpage.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Pagenine(),
+      home: const Loginpage(),
     );
   }
 }

@@ -3,8 +3,9 @@ import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// import '../pages/searchpage.dart';
 
-Widget genreWidget() {
+Widget genreWidget(String name) {
   return TextButton(
     onPressed: () {
       Get.to(() => const Pagetwo());
@@ -27,7 +28,7 @@ Widget genreWidget() {
               "pics/north.jpeg",
               fit: BoxFit.cover,
             )),
-            const Text("GENRE"),
+            Text(name),
           ],
         )),
   );

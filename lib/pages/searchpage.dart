@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+
 import 'package:app/widgets/genrewidget.dart';
 import 'package:flutter/material.dart';
 import '../widgets/constants.dart';
@@ -42,12 +44,46 @@ class _SearchPageState extends State<SearchPage> {
               mainAxisSpacing: 10,
             ),
             itemBuilder: (context, index) {
-              return genreWidget();
+              return genreWidget(
+                Genre[index],
+              );
             },
-            itemCount: 18,
+            itemCount: Genre.length,
           ),
         ),
       ),
     ]));
   }
 }
+
+List<String> Genre = [
+  'Literary Fiction',
+  'Contemporary Romance',
+  'Crime Thriller',
+  'Science Fiction',
+  'Biography / Memoir',
+  'History / Geography',
+  'Young Adult Fiction',
+  'Childrens Books',
+  'Fantasy',
+  'Horror',
+  'Science / Technology',
+  'Self Help / Psychology',
+  'Humour',
+  'Food / Cookery',
+  'Art / Photography',
+  'Sports / Leisure',
+  'Travel',
+  'Religion / Spirituality',
+  'Politics / Current Affairs',
+  'Popular Science',
+  'Business / Economics',
+  'Health / Wellbeing',
+  'Parenting / Family',
+  'Education ',
+  'Poetry / Plays',
+  'Comics / Graphic Novels',
+  'Music / Film',
+  'Romance',
+  'Historical Fiction',
+];
