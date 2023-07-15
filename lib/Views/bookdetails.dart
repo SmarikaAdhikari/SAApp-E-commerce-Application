@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 import '../widgets/author.dart';
 import '../widgets/constants.dart';
-import '../widgets/listswidget.dart';
+// import '../widgets/listswidget.dart';
 
 class Pageone extends StatefulWidget {
   const Pageone({super.key});
@@ -103,7 +103,7 @@ class _PageoneState extends State<Pageone> {
             SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child:
-                    Row(children: List.generate(10, (index) => listswidget()))),
+                    Row(children: List.generate(10, (index) => const Card()))),
             const SizedBox(
               height: 20,
             ),

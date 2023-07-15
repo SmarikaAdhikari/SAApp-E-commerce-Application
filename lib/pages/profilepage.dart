@@ -156,6 +156,29 @@ class _ProfilePageState extends State<ProfilePage>
             indicatorColor: Colors.black,
           ),
         ),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text('Item $index'),
+                  );
+                },
+              ),
+              ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text('Item ${index + 10}'),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
       ]),
     ));
   }

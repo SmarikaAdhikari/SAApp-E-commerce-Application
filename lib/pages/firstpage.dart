@@ -1,19 +1,20 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'package:app/api/api_provider.dart';
 import 'package:app/widgets/listswidget.dart';
 import 'package:flutter/material.dart';
 import 'package:app/widgets/searchwidget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../widgets/constants.dart';
 
-class Firstpage extends StatefulWidget {
+class Firstpage extends ConsumerWidget {
   const Firstpage({super.key});
 
   @override
-  State<Firstpage> createState() => _FirstpageState();
-}
-
-class _FirstpageState extends State<Firstpage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // ignore: unused_local_variable
+    final FutureProvider = ref.watch(suggestionFutureProvider);
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -47,31 +48,51 @@ class _FirstpageState extends State<Firstpage> {
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
-              SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                      children: List.generate(10, (index) => listswidget()))),
-              // const SizedBox(height: 10),
+              FutureProvider.when(
+                  data: (data) => SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                          children: List.generate(data.length, (index) {
+                        return listswidget(
+                          data[index],
+                        );
+                      }))),
+                  error: (Object error, StackTrace stackTrace) {
+                    return Text(error.toString());
+                  },
+                  loading: () {
+                    return const CircularProgressIndicator();
+                  }),
               const Text("New Releases",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
               const SizedBox(height: 10),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const ScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 350,
-                  childAspectRatio: 2 / 2,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                ),
-                itemBuilder: (context, index) {
-                  return searchWidget();
-                },
-                itemCount: 8,
-              ),
+              FutureProvider.when(
+                  data: (data) => GridView.builder(
+                        shrinkWrap: true,
+                        physics: const ScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 350,
+                          childAspectRatio: 2 / 2,
+                          crossAxisSpacing: 5,
+                          mainAxisSpacing: 5,
+                        ),
+                        itemBuilder: (context, index) {
+                          return searchWidget(
+                            data[index],
+                          );
+                        },
+                        itemCount: data.length,
+                      ),
+                  error: (Object error, StackTrace stackTrace) {
+                    return Text(error.toString());
+                  },
+                  loading: () {
+                    return const CircularProgressIndicator();
+                  }),
             ]),
           ),
         ));

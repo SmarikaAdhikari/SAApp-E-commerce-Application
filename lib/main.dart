@@ -1,8 +1,11 @@
 import 'package:app/Views/listgenre.dart';
+// import 'package:app/api/api_provider.dart';
+// import 'package:app/Views/page4.dart';
 import 'package:app/app_states/nav_states/nav_notifier.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
-import 'package:app/pages/loginpage.dart';
+// import 'package:app/pages/loginpage.dart';
+// import 'package:app/pages/loginpage.dart';
 import 'package:app/pages/profilepage.dart';
 import 'package:app/pages/searchpage.dart';
 import 'package:app/screens/bestsellers.dart';
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Loginpage(),
+      home: const Firstpage(),
     );
   }
 }

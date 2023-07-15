@@ -3,7 +3,11 @@ import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget listswidget() {
+import '../api/api_model.dart';
+
+Widget listswidget(
+  Books data,
+) {
   return Padding(
     padding: const EdgeInsets.only(left: 0, top: 10, bottom: 10),
     child: TextButton(
@@ -19,9 +23,11 @@ Widget listswidget() {
         child: Column(
           children: [
             Image.asset("pics/north.jpeg", height: 60, width: 110),
-            const Text("Book name"),
-            const Text("Author name"),
-            const Text("\$ 1000"),
+            Text(
+              data.title,
+            ),
+            Text(data.author),
+            Text(data.price.toString()),
           ],
         ),
       ),

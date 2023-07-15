@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Pagefour extends StatefulWidget {
-  const Pagefour({super.key});
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
 
   @override
-  State<Pagefour> createState() => _PagefourState();
+  State<MyWidget> createState() => _MyWidgetState();
 }
 
-class _PagefourState extends State<Pagefour> {
+class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-    );
+    return const Placeholder();
   }
 }

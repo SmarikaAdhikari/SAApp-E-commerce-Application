@@ -1,9 +1,12 @@
 import 'package:app/Views/bookdetails.dart';
+import 'package:app/api/api_model.dart';
 import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget searchWidget() {
+Widget searchWidget(
+  Books data,
+) {
   return TextButton(
     onPressed: () {
       Get.to(() => const Pageone());
@@ -26,11 +29,11 @@ Widget searchWidget() {
             "pics/north.jpeg",
             fit: BoxFit.cover,
           )),
-          const Column(
+          Column(
             children: [
-              Text("Book Name"),
-              Text("Author Name"),
-              Text("\$ 1000"),
+              Text(data.title),
+              Text(data.author),
+              Text(data.price.toString()),
             ],
           ),
         ],
