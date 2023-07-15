@@ -19,9 +19,7 @@ class _PagenineState extends State<Pagenine> {
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
-                onTap: () {
-                  // print(Category.values[index]);
-                },
+                onTap: () {},
                 title: Text(Category.values[index].toString().split(".")[1]),
               ),
             );
