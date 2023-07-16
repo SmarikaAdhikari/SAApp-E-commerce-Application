@@ -1,11 +1,13 @@
 import 'package:app/screens/edits.dart';
 import 'package:app/widgets/bio.dart';
 import 'package:app/widgets/date.dart';
+import 'package:app/widgets/favouritewidget.dart';
 import 'package:app/widgets/new.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../widgets/constants.dart';
+import '../widgets/orderwidget.dart';
 
 class ProfilePage extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
@@ -163,17 +165,13 @@ class _ProfilePageState extends State<ProfilePage>
               ListView.builder(
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Item $index'),
-                  );
+                  return Card(child: favouriteWidget());
                 },
               ),
               ListView.builder(
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Item ${index + 10}'),
-                  );
+                  return Card(child: orderWidget());
                 },
               ),
             ],

@@ -1,25 +1,32 @@
 // import 'package:app/Views/listgenre.dart';
 // import 'package:app/Views/listgenre.dart';
 import 'package:app/Views/Buynow.dart';
+import 'package:app/api/api_provider.dart';
+import 'package:app/widgets/listswidget.dart';
 // import 'package:app/Views/page3.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 import '../widgets/author.dart';
 import '../widgets/constants.dart';
 // import '../widgets/listswidget.dart';
 
-class Pageone extends StatefulWidget {
+class Pageone extends ConsumerWidget {
   const Pageone({super.key});
 
   @override
-  State<Pageone> createState() => _PageoneState();
-}
+//   State<Pageone> createState() => _PageoneState();
+// }
 
-class _PageoneState extends State<Pageone> {
-  final List<String> items = List<String>.generate(5, (i) => '$i');
-  @override
-  Widget build(BuildContext context) {
+// class _PageoneState extends State<Pageone> {
+
+//   final List<String> items = List<String>.generate(5, (i) => '$i');
+//   @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final FutureProvider = ref.watch(suggestionFutureProvider);
+    final List<String> items = List<String>.generate(5, (i) => '$i');
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -100,10 +107,22 @@ class _PageoneState extends State<Pageone> {
               "Recommendation",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
-            SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child:
-                    Row(children: List.generate(10, (index) => const Card()))),
+            FutureProvider.when(
+                data: (data) => SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                        children: List.generate(data.length, (index) {
+                      return listswidget(
+                        data[index],
+                      );
+                    }))),
+                error: (Object error, StackTrace stackTrace) {
+                  return Text(error.toString());
+                },
+                loading: () {
+                  return const CircularProgressIndicator();
+                }),
+
             const SizedBox(
               height: 20,
             ),
