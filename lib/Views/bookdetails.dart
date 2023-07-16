@@ -1,5 +1,7 @@
 // import 'package:app/Views/listgenre.dart';
 // import 'package:app/Views/listgenre.dart';
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:app/Views/Buynow.dart';
 import 'package:app/api/api_provider.dart';
 import 'package:app/widgets/listswidget.dart';
