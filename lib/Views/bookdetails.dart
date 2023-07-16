@@ -1,32 +1,19 @@
-// import 'package:app/Views/listgenre.dart';
-// import 'package:app/Views/listgenre.dart';
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:app/Views/Buynow.dart';
 import 'package:app/api/api_provider.dart';
 import 'package:app/widgets/listswidget.dart';
-// import 'package:app/Views/page3.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 import '../widgets/author.dart';
 import '../widgets/constants.dart';
-// import '../widgets/listswidget.dart';
 
 class Pageone extends ConsumerWidget {
   const Pageone({super.key});
 
   @override
-//   State<Pageone> createState() => _PageoneState();
-// }
-
-// class _PageoneState extends State<Pageone> {
-
-//   final List<String> items = List<String>.generate(5, (i) => '$i');
-//   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ignore: non_constant_identifier_names
     final FutureProvider = ref.watch(suggestionFutureProvider);
     final List<String> items = List<String>.generate(5, (i) => '$i');
     return Scaffold(
@@ -68,19 +55,10 @@ class Pageone extends ConsumerWidget {
                 ]),
               ),
             ),
-
-            // SizedBox(
-            //   height: 20,
-            // ),
-            // Text(
-            //   "Author details",
-            //   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            // ),
             Card(
               color: mainColor,
               child: author(),
             ),
-
             const Text(
               "Reviews",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -101,7 +79,6 @@ class Pageone extends ConsumerWidget {
                 },
               ),
             ),
-
             const SizedBox(
               height: 20,
             ),
@@ -124,7 +101,6 @@ class Pageone extends ConsumerWidget {
                 loading: () {
                   return const CircularProgressIndicator();
                 }),
-
             const SizedBox(
               height: 20,
             ),
