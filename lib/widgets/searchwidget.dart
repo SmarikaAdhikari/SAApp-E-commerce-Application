@@ -9,7 +9,9 @@ Widget searchWidget(
 ) {
   return TextButton(
     onPressed: () {
-      Get.to(() => const Pageone());
+      Get.to(() => Pageone(
+            data: data,
+          ));
     },
     child: Container(
       padding: const EdgeInsets.only(

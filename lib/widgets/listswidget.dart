@@ -12,7 +12,9 @@ Widget listswidget(
     padding: const EdgeInsets.only(left: 0, top: 10, bottom: 10),
     child: TextButton(
       onPressed: () {
-        Get.to(() => const Pageone());
+        Get.to(() => Pageone(
+              data: data,
+            ));
       },
       child: Container(
         padding: const EdgeInsets.only(top: 10, bottom: 10),

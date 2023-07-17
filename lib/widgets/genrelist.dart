@@ -1,9 +1,13 @@
-import 'package:app/Views/bookdetails.dart';
+import 'package:app/Views/Buynow.dart';
+// import 'package:app/Views/bookdetails.dart';
+// import 'package:app/api/api_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 // ignore: non_constant_identifier_names
-Widget GenreList() {
+Widget GenreList(
+    //  Books data,
+    ) {
   return Padding(
     padding: const EdgeInsets.only(
       left: 8.0,
@@ -18,9 +22,9 @@ Widget GenreList() {
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("The name:"),
-                Text("The author name:"),
-                Text("The price:"),
+                Text("name"),
+                Text("author"),
+                Text("price"),
               ],
             ),
           ],
@@ -37,7 +41,7 @@ Widget GenreList() {
             const Spacer(),
             IconButton(
               onPressed: () {
-                Get.to(() => const Pageone());
+                Get.to(() => Pagethree());
               },
               icon: const Icon(Icons.add),
             ),

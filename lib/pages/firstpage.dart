@@ -20,7 +20,7 @@ class Firstpage extends ConsumerWidget {
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.only(right: 5, left: 5),
             child: Column(children: [
               Stack(
                 children: [
@@ -31,11 +31,48 @@ class Firstpage extends ConsumerWidget {
                   Positioned(
                     bottom: 10,
                     right: 10,
-                    child: Image.asset(
-                      'view/kitabalaya.png',
-                      fit: BoxFit.cover,
-                      height: 150,
-                      width: 180,
+                    child: Row(
+                      children: [
+                        const Column(
+                          children: [
+                            // SizedBox(height: 20, width: 30),
+                            Column(
+                              children: [
+                                Text("Embrace your inner bookworm...",
+                                    style: TextStyle(
+                                        // color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.italic)),
+                                Text("with",
+                                    style: TextStyle(
+                                        // color: Colors.black,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.italic)),
+                                Text("THE BOOK STACK",
+                                    style: TextStyle(
+                                        // color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.italic)),
+                                // sizedBox(height: 20, width: 30),
+                                Image(
+                                    image: AssetImage('view/BSS.png'),
+                                    height: 50,
+                                    width: 80),
+                              ],
+                            ),
+                          ],
+                        ),
+                        // const SizedBox(height: 20, width: 30),
+                        Image.asset(
+                          'view/kitabalaya.png',
+                          fit: BoxFit.cover,
+                          height: 150,
+                          width: 180,
+                        ),
+                      ],
                     ),
                   ),
                 ],

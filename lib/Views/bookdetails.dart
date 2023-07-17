@@ -1,4 +1,7 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:app/Views/Buynow.dart';
+import 'package:app/api/api_model.dart';
 import 'package:app/api/api_provider.dart';
 import 'package:app/widgets/listswidget.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +11,16 @@ import 'package:get/get.dart';
 import '../widgets/author.dart';
 import '../widgets/constants.dart';
 
-class Pageone extends ConsumerWidget {
-  const Pageone({super.key});
-
+class Pageone extends ConsumerStatefulWidget {
+  Pageone({super.key, required this.data});
+  Books data;
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<Pageone> createState() => _PageoneState();
+}
+
+class _PageoneState extends ConsumerState<Pageone> {
+  @override
+  Widget build(BuildContext context) {
     // ignore: non_constant_identifier_names
     final FutureProvider = ref.watch(suggestionFutureProvider);
     final List<String> items = List<String>.generate(5, (i) => '$i');
@@ -37,19 +45,21 @@ class Pageone extends ConsumerWidget {
                   const SizedBox(
                     width: 70,
                   ),
-                  const Column(
+                  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Book Name",
-                          style: TextStyle(
+                          widget.data.title,
+                          style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        Text("Genre", style: TextStyle(fontSize: 15)),
-                        Text("\$ 1000", style: TextStyle(fontSize: 15)),
+                        Text(widget.data.author,
+                            style: const TextStyle(fontSize: 15)),
+                        Text(widget.data.price,
+                            style: const TextStyle(fontSize: 15)),
                         Text(
-                          "Description",
-                          style: TextStyle(fontSize: 15),
+                          widget.data.description,
+                          style: const TextStyle(fontSize: 15),
                         ),
                       ]),
                 ]),
