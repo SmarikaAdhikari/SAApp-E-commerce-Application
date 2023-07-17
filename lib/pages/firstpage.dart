@@ -24,13 +24,19 @@ class Firstpage extends ConsumerWidget {
             child: Column(children: [
               Stack(
                 children: [
-                  Container(
-                    height: 200,
-                    color: mainColor,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0, left: 8),
+                    child: Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(9),
+                        color: mainColor,
+                      ),
+                    ),
                   ),
                   Positioned(
-                    bottom: 10,
-                    right: 10,
+                    bottom: 5,
+                    right: 15,
                     child: Row(
                       children: [
                         const Column(
@@ -58,8 +64,8 @@ class Firstpage extends ConsumerWidget {
                         Image.asset(
                           'view/kitabalaya.png',
                           fit: BoxFit.cover,
-                          height: 150,
-                          width: 180,
+                          height: 140,
+                          width: 170,
                         ),
                       ],
                     ),
