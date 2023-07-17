@@ -4,6 +4,7 @@ class Books {
   final String price;
   final String title;
   final String author;
+  final dynamic image;
 
   Books({
     required this.description,
@@ -11,6 +12,7 @@ class Books {
     required this.price,
     required this.title,
     required this.author,
+    required this.image,
   });
 
   factory Books.fromJson(Map<String, dynamic> json) {
@@ -20,6 +22,7 @@ class Books {
       price: json['price'],
       title: json['title'],
       author: json['author'],
+      image: json['image'],
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:app/Views/bookdetails.dart';
 import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +26,15 @@ Widget listswidget(
         ),
         child: Column(
           children: [
-            Image.asset("pics/north.jpeg", height: 60, width: 110),
+            data.image == null
+                ? Image.asset(
+                    "pics/daisy.jpeg",
+                    height: 60,
+                    width: 110,
+                  )
+                : Image.memory(base64Decode(data.image.toString()),
+                    height: 60, width: 110),
+            // Image.asset("pics/north.jpeg", height: 60, width: 110),
             Text(
               data.title,
             ),
