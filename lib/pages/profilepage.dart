@@ -159,22 +159,25 @@ class _ProfilePageState extends State<ProfilePage>
           ),
         ),
         Expanded(
-          child: TabBarView(
-            controller: _tabController,
-            children: [
-              ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Card(child: favouriteWidget());
-                },
-              ),
-              ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Card(child: orderWidget());
-                },
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Card(child: favouriteWidget());
+                  },
+                ),
+                ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Card(child: orderWidget());
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ]),
