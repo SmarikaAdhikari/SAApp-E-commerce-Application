@@ -41,11 +41,6 @@ Widget searchWidget(
                   child: Image.memory(base64Decode(data.image.toString()),
                       height: 60, width: 110),
                 ),
-          // Expanded(
-          //     child: Image.asset(
-          //   "pics/north.jpeg",
-          //   fit: BoxFit.cover,
-          // )),
           Column(
             children: [
               Text(data.title),
