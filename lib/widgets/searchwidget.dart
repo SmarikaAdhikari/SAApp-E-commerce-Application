@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:app/Views/bookdetails.dart';
 import 'package:app/api/api_model.dart';
 import 'package:app/widgets/constants.dart';
@@ -26,15 +28,28 @@ Widget searchWidget(
       ),
       child: Column(
         children: [
-          Expanded(
-              child: Image.asset(
-            "pics/north.jpeg",
-            fit: BoxFit.cover,
-          )),
+          
+            data.image == null
+                ? Expanded(
+                  child: Image.asset(
+                      "pics/daisy.jpeg",
+                      height: 60,
+                      width: 110,
+                    ),
+                )
+                : Expanded(
+                  child: Image.memory(base64Decode(data.image.toString()),
+                      height: 60, width: 110),
+                ),
+          // Expanded(
+          //     child: Image.asset(
+          //   "pics/north.jpeg",
+          //   fit: BoxFit.cover,
+          // )),
           Column(
             children: [
               Text(data.title),
-              Text(data.author),
+              // Text(data.author),
               Text(data.price.toString()),
             ],
           ),
