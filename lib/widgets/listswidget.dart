@@ -38,7 +38,7 @@ Widget listswidget(
             Text(
               data.title,
             ),
-            Text(data.author),
+            // Text(data.author),
             Text(data.price.toString()),
           ],
         ),

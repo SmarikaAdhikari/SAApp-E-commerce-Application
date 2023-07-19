@@ -3,7 +3,6 @@ class Books {
   final String id;
   final String price;
   final String title;
-  final String author;
   final dynamic image;
 
   Books({
@@ -11,7 +10,6 @@ class Books {
     required this.id,
     required this.price,
     required this.title,
-    required this.author,
     required this.image,
   });
 
@@ -21,7 +19,7 @@ class Books {
       id: json['id'],
       price: json['price'],
       title: json['title'],
-      author: json['author'],
+     
       image: json['image'],
     );
   }

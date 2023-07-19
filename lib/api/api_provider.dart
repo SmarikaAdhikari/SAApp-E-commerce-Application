@@ -45,10 +45,10 @@ class FutureProviderPage extends ConsumerWidget {
                       data[index].title,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
-                    Text(
-                      data[index].author,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
+                    // Text(
+                    //   data[index].author,
+                    //   style: Theme.of(context).textTheme.headlineMedium,
+                    // ),
                   ],
                 ),
               ),

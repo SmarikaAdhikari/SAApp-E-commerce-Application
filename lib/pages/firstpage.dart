@@ -45,12 +45,12 @@ class Firstpage extends ConsumerWidget {
                               children: [
                                 Text("Embrace your inner bookworm...",
                                     style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FontStyle.italic)),
                                 Text("with",
                                     style: TextStyle(
-                                      fontSize: 11,
+                                      fontSize: 10,
                                       fontWeight: FontWeight.bold,
                                     )),
                                 Image(

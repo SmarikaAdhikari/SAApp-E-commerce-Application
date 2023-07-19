@@ -53,8 +53,8 @@ class _PageoneState extends ConsumerState<Pageone> {
                           style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        Text(widget.data.author,
-                            style: const TextStyle(fontSize: 15)),
+                        // Text(widget.data.author,
+                        //     style: const TextStyle(fontSize: 15)),
                         Text(widget.data.price,
                             style: const TextStyle(fontSize: 15)),
                         Text(
