@@ -45,7 +45,7 @@ class _SearchPageState extends State<SearchPage> {
             ),
             itemBuilder: (context, index) {
               return genreWidget(
-                Genre.toString( ),
+                Genre[index].toString( ),
               );
           },
             itemCount: Genre.length,
