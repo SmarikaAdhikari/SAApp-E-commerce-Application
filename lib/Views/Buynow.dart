@@ -1,6 +1,6 @@
 // ignore_for_file: file_names, must_be_immutable
 
-import 'package:app/widgets/constants.dart';
+// import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -34,7 +34,7 @@ class Pagethree extends ConsumerWidget {
                   itemCount: 4,
                   itemBuilder: (context, index) {
                     return Card(
-                      color: mainColor,
+                      // color: mainColor,
                       child: Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: Row(children: [
@@ -151,7 +151,7 @@ class Pagethree extends ConsumerWidget {
               ),
               ElevatedButton(
                 // ignore: deprecated_member_use
-                style: ElevatedButton.styleFrom(primary: mainColor),
+                style: ElevatedButton.styleFrom(primary: Colors.grey.shade300),
                 onPressed: () {},
                 child: const Text("Place Order",
                     style: TextStyle(color: Colors.black)),

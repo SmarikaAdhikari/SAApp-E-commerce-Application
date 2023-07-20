@@ -100,14 +100,16 @@ class _PageoneState extends ConsumerState<Pageone> {
               child: ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: Text(items[index]),
-                    // CircleAvatar(
-                    //   backgroundImage: const AssetImage('pics/daisy.jpeg'),
-                    //   child: Text(items[index]),
-                    // ),
-                    title: Text('Item ${items[index]}'),
-                    subtitle: const Text('Item description'),
+                  return Card(
+                    child: ListTile(
+                      leading: Text(items[index]),
+                      // CircleAvatar(
+                      //   backgroundImage: const AssetImage('pics/daisy.jpeg'),
+                      //   child: Text(items[index]),
+                      // ),
+                      title: Text('Item ${items[index]}'),
+                      subtitle: const Text('Item description'),
+                    ),
                   );
                 },
               ),

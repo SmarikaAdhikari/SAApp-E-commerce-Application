@@ -55,7 +55,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     return Scaffold(
       drawer: Drawer(
         key: const Key("E-library"),
-        backgroundColor: const Color.fromARGB(255, 190, 229, 247),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           SizedBox(
               height: 80,
