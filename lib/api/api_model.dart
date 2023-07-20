@@ -6,6 +6,12 @@ class Books {
   final dynamic image;
   final Author author;
   final Publisher publisher;
+  final String? language;
+  final String? length;
+  final String? releasedate;
+  final String? genre;
+  
+
 
 
 
@@ -16,8 +22,11 @@ class Books {
     required this.title,
     required this.image,
     required this.author,
-    // required this.author,
+    required this.genre,
     required this.publisher,
+    required this.language,
+    required this.length,
+    required this.releasedate,
   });
 
   factory Books.fromJson(Map<String, dynamic> json) {
@@ -29,8 +38,11 @@ class Books {
       // author: json['author'],
       author: Author.fromJson(json["Author"]),
       publisher: Publisher.fromJson(json["publisher"]),
-     
+      genre: json['genre'],
       image: json['image'],
+      language: json['language'],
+      length: json['length'],
+      releasedate: json['releasedate'],
     );
   }
 }

@@ -83,9 +83,12 @@ class _PageoneState extends ConsumerState<Pageone> {
       
             // ignore: sized_box_for_whitespace
             Container(
-              height: 60,
+              height: 88,
               // color: mainColor,
-              child: author(),
+              child: author(
+                widget.data
+              ),
+            
             ),
             const Divider(
         color: Colors.grey,

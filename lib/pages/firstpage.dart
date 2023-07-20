@@ -106,9 +106,9 @@ class Firstpage extends ConsumerWidget {
                         shrinkWrap: true,
                         physics: const ScrollPhysics(),
                         gridDelegate:
-                            const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 350,
-                          childAspectRatio: 2 / 2,
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          childAspectRatio:1.5 / 2,
                           crossAxisSpacing: 5,
                           mainAxisSpacing: 5,
                         ),

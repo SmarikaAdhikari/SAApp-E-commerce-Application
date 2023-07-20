@@ -25,20 +25,16 @@ Widget searchWidget(
         children: [
           
             data.image == null
-                ? Expanded(
-                  child: Image.asset(
-                      "pics/daisy.jpeg",
-                      height: 60,
-                      width: 110,
-                    ),
-                )
-                : Expanded(
-                  child: Image.memory(base64Decode(data.image.toString()),
-                      height: 60, width: 110),
-                ),
+                ? Image.asset(
+                    "pics/daisy.jpeg",
+                    height: 60,
+                    width: 110,
+                  )
+                : Image.memory(base64Decode(data.image.toString()),
+                    height: 90,width: double.infinity,fit: BoxFit.fill,),
           Column(
             children: [
-              Text(data.title),
+              Text(data.title, maxLines: 1, overflow: TextOverflow.ellipsis,),
               // Text(data.author),
               Text(data.price.toString()),
             ],
