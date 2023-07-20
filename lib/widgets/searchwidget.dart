@@ -16,12 +16,7 @@ Widget searchWidget(
           ));
     },
     child: Container(
-      padding: const EdgeInsets.only(
-        left: 10,
-        right: 10,
-        top: 10,
-        bottom: 10,
-      ),
+      padding: const EdgeInsets.all(8 ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(9),
         color: mainColor,
