@@ -12,8 +12,9 @@ import '../widgets/author.dart';
 import '../widgets/constants.dart';
 
 class Pageone extends ConsumerStatefulWidget {
-  Pageone({super.key, required this.data});
+   Pageone({super.key, required this.data});
   Books data;
+ 
   @override
   ConsumerState<Pageone> createState() => _PageoneState();
 }
@@ -53,22 +54,43 @@ class _PageoneState extends ConsumerState<Pageone> {
                           style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                        // Text(widget.data.author,
-                        //     style: const TextStyle(fontSize: 15)),
                         Text(widget.data.price,
                             style: const TextStyle(fontSize: 15)),
                         Text(
-                          widget.data.description,
+                          widget.data.author.name,
                           style: const TextStyle(fontSize: 15),
                         ),
                       ]),
                 ]),
               ),
             ),
-            Card(
-              color: mainColor,
+            Container( 
+              color: Colors.grey.shade100,
+              // height:80,
+              width:375,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  widget.data.description,
+                  style: const TextStyle(fontSize: 15),
+                ),
+              )
+            ),
+            const Divider(
+        color: Colors.grey,
+        thickness: 1,
+          ),
+      
+            // ignore: sized_box_for_whitespace
+            Container(
+              height: 60,
+              // color: mainColor,
               child: author(),
             ),
+            const Divider(
+        color: Colors.grey,
+        thickness: 1,
+          ),
             const Text(
               "Reviews",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -79,10 +101,11 @@ class _PageoneState extends ConsumerState<Pageone> {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: const AssetImage('pics/daisy.jpeg'),
-                      child: Text(items[index]),
-                    ),
+                    leading: Text(items[index]),
+                    // CircleAvatar(
+                    //   backgroundImage: const AssetImage('pics/daisy.jpeg'),
+                    //   child: Text(items[index]),
+                    // ),
                     title: Text('Item ${items[index]}'),
                     subtitle: const Text('Item description'),
                   );
