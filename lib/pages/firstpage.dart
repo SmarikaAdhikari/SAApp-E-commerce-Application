@@ -84,7 +84,7 @@ class Firstpage extends ConsumerWidget {
                       fontWeight: FontWeight.bold)),
               FutureProvider.when(
                   data: (data) => Container(
-                    color: const Color.fromARGB(255, 12, 59, 98),
+                    color: const Color.fromARGB(255, 32, 32, 32),
                     child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -100,12 +100,13 @@ class Firstpage extends ConsumerWidget {
                   loading: () {
                     return const CircularProgressIndicator();
                   }),
+                  const SizedBox(height: 10),
               const Text("New Releases",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
-              const SizedBox(height: 10),
+              // const SizedBox(height: 10),
               FutureProvider.when(
                   data: (data) => GridView.builder(
                         shrinkWrap: true,
