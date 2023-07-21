@@ -6,12 +6,6 @@ class User {
  final String phone;
   final String address;
 
-
-
-
-
-
-
   User({
     required this.id,
     required this.email,
@@ -32,7 +26,5 @@ class User {
    
     );
   } 
-  
-
 
 }

@@ -7,7 +7,7 @@ import 'api_user_model.dart';
 final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
 
 class ApiService {
-  Future<List<User>> getProducts() async {
+  Future<List<User>> getUsers() async {
     try {
       final res = await Dio().get('http://10.0.2.2:8080/book/getUserProfile');
       List data = res.data;

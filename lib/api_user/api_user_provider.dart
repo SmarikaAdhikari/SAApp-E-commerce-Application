@@ -12,7 +12,7 @@ final userFutureProvider =
     FutureProvider.autoDispose<List<User>>((ref) async {
 
   final ApiService = ref.watch(apiServiceProvider);
-  return ApiService.getProducts();
+  return ApiService.getUsers();
 });
 class UserProviderPage extends ConsumerWidget {
   const UserProviderPage({super.key});
