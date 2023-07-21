@@ -71,7 +71,7 @@ Widget author(
               style: TextStyle(fontSize: 13,color:Colors.black, fontWeight: FontWeight.bold),
             ),
             Text(
-              data.language??'',              style: const TextStyle(fontSize: 12),
+              data.language??'',style: const TextStyle(fontSize: 12),
             ),
            
           ],
