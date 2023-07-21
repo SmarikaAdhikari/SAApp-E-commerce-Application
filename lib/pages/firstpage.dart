@@ -28,8 +28,8 @@ class Firstpage extends ConsumerWidget {
                     padding: const EdgeInsets.only(right: 8.0, left: 8),
                     child: Container(
                       height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9),
+                      decoration: const BoxDecoration(
+                        // borderRadius: BorderRadius.circular(9),
                         color: mainColor,
                       ),
                     ),
@@ -83,14 +83,17 @@ class Firstpage extends ConsumerWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
               FutureProvider.when(
-                  data: (data) => SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                          children: List.generate(data.length, (index) {
-                        return listswidget(
-                          data[index],
-                        );
-                      }))),
+                  data: (data) => Container(
+                    color: const Color.fromARGB(255, 12, 59, 98),
+                    child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                            children: List.generate(data.length, (index) {
+                          return listswidget(
+                            data[index],
+                          );
+                        }))),
+                  ),
                   error: (Object error, StackTrace stackTrace) {
                     return Text(error.toString());
                   },

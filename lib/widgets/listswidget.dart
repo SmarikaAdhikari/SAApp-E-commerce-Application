@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:app/Views/bookdetails.dart';
-import 'package:app/widgets/constants.dart';
+// import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +22,7 @@ Widget listswidget(
         padding: const EdgeInsets.only(top: 5, bottom: 5, left: 5, right: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9),
-          color: mainColor,
+          color: Colors.white,
         ),
         child: Column(
           children: [

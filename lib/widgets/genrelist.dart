@@ -30,31 +30,18 @@ Widget GenreList(
           ],
         ),
        
-        Row(
-              children: [
-              //  const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: (){
-                    Get.to(() => Pagethree());
-                  },
-                 child: const Row(
-                   children: [
-                     Text("Add to Cart"),
-                     Icon(Icons.add_shopping_cart)
-                   ],
-                 )),
-                  const SizedBox(width: 20,),
-                 ElevatedButton(onPressed: (){
-                  Get.to(() => Pagethree());
-                 },
-                 child: const Row(
-                   children: [
-                     Text("Buy Now"),
-                     Icon(Icons.bookmark)
-                   ],
-                 )),
-              ],
-            ),
+        TextButton(
+          onPressed: (){
+            Get.to(() => Pagethree());
+          },
+         child: const Row(
+           children: [
+            // SizedBox(width: 70),
+            Spacer(),
+             Text("Add to Cart"),
+             Icon(Icons.add_shopping_cart)
+           ],
+         )),
         
       ],
     ),
