@@ -1,16 +1,21 @@
 // import 'package:app/api/api_model.dart';
-import 'package:dio/dio.dart';
+import 'dart:convert';
+
+import 'package:app/services/dio.dart';
+// import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../utils/my_config.dart';
 import 'api_user_model.dart';
 
 final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
 
 class ApiService {
   Future<List<User>> getUsers() async {
+    const url = "/book/getUserProfile";
     try {
-      final res = await Dio().get('http://10.0.2.2:8080/book/getUserProfile');
-      List data = res.data;
+      final res = await Api().get(MyConfig.appUrl + url);
+      List data = json.decode(res.data);
       return data.map((e) => User.fromJson(e)).toList();
     } catch (e) {
       throw Exception('Error getting suggestion $e');
