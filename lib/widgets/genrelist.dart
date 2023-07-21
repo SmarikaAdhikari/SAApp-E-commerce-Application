@@ -29,25 +29,33 @@ Widget GenreList(
             ),
           ],
         ),
-        const SizedBox(
-          width: 50,
-        ),
+       
         Row(
-          children: [
-            const Text(
-              "Add to cart",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              children: [
+              //  const SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: (){
+                    Get.to(() => Pagethree());
+                  },
+                 child: const Row(
+                   children: [
+                     Text("Add to Cart"),
+                     Icon(Icons.add_shopping_cart)
+                   ],
+                 )),
+                  const SizedBox(width: 20,),
+                 ElevatedButton(onPressed: (){
+                  Get.to(() => Pagethree());
+                 },
+                 child: const Row(
+                   children: [
+                     Text("Buy Now"),
+                     Icon(Icons.bookmark)
+                   ],
+                 )),
+              ],
             ),
-            const Spacer(),
-            IconButton(
-              onPressed: () {
-                Get.to(() => Pagethree());
-              },
-              icon: const Icon(Icons.add),
-            ),
-            const Icon(Icons.shopping_cart_outlined),
-          ],
-        ),
+        
       ],
     ),
   );

@@ -17,11 +17,12 @@ class _FavoritePageState extends State<FavoritePage> {
           right: 8.0,
           left: 8.0,
         ),
-        child: ListView.builder(
+        child: 
+        ListView.builder(
           itemBuilder: (context, position) {
             return Card(
               child: Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(8.0),
                 child: favouriteWidget(),
               ),
             );
