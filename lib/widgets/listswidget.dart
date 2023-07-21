@@ -19,7 +19,7 @@ Widget listswidget(
             ));
       },
       child: Container(
-        padding: const EdgeInsets.only(top: 10, bottom: 10),
+        padding: const EdgeInsets.only(top: 5, bottom: 5, left: 5, right: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9),
           color: mainColor,
@@ -29,11 +29,11 @@ Widget listswidget(
             data.image == null
                 ? Image.asset(
                     "pics/daisy.jpeg",
-                    height: 60,
+                    height: 80,
                     width: 110,
                   )
                 : Image.memory(base64Decode(data.image.toString()),
-                    height: 60, width: 110),
+                    height: 120, width: 100),
             // Image.asset("pics/north.jpeg", height: 60, width: 110),
             Text(
               data.title,

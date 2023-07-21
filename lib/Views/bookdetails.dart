@@ -24,7 +24,7 @@ class _PageoneState extends ConsumerState<Pageone> {
   Widget build(BuildContext context) {
     // ignore: non_constant_identifier_names
     final FutureProvider = ref.watch(suggestionFutureProvider);
-    final List<String> items = List<String>.generate(5, (i) => '$i');
+    // final List<String> items = List<String>.generate(5, (i) => '$i');
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -83,8 +83,7 @@ class _PageoneState extends ConsumerState<Pageone> {
       
             // ignore: sized_box_for_whitespace
             Container(
-              height: 88,
-              // color: mainColor,
+
               child: author(
                 widget.data
               ),
@@ -94,35 +93,59 @@ class _PageoneState extends ConsumerState<Pageone> {
         color: Colors.grey,
         thickness: 1,
           ),
-            const Text(
-              "Reviews",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            // const Text(
+            //   "Reviews",
+            //   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            // ),
+            // SizedBox(
+            //   height: 90,
+            //   child: ListView.builder(
+            //     itemCount: items.length,
+            //     itemBuilder: (context, index) {
+            //       return Card(
+            //         child: ListTile(
+            //           leading: Text(items[index]),
+            //           title: Text('Item ${items[index]}'),
+            //           subtitle: const Text('Item description'),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
+            const SizedBox(
+              height: 20,
             ),
-            SizedBox(
-              height: 90,
-              child: ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: ListTile(
-                      leading: Text(items[index]),
-                      // CircleAvatar(
-                      //   backgroundImage: const AssetImage('pics/daisy.jpeg'),
-                      //   child: Text(items[index]),
-                      // ),
-                      title: Text('Item ${items[index]}'),
-                      subtitle: const Text('Item description'),
-                    ),
-                  );
-                },
-              ),
+            Row(
+              children: [
+               const SizedBox(width: 50,),
+                ElevatedButton(
+                  onPressed: (){
+                    Get.to(() => Pagethree());
+                  },
+                 child: const Row(
+                   children: [
+                     Text("Add to Cart"),
+                     Icon(Icons.add_shopping_cart)
+                   ],
+                 )),
+                  const SizedBox(width: 20,),
+                 ElevatedButton(onPressed: (){
+                  Get.to(() => Pagethree());
+                 },
+                 child: const Row(
+                   children: [
+                     Text("Buy Now"),
+                     Icon(Icons.bookmark)
+                   ],
+                 )),
+              ],
             ),
             const SizedBox(
               height: 20,
             ),
             const Text(
-              "Recommendation",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              "You may also like",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             FutureProvider.when(
                 data: (data) => SingleChildScrollView(
@@ -140,30 +163,9 @@ class _PageoneState extends ConsumerState<Pageone> {
                   return const CircularProgressIndicator();
                 }),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
-            Card(
-              child: Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(5.0),
-                    child: Text(
-                      "Buy Now",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () {
-                      Get.to(() => Pagethree());
-                    },
-                    icon: const Icon(Icons.add),
-                  ),
-                  const Icon(Icons.attach_money),
-                ],
-              ),
-            ),
+            
           ]),
         ),
       ),

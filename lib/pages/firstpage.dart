@@ -46,11 +46,13 @@ class Firstpage extends ConsumerWidget {
                                 Text("Embrace your inner bookworm...",
                                     style: TextStyle(
                                         fontSize: 12,
+                                        color: Color.fromARGB(255, 0, 43, 116),
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FontStyle.italic)),
                                 Text("with",
                                     style: TextStyle(
                                       fontSize: 10,
+                                      color: Color.fromARGB(255, 0, 43, 116),
                                       fontWeight: FontWeight.bold,
                                     )),
                                 Image(
