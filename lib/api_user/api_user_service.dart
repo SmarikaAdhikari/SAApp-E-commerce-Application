@@ -11,12 +11,12 @@ import 'api_user_model.dart';
 final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
 
 class ApiService {
-  Future<List<User>> getUsers() async {
-    const url = "/book/getUserProfile";
+  Future<User> getUsers() async {
+    const url = "/user/getUserProfile";
     try {
       final res = await Api().get(MyConfig.appUrl + url);
-      List data = json.decode(res.data);
-      return data.map((e) => User.fromJson(e)).toList();
+      final data = json.decode(res.data);
+      return  User.fromJson(data);
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }

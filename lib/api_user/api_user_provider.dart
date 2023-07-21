@@ -9,7 +9,7 @@ import 'api_user_service.dart';
 
 
 final userFutureProvider =
-    FutureProvider.autoDispose<List<User>>((ref) async {
+    FutureProvider.autoDispose<User>((ref) async {
 
   final ApiService = ref.watch(apiServiceProvider);
   return ApiService.getUsers();
@@ -30,12 +30,12 @@ class UserProviderPage extends ConsumerWidget {
           userProvider.when(data: (data) {
             return Column(
               children: [
-                Text(data[0].id.toString()),
-                Text(data[0].email),
-                Text(data[0].name),
-                Text(data[0].password),
-                Text(data[0].phone),
-                Text(data[0].address),
+                Text(data.id.toString()),
+                Text(data.email),
+                Text(data.name),
+                Text(data.password),
+                Text(data.phone),
+                Text(data.address),
               ],
             );
           },

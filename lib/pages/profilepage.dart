@@ -1,23 +1,29 @@
-import 'package:app/screens/edits.dart';
-import 'package:app/widgets/bio.dart';
-import 'package:app/widgets/date.dart';
-import 'package:app/widgets/favouritewidget.dart';
-import 'package:app/widgets/new.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// ignore_for_file: non_constant_identifier_names, unused_local_variable
 
+// import 'package:app/api_user/api_user_service.dart';
+// import 'package:app/screens/edits.dart';
+// import 'package:app/widgets/bio.dart';
+// import 'package:app/widgets/date.dart';
+import 'package:app/widgets/favouritewidget.dart';
+// import 'package:app/widgets/new.dart';
+import 'package:app/widgets/profileWidget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:get/get.dart';
+
+import '../api_user/api_user_provider.dart';
 import '../widgets/constants.dart';
 import '../widgets/orderwidget.dart';
 
-class ProfilePage extends StatefulWidget {
+class ProfilePage extends ConsumerStatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
   ProfilePage({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  ConsumerState<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage>
+class _ProfilePageState extends ConsumerState<ProfilePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -29,6 +35,7 @@ class _ProfilePageState extends State<ProfilePage>
 
   @override
   Widget build(BuildContext context) {
+    final ApiService = ref.watch(userFutureProvider);
     return Scaffold(
         body: SafeArea(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -53,91 +60,103 @@ class _ProfilePageState extends State<ProfilePage>
           ],
         ),
         const SizedBox(height: 10),
-        Row(children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  StreamBuilder<String>(
-                      stream: newcontroller.stream,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Text(
-                            snapshot.data.toString(),
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          );
-                        } else {
-                          return const Text(
-                            "---",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15),
-                          );
-                        }
-                      }),
-                  StreamBuilder<String>(
-                      stream: biocontroller.stream,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Text(
-                            snapshot.data.toString(),
-                            style: const TextStyle(fontSize: 15),
-                          );
-                        } else {
-                          return const Text(
-                            "---",
-                            style: TextStyle(fontSize: 15),
-                          );
-                        }
-                      }),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.calendar_month_outlined,
-                        size: 15,
-                      ),
-                      const Text(
-                        "Joined Date:",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      StreamBuilder<String>(
-                          stream: datecontroller.stream,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return Text(
-                                snapshot.data.toString(),
-                                style: const TextStyle(fontSize: 15),
-                              );
-                            } else {
-                              return const Text(
-                                "---",
-                                style: TextStyle(fontSize: 15),
-                              );
-                            }
-                          }),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(width: 40),
-          ElevatedButton(
-            onPressed: () {
-              Get.to(() => Edits());
+
+        ApiService.when(
+            data: (data) => profileWidget(
+                 data
+                ),
+            error: (Object error, StackTrace stackTrace) {
+              return Text(error.toString());
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.grey[100],
-              foregroundColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(32.0),
-              ),
-            ),
-            child: const Text("Edits"),
-          ),
-        ]),
+            loading: () {
+              return const CircularProgressIndicator();
+            }),
+
+        // Row(children: [
+        //   Expanded(
+        //     child: Padding(
+        //       padding: const EdgeInsets.all(8.0),
+        //       child: Column(
+        //         crossAxisAlignment: CrossAxisAlignment.start,
+        //         children: [
+        //           StreamBuilder<String>(
+        //               stream: newcontroller.stream,
+        //               builder: (context, snapshot) {
+        //                 if (snapshot.hasData) {
+        //                   return Text(
+        //                     snapshot.data.toString(),
+        //                     style: const TextStyle(
+        //                         fontWeight: FontWeight.bold, fontSize: 15),
+        //                   );
+        //                 } else {
+        //                   return const Text(
+        //                     "---",
+        //                     style: TextStyle(
+        //                         fontWeight: FontWeight.bold, fontSize: 15),
+        //                   );
+        //                 }
+        //               }),
+        //           StreamBuilder<String>(
+        //               stream: biocontroller.stream,
+        //               builder: (context, snapshot) {
+        //                 if (snapshot.hasData) {
+        //                   return Text(
+        //                     snapshot.data.toString(),
+        //                     style: const TextStyle(fontSize: 15),
+        //                   );
+        //                 } else {
+        //                   return const Text(
+        //                     "---",
+        //                     style: TextStyle(fontSize: 15),
+        //                   );
+        //                 }
+        //               }),
+        //           Row(
+        //             children: [
+        //               const Icon(
+        //                 Icons.calendar_month_outlined,
+        //                 size: 15,
+        //               ),
+        //               const Text(
+        //                 "Joined Date:",
+        //                 style: TextStyle(fontSize: 15),
+        //               ),
+        //               // StreamBuilder<String>(
+        //               //     stream: datecontroller.stream,
+        //               //     builder: (context, snapshot) {
+        //               //       if (snapshot.hasData) {
+        //               //         return Text(
+        //               //           snapshot.data.toString(),
+        //               //           style: const TextStyle(fontSize: 15),
+        //               //         );
+        //               //       } else {
+        //               //         return const Text(
+        //               //           "---",
+        //               //           style: TextStyle(fontSize: 15),
+        //               //         );
+        //               //       }
+        //               //     }),
+        //             ],
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        //   const SizedBox(width: 40),
+        //   ElevatedButton(
+        //     onPressed: () {
+        //       Get.to(() => Edits());
+        //     },
+        //     style: ElevatedButton.styleFrom(
+        //       backgroundColor: Colors.grey[100],
+        //       foregroundColor: Colors.black,
+        //       shape: RoundedRectangleBorder(
+        //         borderRadius: BorderRadius.circular(32.0),
+        //       ),
+        //     ),
+        //     child: const Text("Edits"),
+        //   ),
+        // ]),
         SizedBox(
           height: 60,
           child: TabBar(
