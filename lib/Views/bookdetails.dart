@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:convert';
+
 import 'package:app/Views/Buynow.dart';
 import 'package:app/api/api_model.dart';
 import 'package:app/api/api_provider.dart';
@@ -9,7 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 import '../widgets/author.dart';
-import '../widgets/constants.dart';
+// import '../widgets/constants.dart';
 
 class Pageone extends ConsumerStatefulWidget {
    Pageone({super.key, required this.data});
@@ -32,50 +34,59 @@ class _PageoneState extends ConsumerState<Pageone> {
           padding: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Card(
-              color: mainColor,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Row(children: [
-                  Image.asset(
-                    'view/kitabalaya.png',
-                    fit: BoxFit.cover,
-                    height: 150,
-                    width: 180,
-                  ),
-                  const SizedBox(
-                    width: 70,
-                  ),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.data.title,
-                          style: const TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                        Text(widget.data.price,
-                            style: const TextStyle(fontSize: 15)),
-                        Text(
-                          widget.data.author.name,
-                          style: const TextStyle(fontSize: 15),
-                        ),
-                      ]),
-                ]),
-              ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(children: [
+                widget.data.image == null
+                ?Image.asset(
+                  'view/kitabalaya.png',
+                  fit: BoxFit.cover,
+                  height: 150,
+                  width: 180,
+                )
+                : Image.memory(base64Decode(widget.data.image),
+                  height: 120, width: 100),
+                const SizedBox(
+                  width: 70,
+                ),
+                // Spacer(),
+                 const VerticalDivider(
+          color: Colors.grey,
+          thickness: 1,
+               ),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.data.title,
+                        style: const TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                      Text(widget.data.price,
+                          style: const TextStyle(fontSize: 15)),
+                      Text(
+                        widget.data.author.name,
+                        style: const TextStyle(fontSize: 15),
+                      ),
+                    ]),
+              ]),
             ),
-            Container( 
-              color: Colors.grey.shade100,
-              // height:80,
-              width:375,
-              child: Padding(
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              "Description",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            
+              Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   widget.data.description,
                   style: const TextStyle(fontSize: 15),
                 ),
-              )
-            ),
+              ),
+          
             const Divider(
         color: Colors.grey,
         thickness: 1,
@@ -93,25 +104,6 @@ class _PageoneState extends ConsumerState<Pageone> {
         color: Colors.grey,
         thickness: 1,
           ),
-            // const Text(
-            //   "Reviews",
-            //   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            // ),
-            // SizedBox(
-            //   height: 90,
-            //   child: ListView.builder(
-            //     itemCount: items.length,
-            //     itemBuilder: (context, index) {
-            //       return Card(
-            //         child: ListTile(
-            //           leading: Text(items[index]),
-            //           title: Text('Item ${items[index]}'),
-            //           subtitle: const Text('Item description'),
-            //         ),
-            //       );
-            //     },
-            //   ),
-            // ),
             const SizedBox(
               height: 20,
             ),
@@ -145,7 +137,7 @@ class _PageoneState extends ConsumerState<Pageone> {
             ),
             const Text(
               "You may also like",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
             FutureProvider.when(
                 data: (data) => SingleChildScrollView(

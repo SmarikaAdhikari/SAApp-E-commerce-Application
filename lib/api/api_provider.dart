@@ -22,8 +22,10 @@ class FutureProviderPage extends ConsumerWidget {
         appBar: AppBar(
           title: const Text('Future Provider'),
         ),
-        body: Center(
-          child: FutureProvider.when(data: (data) {
+        body: 
+        Center(
+          child: 
+          FutureProvider.when(data: (data) {
             return ListView.builder(
               itemCount: data.length,
               itemBuilder: (context, index) => Card(
@@ -45,10 +47,7 @@ class FutureProviderPage extends ConsumerWidget {
                       data[index].title,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
-                    // Text(
-                    //   data[index].author,
-                    //   style: Theme.of(context).textTheme.headlineMedium,
-                    // ),
+                    
                   ],
                 ),
               ),
@@ -58,6 +57,7 @@ class FutureProviderPage extends ConsumerWidget {
           }, loading: () {
             return const CircularProgressIndicator();
           }),
-        ));
+        )
+        );
   }
 }
