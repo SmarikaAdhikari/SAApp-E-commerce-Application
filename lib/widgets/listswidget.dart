@@ -5,7 +5,7 @@ import 'package:app/Views/bookdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../api/api_model.dart';
+import '../api_book/api_model.dart';
 
 Widget listswidget(
   Books data,

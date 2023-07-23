@@ -3,8 +3,8 @@
 import 'dart:convert';
 
 import 'package:app/Views/Buynow.dart';
-import 'package:app/api/api_model.dart';
-import 'package:app/api/api_provider.dart';
+import 'package:app/api_book/api_model.dart';
+import 'package:app/api_book/api_provider.dart';
 import 'package:app/widgets/listswidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

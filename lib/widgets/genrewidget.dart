@@ -1,7 +1,7 @@
 import 'package:app/Views/listgenre.dart';
 // import 'package:app/pages/searchpage.dart';
 // import 'package:app/api/api_model.dart';
-import 'package:app/widgets/constants.dart';
+// import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +27,7 @@ Widget genreWidget(String name,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9),
-          color: mainColor,
+          color:const Color.fromARGB(255, 170, 209, 240),
         ),
         child: Column(
           children: [
