@@ -22,15 +22,15 @@ Widget listswidget(
         padding: const EdgeInsets.only(top: 5, bottom: 5, left: 5, right: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9),
-          color: Colors.white,
+          color: const Color.fromARGB(255, 255, 255, 255),
         ),
         child: Column(
           children: [
             data.image == null
                 ? Image.asset(
                     "pics/daisy.jpeg",
-                    height: 80,
-                    width: 110,
+                    height: 120,
+                    width: 100,
                   )
                 : Image.memory(base64Decode(data.image.toString()),
                     height: 120, width: 100),

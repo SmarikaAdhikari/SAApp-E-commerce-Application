@@ -47,7 +47,7 @@ class _PageoneState extends ConsumerState<Pageone> {
                 : Image.memory(base64Decode(widget.data.image),
                   height: 120, width: 100),
                 const SizedBox(
-                  width: 70,
+                  width: 50,
                 ),
                 // Spacer(),
                  const VerticalDivider(

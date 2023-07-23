@@ -12,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:get/get.dart';
 
 import '../api_user/api_user_provider.dart';
-import '../widgets/constants.dart';
+// import '../widgets/constants.dart';
 import '../widgets/orderwidget.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
@@ -45,7 +45,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
               padding: const EdgeInsets.only(top: 0, bottom: 50),
               child: Container(
                 height: 120,
-                color: mainColor,
+                color: const Color.fromARGB(255, 170, 208, 239),
               ),
             ),
             const Positioned(

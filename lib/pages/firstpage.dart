@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:app/widgets/searchwidget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../widgets/constants.dart';
+// import '../widgets/constants.dart';
 
 class Firstpage extends ConsumerWidget {
   const Firstpage({super.key});
@@ -30,7 +30,7 @@ class Firstpage extends ConsumerWidget {
                       height: 200,
                       decoration: const BoxDecoration(
                         // borderRadius: BorderRadius.circular(9),
-                        color: mainColor,
+                        color: Color.fromARGB(255, 170, 187, 193),
                       ),
                     ),
                   ),
@@ -84,7 +84,7 @@ class Firstpage extends ConsumerWidget {
                       fontWeight: FontWeight.bold)),
               FutureProvider.when(
                   data: (data) => Container(
-                    color: const Color.fromARGB(255, 32, 32, 32),
+                    color:const Color.fromARGB(255, 60, 60, 60),
                     child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
