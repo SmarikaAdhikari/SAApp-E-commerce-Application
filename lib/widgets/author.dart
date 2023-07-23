@@ -1,4 +1,4 @@
-import 'package:app/api_book/api_model.dart';
+import 'package:app/api_all/api_book/api_model.dart';
 import 'package:flutter/material.dart';
 
 Widget author(

@@ -1,15 +1,17 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, unused_local_variable, non_constant_identifier_names, no_leading_underscores_for_local_identifiers
 
 import 'dart:convert';
 
 import 'package:app/Views/Buynow.dart';
-import 'package:app/api_book/api_model.dart';
-import 'package:app/api_book/api_provider.dart';
+import 'package:app/api_all/api_book/api_model.dart';
+import 'package:app/api_all/api_book/api_provider.dart';
+// import 'package:app/pages/favoritepage.dart';
 import 'package:app/widgets/listswidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
+// import '../provider/icon_color.dart';
 import '../widgets/author.dart';
 // import '../widgets/constants.dart';
 
@@ -24,11 +26,28 @@ class Pageone extends ConsumerStatefulWidget {
 class _PageoneState extends ConsumerState<Pageone> {
   @override
   Widget build(BuildContext context) {
-    // ignore: non_constant_identifier_names
     final FutureProvider = ref.watch(suggestionFutureProvider);
+ 
     // final List<String> items = List<String>.generate(5, (i) => '$i');
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+      
+      
+        actions: [
+
+          IconButton(
+            icon: const Icon(
+              Icons.star_border_outlined,
+           
+            ),
+            onPressed: () {
+              
+            },
+          ),
+        
+
+        ],
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
@@ -164,3 +183,11 @@ class _PageoneState extends ConsumerState<Pageone> {
     );
   }
 }
+// // ignore: dead_code
+// Color _getRandomColor() {
+//     const colors = Colors.primaries;
+//     return colors[DateTime.now().millisecondsSinceEpoch % colors.length];
+
+    
+  
+

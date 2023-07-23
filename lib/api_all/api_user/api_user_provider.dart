@@ -1,7 +1,7 @@
 // ignore_for_file: unused_local_variable, non_constant_identifier_names
 
 // import 'package:app/api/api_provider.dart';
-import 'package:app/api_user/api_user_model.dart';
+import 'package:app/api_all/api_user/api_user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

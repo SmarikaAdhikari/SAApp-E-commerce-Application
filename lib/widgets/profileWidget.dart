@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../api_user/api_user_model.dart';
+import '../api_all/api_user/api_user_model.dart';
 
 Widget profileWidget(
   User profile,
