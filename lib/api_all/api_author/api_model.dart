@@ -1,4 +1,4 @@
-class Author {
+class Authors {
 
 final String name;
 final String bio;
@@ -6,7 +6,7 @@ final String dob;
 final String address;
 final String description;
 
-Author({
+Authors({
   required this.name,
   required this.bio,
   required this.dob,
@@ -14,8 +14,8 @@ Author({
   required this.description,
 });
 
-factory Author.fromJson(Map<String, dynamic> json) {
-  return Author(
+factory Authors.fromJson(Map<String, dynamic> json) {
+  return Authors(
     name: json['name'],
     bio: json['bio'],
     dob: json['dob'],
