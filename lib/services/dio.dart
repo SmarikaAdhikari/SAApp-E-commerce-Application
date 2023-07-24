@@ -73,7 +73,8 @@ class Api {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
-      print("Post " + response.data);
+      final message = json.decode(response.data)["message"];
+      Fluttertoast.showToast(msg: message);
 
       return response;
     } on SocketException catch (e) {

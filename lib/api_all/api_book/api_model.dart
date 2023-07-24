@@ -10,6 +10,7 @@ class Books {
   final String? length;
   final String? releasedate;
   final String? genre;
+  final bool isFavorite;
   
 
 
@@ -27,6 +28,7 @@ class Books {
     required this.language,
     required this.length,
     required this.releasedate,
+    required this.isFavorite,
   });
 
   factory Books.fromJson(Map<String, dynamic> json) {
@@ -43,6 +45,7 @@ class Books {
       language: json['language'],
       length: json['length'],
       releasedate: json['releasedate'],
+      isFavorite: json['isFavorite'],
     );
   }
 }

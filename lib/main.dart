@@ -5,7 +5,6 @@ import 'package:app/pages/firstpage.dart';
 import 'package:app/pages/loginpage.dart';
 import 'package:app/pages/profilepage.dart';
 import 'package:app/pages/searchpage.dart';
-// import 'package:app/pages/try.dart';
 import 'package:app/screens/bestsellers.dart';
 import 'package:app/screens/newreleases.dart';
 import 'package:app/screens/popularauthors.dart';
