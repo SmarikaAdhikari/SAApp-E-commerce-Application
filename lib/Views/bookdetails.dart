@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, unused_local_variable, non_constant_identifier_names, no_leading_underscores_for_local_identifiers
+// ignore_for_file: must_be_immutable, unused_local_variable, non_constant_identifier_names, no_leading_underscores_for_local_identifiers, unused_result
 
 import 'dart:convert';
 
@@ -12,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 // import '../provider/icon_color.dart';
+import '../api_all/api_book/api_service.dart';
 import '../widgets/author.dart';
 // import '../widgets/constants.dart';
 
@@ -33,10 +34,25 @@ class _PageoneState extends ConsumerState<Pageone> {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: const Icon(
+            icon: 
+            widget.data.isFavorite ?
+            const Icon(
+              Icons.star,
+              color: Colors.yellow
+
+            ):
+             const Icon(
               Icons.star_border_outlined,
             ),
-            onPressed: () {},
+            onPressed: () {
+
+             ref.read(apiServiceProvider).addFavorite(widget.data.id.toString());
+             ref.refresh(suggestionFutureProvider);
+              
+
+
+
+            },
           ),
         ],
       ),
@@ -60,7 +76,7 @@ class _PageoneState extends ConsumerState<Pageone> {
                 const SizedBox(
                   width: 50,
                 ),
-                // Spacer(),
+               
                 const VerticalDivider(
                   color: Colors.black,
                   thickness: 5,
