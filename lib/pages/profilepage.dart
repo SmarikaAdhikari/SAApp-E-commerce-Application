@@ -68,33 +68,38 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
         ),
         const SizedBox(height: 10),
 
-        Row(
-          children: [
-            ApiService.when(
-                data: (data) => profileWidget(
-                     data
-                    ),
-                error: (Object error, StackTrace stackTrace) {
-                  return Text(error.toString());
-                },
-                loading: () {
-                  return const CircularProgressIndicator();
-                }),
-                const Spacer(),
-          ElevatedButton(
-            onPressed: () {
-            Get.to(() => Edits());
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.grey[100],
-              foregroundColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(32.0),
+        ApiService.when(
+          data: (data) => 
+           Row(
+            children: [
+            profileWidget(
+                       data
+                      ),
+                
+                  const Spacer(),
+            ElevatedButton(
+              onPressed: () {
+              Get.to(() => Edits(
+                name: data.name,
+                email: data.email,
+                password: data.password,
+              ));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.grey[100],
+                foregroundColor: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
               ),
+              child: const Text("Edits"),
             ),
-            child: const Text("Edits"),
-          ),
-          ],
+            ],
+          ), error: (Object error, StackTrace stackTrace) { 
+            return Text(error.toString());
+           }, loading: () {  
+            return const CircularProgressIndicator();
+           },
         ),
 
         // Row(children: [

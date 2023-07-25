@@ -11,7 +11,7 @@ import 'api_user_service.dart';
 final userFutureProvider =
     FutureProvider.autoDispose<User>((ref) async {
 
-  final ApiService = ref.watch(apiServiceProvider);
+  final ApiService = ref.watch(userServiceProvider);
   return ApiService.getUsers();
 });
 class UserProviderPage extends ConsumerWidget {

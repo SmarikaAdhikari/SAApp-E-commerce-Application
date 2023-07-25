@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../utils/my_config.dart';
 import 'api_user_model.dart';
 
-final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
+final userServiceProvider = Provider<ApiService>((ref) => ApiService());
 
 class ApiService {
   Future<User> getUsers() async {
@@ -24,15 +24,16 @@ class ApiService {
     }
   }
 
-   void updateUserProfile(String name, String email, String password,String bio) async {
+   Future<void> updateUserProfile(String name, String email, String password) async {
     const url = "/user/updateUserProfile";
     var data = {
       "name": name,
      "email": email,
        "password": password,
-       "bio": bio,
+      
           };
     try {
+      // print("entered");
 
       final res = await Api().put(MyConfig.appUrl + url, data: data);
      

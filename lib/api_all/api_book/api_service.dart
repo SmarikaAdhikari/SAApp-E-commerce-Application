@@ -6,6 +6,8 @@ import 'package:app/api_all/api_book/api_model.dart';
 import 'package:app/services/dio.dart';
 import 'package:app/utils/my_config.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// import '../api_user/api_user_model.dart';
 // import 'package:nb_utils/nb_utils.dart';
 
 final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
@@ -32,6 +34,40 @@ class ApiService {
     try {
 
       final res = await Api().post(MyConfig.appUrl + url, data: data);
+     
+      
+    } catch (e) {
+      throw Exception('Error getting suggestion $e');
+    }
+  }
+  Future<Books> getBooksById(String bookId) async {
+   final url = "/book/getBookById/$bookId";
+    // var data = {
+    //   "bookId": bookId,
+    // };
+    try {
+
+      final res = await Api().get(MyConfig.appUrl + url);
+       
+      final data = json.decode(res.data);
+      return  Books.fromJson(data);
+     
+      
+    } catch (e) {
+      throw Exception('Error getting suggestion $e');
+    }
+  }
+  Future<Books> getBooksByEnum(String genre) async {
+   final url = "/book/getBookByEnum/$genre";
+    // var data = {
+    //   "bookId": bookId,
+    // };
+    try {
+
+      final res = await Api().get(MyConfig.appUrl + url);
+       
+      final data = json.decode(res.data);
+      return  Books.fromJson(data);
      
       
     } catch (e) {

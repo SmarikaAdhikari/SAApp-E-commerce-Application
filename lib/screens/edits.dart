@@ -1,23 +1,41 @@
 // import 'package:app/main.dart';
 // import 'package:app/pages/profilepage.dart';
-import 'package:app/widgets/bio.dart';
-import 'package:app/widgets/date.dart';
-import 'package:app/widgets/new.dart';
+// ignore_for_file: unused_result
+
+// import 'package:app/api_all/api_book/api_service.dart';
+import 'package:app/api_all/api_user/api_user_provider.dart';
+import 'package:app/api_all/api_user/api_user_service.dart';
+// import 'package:app/widgets/bio.dart';
+// import 'package:app/widgets/date.dart';
+// import 'package:app/widgets/new.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-class Edits extends StatefulWidget {
+class Edits extends ConsumerStatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
-  Edits({super.key});
+  Edits({super.key, required this.name, required this.email, required this.password});
+  final String name;
+  final String email;
+  final String password;
 
   @override
-  State<Edits> createState() => _EditsState();
+  ConsumerState<Edits> createState() => _EditsState();
 }
 
-class _EditsState extends State<Edits> {
-  TextEditingController nameEditingController = TextEditingController();
+class _EditsState extends ConsumerState<Edits> {
+  TextEditingController nameEditingController = TextEditingController( );
   TextEditingController bioEditingController = TextEditingController();
-  TextEditingController dateEditingController = TextEditingController();
+  TextEditingController emailEditingController = TextEditingController();
+  TextEditingController passwordEditingController = TextEditingController();
+
+  @override
+  void initState(){
+    nameEditingController.text = widget.name;
+    emailEditingController.text = widget.email;
+    passwordEditingController.text = widget.password;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,27 +58,29 @@ class _EditsState extends State<Edits> {
           SizedBox(
             width: 200,
             child: TextField(
-              controller: bioEditingController,
+              controller: passwordEditingController,
               decoration: const InputDecoration(
-                hintText: "Bio",
+                hintText: "password",
               ),
             ),
           ),
           SizedBox(
             width: 200,
             child: TextField(
-              controller: dateEditingController,
+              controller: emailEditingController,
               decoration: const InputDecoration(
-                hintText: "Date?",
+                hintText: "email",
               ),
             ),
           ),
           ElevatedButton(
             onPressed: () {
-              newcontroller.add(nameEditingController.text);
-              biocontroller.add(bioEditingController.text);
-              datecontroller.add(dateEditingController.text);
+              ref.read(userServiceProvider).updateUserProfile(nameEditingController.value.text, emailEditingController.value.text, passwordEditingController.value.text).then((value) {
+                ref.refresh(userFutureProvider);
+              });
+              
               Get.back();
+             
             },
             child: const Text("Done"),
           ),
