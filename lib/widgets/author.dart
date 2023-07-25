@@ -1,4 +1,5 @@
 import 'package:app/api_all/api_book/api_model.dart';
+import 'package:app/pages/searchpage.dart';
 import 'package:flutter/material.dart';
 
 Widget author(
@@ -17,7 +18,7 @@ Widget author(
                 style: TextStyle(fontSize: 13,color:Colors.black, fontWeight: FontWeight.bold),
               ),
               Text(
-                data.genre!,
+                Genre[ data.genre],
                 style:const  TextStyle(fontSize: 12),
               ),
              

@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable
 
 // import 'package:app/api_user/api_user_service.dart';
-// import 'package:app/screens/edits.dart';
+import 'package:app/screens/edits.dart';
 // import 'package:app/widgets/bio.dart';
 // import 'package:app/widgets/date.dart';
 import 'package:app/widgets/favouritewidget.dart';
@@ -10,7 +10,7 @@ import 'package:app/widgets/profileWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:get/get.dart';
-// import 'package:get/get.dart';
+import 'package:get/get.dart';
 
 import '../api_all/api_user/api_user_provider.dart';
 // import '../widgets/constants.dart';
@@ -83,7 +83,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                 const Spacer(),
           ElevatedButton(
             onPressed: () {
-            
+            Get.to(() => Edits());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.grey[100],
@@ -167,21 +167,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
         //       ),
         //     ),
         //   ),
-          // const SizedBox(width: 40),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     // Get.to(() => Edits());
-          //   },
-          //   style: ElevatedButton.styleFrom(
-          //     backgroundColor: Colors.grey[100],
-          //     foregroundColor: Colors.black,
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.circular(32.0),
-          //     ),
-          //   ),
-          //   child: const Text("Edits"),
-          // ),
-        // ]),
+
         SizedBox(
           height: 60,
           child: TabBar(

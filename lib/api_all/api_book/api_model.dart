@@ -9,7 +9,7 @@ class Books {
   final String? language;
   final String? length;
   final String? releasedate;
-  final String? genre;
+  final int genre;
   final bool isFavorite;
   
 
