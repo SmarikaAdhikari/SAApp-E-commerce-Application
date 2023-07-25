@@ -10,6 +10,7 @@ import 'package:app/widgets/profileWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 import '../api_all/api_user/api_user_provider.dart';
 // import '../widgets/constants.dart';
@@ -43,10 +44,16 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 0, bottom: 50),
-              child: Container(
-                height: 120,
-                color: const Color.fromARGB(255, 170, 208, 239),
-              ),
+              child:
+              Image.asset(
+                "pics/daisy.jpeg",
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 130,)
+              //  Container(
+              //   height: 120,
+              //   color: const Color.fromARGB(255, 170, 208, 239),
+              // ),
             ),
             const Positioned(
               bottom: 0,
@@ -61,16 +68,34 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
         ),
         const SizedBox(height: 10),
 
-        ApiService.when(
-            data: (data) => profileWidget(
-                 data
-                ),
-            error: (Object error, StackTrace stackTrace) {
-              return Text(error.toString());
+        Row(
+          children: [
+            ApiService.when(
+                data: (data) => profileWidget(
+                     data
+                    ),
+                error: (Object error, StackTrace stackTrace) {
+                  return Text(error.toString());
+                },
+                loading: () {
+                  return const CircularProgressIndicator();
+                }),
+                const Spacer(),
+          ElevatedButton(
+            onPressed: () {
+            
             },
-            loading: () {
-              return const CircularProgressIndicator();
-            }),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey[100],
+              foregroundColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(32.0),
+              ),
+            ),
+            child: const Text("Edits"),
+          ),
+          ],
+        ),
 
         // Row(children: [
         //   Expanded(
@@ -142,20 +167,20 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
         //       ),
         //     ),
         //   ),
-        //   const SizedBox(width: 40),
-        //   ElevatedButton(
-        //     onPressed: () {
-        //       Get.to(() => Edits());
-        //     },
-        //     style: ElevatedButton.styleFrom(
-        //       backgroundColor: Colors.grey[100],
-        //       foregroundColor: Colors.black,
-        //       shape: RoundedRectangleBorder(
-        //         borderRadius: BorderRadius.circular(32.0),
-        //       ),
-        //     ),
-        //     child: const Text("Edits"),
-        //   ),
+          // const SizedBox(width: 40),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     // Get.to(() => Edits());
+          //   },
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: Colors.grey[100],
+          //     foregroundColor: Colors.black,
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(32.0),
+          //     ),
+          //   ),
+          //   child: const Text("Edits"),
+          // ),
         // ]),
         SizedBox(
           height: 60,
