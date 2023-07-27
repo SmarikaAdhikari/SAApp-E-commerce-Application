@@ -1,19 +1,18 @@
 import 'dart:convert';
 
-import 'package:app/Views/bookdetails.dart';
-import 'package:app/api_all/api_book/api_model.dart';
+// import 'package:app/Views/bookdetails.dart';
 import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
-Widget searchWidget(
-  Books data,
+Widget newRelease(
+   data,
 ) {
-  return TextButton(
-    onPressed: () {
-      Get.to(() => Pageone(
-            data: data,
-          ));
+  return InkWell(
+    onTap: () {
+      // Get.to(() => Pageone(
+      //       data: data,
+      //     ));
     },
     child: Container(
       padding: const EdgeInsets.all(8 ),

@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:app/Views/Buynow.dart';
+// import 'package:app/Views/page8.dart';
+import 'package:app/api_all/api_genre/api_model.dart';
 // import 'package:app/Views/bookdetails.dart';
 // import 'package:app/api/api_model.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +10,7 @@ import 'package:get/get.dart';
 
 // ignore: non_constant_identifier_names
 Widget GenreList(
-    //  Books data,
+    EnumModel data,
     ) {
   return Padding(
     padding: const EdgeInsets.only(
@@ -17,14 +21,19 @@ Widget GenreList(
       children: [
         Row(
           children: [
-            Image.asset("pics/north.jpeg", height: 100, width: 100),
+            data.image == null
+           ? Image.asset("pics/north.jpeg", height: 100, width: 100)
+            : Image.memory(base64Decode(data.image.toString()),
+                    height: 120, width: 100),
             const SizedBox(width: 20),
-            const Column(
+             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("name"),
-                Text("author"),
-                Text("price"),
+              
+                Text(data.title),
+                Text(data.author.name),
+                Text(data.price.toString()),
+                
               ],
             ),
           ],
@@ -32,7 +41,7 @@ Widget GenreList(
        
         TextButton(
           onPressed: (){
-            Get.to(() => Pagethree());
+            Get.to(() => BuyNow());
           },
          child: const Row(
            children: [

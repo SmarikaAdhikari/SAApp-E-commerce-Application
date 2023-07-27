@@ -6,9 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../provider/payment_summary.dart';
 
-class Pagethree extends ConsumerWidget {
+class BuyNow extends ConsumerWidget {
   ExpansionTileController expansionTileController = ExpansionTileController();
-  Pagethree({super.key});
+  BuyNow({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

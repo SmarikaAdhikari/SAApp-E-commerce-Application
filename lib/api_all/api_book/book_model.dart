@@ -1,4 +1,38 @@
-class Books {
+// ignore: file_names
+class BookModel {
+  
+  final String id;
+  final String price;
+  final String title;
+  final dynamic image;
+  
+
+
+
+
+  BookModel({
+   
+    required this.id,
+    required this.price,
+    required this.title,
+    required this.image,
+    
+  });
+
+  factory BookModel.fromJson(Map<String, dynamic> json) {
+    return BookModel(
+      
+      id: json['id'],
+      price: json['price'],
+      title: json['title'],
+      image: json['image'],
+     
+    );
+  }
+}
+
+
+class BookDetailModel {
   final String description;
   final String id;
   final String price;
@@ -16,7 +50,7 @@ class Books {
 
 
 
-  Books({
+  BookDetailModel({
     required this.description,
     required this.id,
     required this.price,
@@ -31,8 +65,8 @@ class Books {
     required this.isFavorite,
   });
 
-  factory Books.fromJson(Map<String, dynamic> json) {
-    return Books(
+  factory BookDetailModel.fromJson(Map<String, dynamic> json) {
+    return BookDetailModel(
       description: json['description'],
       id: json['id'],
       price: json['price'],

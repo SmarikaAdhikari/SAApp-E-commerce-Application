@@ -1,9 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:app/api_all/api_book/api_provider.dart';
-import 'package:app/widgets/listswidget.dart';
+import 'package:app/widgets/best_sellers.dart';
 import 'package:flutter/material.dart';
-import 'package:app/widgets/searchwidget.dart';
+import 'package:app/widgets/new_release.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // import '../widgets/constants.dart';
@@ -14,7 +14,7 @@ class Firstpage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ignore: unused_local_variable
-    final FutureProvider = ref.watch(suggestionFutureProvider);
+    final FutureProvider = ref.watch(booksFutureProvider);
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -89,8 +89,11 @@ class Firstpage extends ConsumerWidget {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                             children: List.generate(data.length, (index) {
-                          return listswidget(
+                          return bestSellers(
                             data[index],
+                             data[index].id.toString(),
+                            
+                            ref,
                           );
                         }))),
                   ),
@@ -119,7 +122,7 @@ class Firstpage extends ConsumerWidget {
                           mainAxisSpacing: 5,
                         ),
                         itemBuilder: (context, index) {
-                          return searchWidget(
+                          return newRelease(
                             data[index],
                           );
                         },

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 
 // import '../main.dart';
-import '../widgets/genrelist.dart';
+// import '../widgets/genrelist.dart';
 
 class Popularauthors extends StatefulWidget {
   const Popularauthors({super.key});
@@ -20,11 +20,11 @@ class _PopularauthorsState extends State<Popularauthors> {
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
             itemBuilder: (context, position) {
-              return Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: GenreList(),
-                ),
+              return const Card(
+                // child: Padding(
+                //   padding: const EdgeInsets.all(15.0),
+                //   child: GenreList(),
+                // ),
               );
             },
             itemCount: 15,

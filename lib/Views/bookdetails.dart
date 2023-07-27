@@ -1,62 +1,79 @@
-// ignore_for_file: must_be_immutable, unused_local_variable, non_constant_identifier_names, no_leading_underscores_for_local_identifiers, unused_result
+// ignore_for_file: must_be_immutable, unused_local_variable, non_constant_identifier_names, no_leading_underscores_for_local_identifiers, unused_result, prefer_const_constructors_in_immutables
 
 import 'dart:convert';
 
 import 'package:app/Views/Buynow.dart';
-import 'package:app/api_all/api_book/api_model.dart';
 import 'package:app/api_all/api_book/api_provider.dart';
+import 'package:app/widgets/best_sellers.dart';
+// import 'package:app/api_all/api_book/book_model.dart';
 // import 'package:app/pages/favoritepage.dart';
-import 'package:app/widgets/listswidget.dart';
+// import 'package:app/widgets/listswidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+// import 'package:nb_utils/nb_utils.dart';
 
 // import '../provider/icon_color.dart';
 import '../api_all/api_book/api_service.dart';
 import '../widgets/author.dart';
 // import '../widgets/constants.dart';
 
-class Pageone extends ConsumerStatefulWidget {
-  Pageone({super.key, required this.data});
-  Books data;
+class BookDetails extends ConsumerStatefulWidget {
+  BookDetails({super.key});
+ 
 
   @override
-  ConsumerState<Pageone> createState() => _PageoneState();
+  ConsumerState<BookDetails> createState() => _BookDetailsState();
 }
 
-class _PageoneState extends ConsumerState<Pageone> {
+class _BookDetailsState extends ConsumerState<BookDetails> {
   @override
   Widget build(BuildContext context) {
-    final FutureProvider = ref.watch(suggestionFutureProvider);
+    final FutureProvider = ref.watch(bookByIdFutureProvider);
+    final listProvider = ref.watch(booksFutureProvider);
 
     // final List<String> items = List<String>.generate(5, (i) => '$i');
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: 
-            widget.data.isFavorite ?
-            const Icon(
-              Icons.star,
-              color: Colors.yellow
-
-            ):
-             const Icon(
-              Icons.star_border_outlined,
+          FutureProvider.when(
+           data: (data) => 
+                
+            IconButton(
+              icon: 
+              data.isFavorite ?
+              const Icon(
+                Icons.star,
+                color: Colors.yellow
+          
+              ):
+               const Icon(
+                Icons.star_border_outlined,
+              ),
+              onPressed: () {
+          
+               ref.read(apiServiceProvider).addFavorite(data.id.toString()).then((value){
+ref.refresh(booksFutureProvider);
+               });
+               
+                
+          
+          
+          
+              },
             ),
-            onPressed: () {
-
-             ref.read(apiServiceProvider).addFavorite(widget.data.id.toString());
-             ref.refresh(suggestionFutureProvider);
-              
-
-
-
+            error: (Object error, StackTrace stackTrace) {
+              return Text(error.toString());
             },
+            loading: () => const CircularProgressIndicator(),
+            
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: 
+     FutureProvider.when(
+                data: (data) => 
+      SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
           child:
@@ -64,14 +81,14 @@ class _PageoneState extends ConsumerState<Pageone> {
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: Row(children: [
-                widget.data.image == null
+                data.image == null
                     ? Image.asset(
                         'view/kitabalaya.png',
                         fit: BoxFit.cover,
                         height: 150,
                         width: 180,
                       )
-                    : Image.memory(base64Decode(widget.data.image),
+                    : Image.memory(base64Decode(data.image),
                         height: 120, width: 100),
                 const SizedBox(
                   width: 50,
@@ -83,13 +100,13 @@ class _PageoneState extends ConsumerState<Pageone> {
                 ),
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(
-                    widget.data.title,
+                    data.title,
                     style: const TextStyle(
                         fontSize: 15, fontWeight: FontWeight.bold),
                   ),
-                  Text(widget.data.price, style: const TextStyle(fontSize: 15)),
+                  Text(data.price, style: const TextStyle(fontSize: 15)),
                   Text(
-                    widget.data.author.name,
+                    data.author.name,
                     style: const TextStyle(fontSize: 15),
                   ),
                 ]),
@@ -106,7 +123,7 @@ class _PageoneState extends ConsumerState<Pageone> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                widget.data.description,
+                data.description,
                 style: const TextStyle(fontSize: 15),
               ),
             ),
@@ -118,7 +135,7 @@ class _PageoneState extends ConsumerState<Pageone> {
 
             // ignore: sized_box_for_whitespace
             Container(
-              child: author(widget.data),
+              child: author(data),
             ),
             const Divider(
               color: Colors.grey,
@@ -134,7 +151,7 @@ class _PageoneState extends ConsumerState<Pageone> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      Get.to(() => Pagethree());
+                      Get.to(() => BuyNow());
                     },
                     child: const Row(
                       children: [
@@ -147,7 +164,7 @@ class _PageoneState extends ConsumerState<Pageone> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      Get.to(() => Pagethree());
+                      Get.to(() => BuyNow());
                     },
                     child: const Row(
                       children: [Text("Buy Now"), Icon(Icons.bookmark)],
@@ -161,13 +178,17 @@ class _PageoneState extends ConsumerState<Pageone> {
               "You may also like",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
-            FutureProvider.when(
+            listProvider.when(
                 data: (data) => SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                         children: List.generate(data.length, (index) {
-                      return listswidget(
+                      return 
+                      bestSellers(
                         data[index],
+                        data[index].id,
+                        ref
+                      
                       );
                     }))),
                 error: (Object error, StackTrace stackTrace) {
@@ -182,6 +203,12 @@ class _PageoneState extends ConsumerState<Pageone> {
           ]),
         ),
       ),
+       error: (Object error, StackTrace stackTrace) {
+                    return Text(error.toString());
+                  },
+                  loading: () {
+                    return const CircularProgressIndicator();
+                  }),
     );
   }
 }

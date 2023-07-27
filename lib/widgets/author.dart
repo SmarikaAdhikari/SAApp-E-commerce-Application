@@ -1,9 +1,9 @@
-import 'package:app/api_all/api_book/api_model.dart';
+import 'package:app/api_all/api_book/book_model.dart';
 import 'package:app/pages/searchpage.dart';
 import 'package:flutter/material.dart';
 
 Widget author(
-  Books  data,
+  BookDetailModel  data,
 ) {
   return  Padding(
     padding: const EdgeInsets.all(8),
@@ -18,7 +18,7 @@ Widget author(
                 style: TextStyle(fontSize: 13,color:Colors.black, fontWeight: FontWeight.bold),
               ),
               Text(
-                Genre[ data.genre],
+                Genres[ data.genre],
                 style:const  TextStyle(fontSize: 12),
               ),
              

@@ -2,16 +2,17 @@
 
 import 'package:app/widgets/genrewidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../widgets/constants.dart';
 
-class SearchPage extends StatefulWidget {
+class SearchPage extends ConsumerStatefulWidget {
   const SearchPage({super.key});
 
   @override
-  State<SearchPage> createState() => _SearchPageState();
+  ConsumerState<SearchPage> createState() => _SearchPageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _SearchPageState extends ConsumerState<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,10 +46,13 @@ class _SearchPageState extends State<SearchPage> {
             ),
             itemBuilder: (context, index) {
               return genreWidget(
-                Genre[index].toString( ),
+                Genres[index].toString(),
+                index,
+               ref
+
               );
           },
-            itemCount: Genre.length,
+            itemCount: Genres.length,
           ),
         ),
       ),
@@ -56,7 +60,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 }
 
-List<String> Genre = [
+List<String> Genres = [
   'Literary Fiction',
   'Contemporary Romance',
   'Crime Thriller',
@@ -84,6 +88,5 @@ List<String> Genre = [
   'Poetry / Plays',
   'Comics / Graphic Novels',
   'Music / Film',
-  'Romance',
-  'Historical Fiction',
+  'Romance'
 ];

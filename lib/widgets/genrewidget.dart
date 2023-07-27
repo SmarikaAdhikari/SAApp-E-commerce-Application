@@ -1,22 +1,27 @@
-import 'package:app/Views/listgenre.dart';
+import 'package:app/Views/Enum_list.dart';
+import 'package:app/api_all/api_genre/api_provider.dart';
 // import 'package:app/pages/searchpage.dart';
 // import 'package:app/api/api_model.dart';
 // import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 // import '../pages/searchpage.dart';
 
 Widget genreWidget(String name,
-// Books data,
-// Genre name,
+int index,
+WidgetRef ref
+
 
     ) {
-  return TextButton(
-    onPressed: () {
-      Get.to(() => const Pagetwo(
-          
-          ));
+  return InkWell(
+    onTap: () {
+      ref.read(genreStateProvider.notifier).update((state) => index);
+      Get.to(() => 
+      const EnumList(          
+          )
+          );
     },
     child: Container(
         padding: const EdgeInsets.only(
@@ -30,6 +35,8 @@ Widget genreWidget(String name,
           color:const Color.fromARGB(255, 170, 209, 240),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               "pics/north.jpeg",

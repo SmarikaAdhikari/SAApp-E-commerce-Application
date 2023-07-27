@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 
 // import '../main.dart';
-import '../widgets/genrelist.dart';
+// import '../widgets/genrelist.dart';
 
 class Newreleases extends StatefulWidget {
   const Newreleases({super.key});
@@ -20,11 +20,11 @@ class _NewreleasesState extends State<Newreleases> {
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
             itemBuilder: (context, position) {
-              return Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: GenreList(),
-                ),
+              return const Card(
+                // child: Padding(
+                //   padding: const EdgeInsets.all(15.0),
+                //   child: GenreList(),
+                // ),
               );
             },
             itemCount: 15,

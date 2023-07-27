@@ -7,15 +7,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../services/dio.dart';
 import '../../utils/my_config.dart';
 
-final userServiceEnumProvider= Provider<ApiService>((ref) => ApiService());
+final genreProvider= Provider<ApiService>((ref) => ApiService());
 
 class ApiService {
-  Future<EnumModel> getEnum() async {
-    const url = "book/getBooksByEnum/";
+  Future<List<EnumModel> >getGenreById(int number) async {
+    final url = "/book/getBooksByEnum/$number";
     try {
       final res = await Api().get(MyConfig.appUrl + url);
-      final data = json.decode(res.data);
-      return  EnumModel.fromJson(data);
+      List<dynamic> data = json.decode(res.data);
+      
+      return data.map((e) => EnumModel.fromJson(e)).toList();
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }

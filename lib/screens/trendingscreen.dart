@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 
-import '../widgets/genrelist.dart';
+// import '../widgets/genrelist.dart';
 
 class Trendingscreen extends StatefulWidget {
   const Trendingscreen({super.key});
@@ -20,11 +20,11 @@ class _TrendingscreenState extends State<Trendingscreen> {
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
             itemBuilder: (context, position) {
-              return Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: GenreList(),
-                ),
+              return const Card(
+                // child: Padding(
+                //   padding: const EdgeInsets.all(15.0),
+                //   child: GenreList(),
+                // ),
               );
             },
             itemCount: 15,

@@ -1,4 +1,4 @@
-import 'package:app/Views/listgenre.dart';
+// import 'package:app/Views/listgenre.dart';
 import 'package:app/app_states/nav_states/nav_notifier.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
@@ -129,8 +129,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Pagetwo()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => const Pagetwo()));
             },
             icon: const Icon(Icons.person_2_outlined),
           )

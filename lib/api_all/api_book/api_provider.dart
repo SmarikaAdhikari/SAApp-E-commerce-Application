@@ -1,63 +1,23 @@
-import 'package:app/api_all/api_book/api_model.dart';
 import 'package:app/api_all/api_book/api_service.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final suggestionFutureProvider =
-    FutureProvider.autoDispose<List<Books>>((ref) async {
+import 'book_model.dart';
+
+final bookByIdStateProvider = StateProvider<String>((ref) => "");
+
+final bookByIdFutureProvider =
+    FutureProvider<BookDetailModel>((ref) async {
   // ignore: non_constant_identifier_names
   final ApiService = ref.watch(apiServiceProvider);
-  return ApiService.getProducts();
+  return ApiService.getBooksById(ref.watch(bookByIdStateProvider));
 });
 
-class FutureProviderPage extends ConsumerWidget {
-  const FutureProviderPage({super.key});
+final  booksFutureProvider=
+    FutureProvider<List<BookModel>>((ref) async {
+  // ignore: non_constant_identifier_names
+  final ApiService = ref.watch(apiServiceProvider);
+  return ApiService.getBooks();
+});
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // ignore: non_constant_identifier_names
-    final FutureProvider = ref.watch(suggestionFutureProvider);
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Future Provider'),
-        ),
-        body: 
-        Center(
-          child: 
-          FutureProvider.when(data: (data) {
-            return ListView.builder(
-              itemCount: data.length,
-              itemBuilder: (context, index) => Card(
-                child: Column(
-                  children: [
-                    Text(
-                      data[index].id.toString(),
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    Text(
-                      data[index].description,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    Text(
-                      data[index].price.toString(),
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    Text(
-                      data[index].title,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    
-                  ],
-                ),
-              ),
-            );
-          }, error: (error, _) {
-            return Text(error.toString());
-          }, loading: () {
-            return const CircularProgressIndicator();
-          }),
-        )
-        );
-  }
-}

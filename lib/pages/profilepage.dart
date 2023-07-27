@@ -6,7 +6,7 @@ import 'package:app/screens/edits.dart';
 // import 'package:app/widgets/date.dart';
 import 'package:app/widgets/favouritewidget.dart';
 // import 'package:app/widgets/new.dart';
-import 'package:app/widgets/profileWidget.dart';
+// import 'package:app/widgets/profileWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:get/get.dart';
@@ -72,9 +72,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
           data: (data) => 
            Row(
             children: [
-            profileWidget(
-                       data
-                      ),
+              
+            // profileWidget(
+            //            data
+            //           ),
                 
                   const Spacer(),
             ElevatedButton(
