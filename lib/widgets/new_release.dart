@@ -16,8 +16,8 @@ Widget newRelease(
   String id,
   WidgetRef ref,
 ) {
-  return TextButton(
-    onPressed: () {
+  return InkWell(
+    onTap: () {
       ref.read(bookByIdStateProvider.notifier).update((state) => data.id);
       Get.to(() => BookDetails(
         

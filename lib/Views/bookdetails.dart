@@ -8,6 +8,7 @@ import 'package:app/widgets/best_sellers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:nb_utils/nb_utils.dart';
 import '../api_all/api_book/api_service.dart';
 import '../widgets/author.dart';
 
@@ -24,7 +25,6 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
     final FutureProvider = ref.watch(bookByIdFutureProvider);
     final listProvider = ref.watch(booksFutureProvider);
 
-    // final List<String> items = List<String>.generate(5, (i) => '$i');
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -116,14 +116,22 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                         ),
                         const Text(
                           "Description",
+                           
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
 
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
+                          child: ReadMoreText(
                             data.description,
+                            trimMode: TrimMode.Line,
+                            trimLines: 5,
+                            trimCollapsedText: '...Show more',
+                           
+
+
+                        
                             style: const TextStyle(fontSize: 15),
                           ),
                         ),
