@@ -1,20 +1,14 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable
 
-// import 'package:app/api_user/api_user_service.dart';
+
 import 'package:app/screens/edits.dart';
-// import 'package:app/widgets/bio.dart';
-// import 'package:app/widgets/date.dart';
 import 'package:app/widgets/favouritewidget.dart';
-// import 'package:app/widgets/new.dart';
-// import 'package:app/widgets/profileWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:get/get.dart';
 import 'package:get/get.dart';
-
 import '../api_all/api_user/api_user_provider.dart';
-// import '../widgets/constants.dart';
 import '../widgets/orderwidget.dart';
+import '../widgets/profileWidget.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
@@ -50,10 +44,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: 130,)
-              //  Container(
-              //   height: 120,
-              //   color: const Color.fromARGB(255, 170, 208, 239),
-              // ),
+             
             ),
             const Positioned(
               bottom: 0,
@@ -73,9 +64,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
            Row(
             children: [
               
-            // profileWidget(
-            //            data
-            //           ),
+            profileWidget(
+                       data
+                      ),
                 
                   const Spacer(),
             ElevatedButton(
@@ -102,77 +93,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
             return const CircularProgressIndicator();
            },
         ),
-
-        // Row(children: [
-        //   Expanded(
-        //     child: Padding(
-        //       padding: const EdgeInsets.all(8.0),
-        //       child: Column(
-        //         crossAxisAlignment: CrossAxisAlignment.start,
-        //         children: [
-        //           StreamBuilder<String>(
-        //               stream: newcontroller.stream,
-        //               builder: (context, snapshot) {
-        //                 if (snapshot.hasData) {
-        //                   return Text(
-        //                     snapshot.data.toString(),
-        //                     style: const TextStyle(
-        //                         fontWeight: FontWeight.bold, fontSize: 15),
-        //                   );
-        //                 } else {
-        //                   return const Text(
-        //                     "---",
-        //                     style: TextStyle(
-        //                         fontWeight: FontWeight.bold, fontSize: 15),
-        //                   );
-        //                 }
-        //               }),
-        //           StreamBuilder<String>(
-        //               stream: biocontroller.stream,
-        //               builder: (context, snapshot) {
-        //                 if (snapshot.hasData) {
-        //                   return Text(
-        //                     snapshot.data.toString(),
-        //                     style: const TextStyle(fontSize: 15),
-        //                   );
-        //                 } else {
-        //                   return const Text(
-        //                     "---",
-        //                     style: TextStyle(fontSize: 15),
-        //                   );
-        //                 }
-        //               }),
-        //           Row(
-        //             children: [
-        //               const Icon(
-        //                 Icons.calendar_month_outlined,
-        //                 size: 15,
-        //               ),
-        //               const Text(
-        //                 "Joined Date:",
-        //                 style: TextStyle(fontSize: 15),
-        //               ),
-        //               // StreamBuilder<String>(
-        //               //     stream: datecontroller.stream,
-        //               //     builder: (context, snapshot) {
-        //               //       if (snapshot.hasData) {
-        //               //         return Text(
-        //               //           snapshot.data.toString(),
-        //               //           style: const TextStyle(fontSize: 15),
-        //               //         );
-        //               //       } else {
-        //               //         return const Text(
-        //               //           "---",
-        //               //           style: TextStyle(fontSize: 15),
-        //               //         );
-        //               //       }
-        //               //     }),
-        //             ],
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ),
 
         SizedBox(
           height: 60,

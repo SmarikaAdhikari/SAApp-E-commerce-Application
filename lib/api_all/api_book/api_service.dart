@@ -7,8 +7,6 @@ import 'package:app/services/dio.dart';
 import 'package:app/utils/my_config.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// import '../api_user/api_user_model.dart';
-// import 'package:nb_utils/nb_utils.dart';
 
 final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
 
@@ -55,5 +53,20 @@ class ApiService {
       throw Exception('Error getting suggestion $e');
     }
   }
+
+  //    Future<void> addReadingList(String bookId) async {
+  //   const url = "/readinglist/createreadinglist";
+  //   var data = {
+  //     "bookId": bookId,
+  //   };
+  //   try {
+
+  //     final res = await Api().post(MyConfig.appUrl + url, data: data);
+     
+      
+  //   } catch (e) {
+  //     throw Exception('Error getting suggestion $e');
+  //   }
+  // }
  
 }

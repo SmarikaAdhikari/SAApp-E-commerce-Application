@@ -1,4 +1,4 @@
-import 'package:app/Views/Enum_list.dart';
+import 'package:app/Views/enumlist.dart';
 import 'package:app/api_all/api_genre/api_provider.dart';
 // import 'package:app/pages/searchpage.dart';
 // import 'package:app/api/api_model.dart';
@@ -32,24 +32,23 @@ WidgetRef ref
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9),
-          color:const Color.fromARGB(255, 170, 209, 240),
+          color:const Color.fromARGB(255, 194, 220, 241),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               "pics/north.jpeg",
-              fit: BoxFit.cover, height: 80, width:120,
+              fit: BoxFit.cover, height: 90, width:140,
             ),
             const SizedBox(height:10),
-         Expanded(
-           child: Text( name,
-                  style: const TextStyle(
-                    
-                    fontWeight: FontWeight.bold,
-                  )),
-         ),
+           Text( name,
+                style: const TextStyle(
+                  
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                )),
           ],
         )),
   );

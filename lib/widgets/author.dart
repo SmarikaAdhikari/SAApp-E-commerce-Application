@@ -12,7 +12,6 @@ Widget author(
         Expanded(
           child: Column(
             children: [
-            //  const   SizedBox(width: 40),
              const  Text(
                 "Genre",
                 style: TextStyle(fontSize: 13,color:Colors.black, fontWeight: FontWeight.bold),

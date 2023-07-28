@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:app/widgets/new_release.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// import '../widgets/constants.dart';
 
 class Firstpage extends ConsumerWidget {
   const Firstpage({super.key});
@@ -117,13 +116,15 @@ class Firstpage extends ConsumerWidget {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
-                          childAspectRatio:1.5 / 2,
+                          childAspectRatio:1.2 / 2,
                           crossAxisSpacing: 5,
                           mainAxisSpacing: 5,
                         ),
                         itemBuilder: (context, index) {
                           return newRelease(
                             data[index],
+                             data[index].id.toString(),
+                            ref,
                           );
                         },
                         itemCount: data.length,

@@ -64,7 +64,9 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                 child: Row(
                   children: [
                     IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.trending_up)),
+                        onPressed: (
+                          
+                        ) {}, icon: const Icon(Icons.trending_up)),
                     const Text(
                       "Trending",
                       style: TextStyle(fontSize: 20),

@@ -1,17 +1,11 @@
-// import 'package:app/api/api_model.dart';
-// ignore_for_file: unused_local_variable
 
-// import 'package:app/Views/Buynow.dart';
-// import 'package:app/Views/bookdetails.dart';
-// import 'package:app/api/api_model.dart';
 import 'package:app/Views/Buynow.dart';
 import 'package:app/widgets/genrelist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-
 import '../api_all/api_genre/api_provider.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 class EnumList extends ConsumerStatefulWidget {
   const EnumList({super.key, });
@@ -33,7 +27,7 @@ class _EnumListState extends ConsumerState<EnumList> {
         child: TextButton(
           onPressed: (){
              Get.to(() => BuyNow(
-            // data: data,
+            
              ));
             
           },

@@ -1,4 +1,5 @@
 // import 'package:app/main.dart';
+import 'package:app/widgets/drawerWidget.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 
@@ -20,12 +21,12 @@ class _BestsellersState extends State<Bestsellers> {
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
             itemBuilder: (context, position) {
-              return const Card(
-                // child: Padding(
-                //   padding: const EdgeInsets.all(15.0),
-                //   child: 
-                //   GenreList(),
-                // ),
+              return  Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: 
+                  drawerWidget(),
+                ),
               );
             },
             itemCount: 15,

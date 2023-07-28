@@ -1,3 +1,4 @@
+import 'package:app/widgets/drawerWidget.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 
@@ -20,11 +21,11 @@ class _NewreleasesState extends State<Newreleases> {
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
             itemBuilder: (context, position) {
-              return const Card(
-                // child: Padding(
-                //   padding: const EdgeInsets.all(15.0),
-                //   child: GenreList(),
-                // ),
+              return Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: drawerWidget(),
+                ),
               );
             },
             itemCount: 15,
