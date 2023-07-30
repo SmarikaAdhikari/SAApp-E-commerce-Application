@@ -54,19 +54,21 @@ class ApiService {
     }
   }
 
-  //    Future<void> addReadingList(String bookId) async {
-  //   const url = "/readinglist/createreadinglist";
-  //   var data = {
-  //     "bookId": bookId,
-  //   };
-  //   try {
+     Future<List<FavModel>> getAllFavorites() async {
+    const url = "/favorite/getAllFavorites";
+   
+    try {
 
-  //     final res = await Api().post(MyConfig.appUrl + url, data: data);
+      final res = await Api().get(MyConfig.appUrl + url);
+      Map<String, dynamic> map = json.decode(res.data);
+
+       List data = map["book"];
+      return data.map((e) => FavModel.fromJson(e)).toList();
      
       
-  //   } catch (e) {
-  //     throw Exception('Error getting suggestion $e');
-  //   }
-  // }
+    } catch (e) {
+      throw Exception('Error getting suggestion $e');
+    }
+  }
  
 }

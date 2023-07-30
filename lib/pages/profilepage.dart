@@ -2,7 +2,7 @@
 
 
 import 'package:app/screens/edits.dart';
-import 'package:app/widgets/favouritewidget.dart';
+// import 'package:app/widgets/favouritewidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
@@ -123,7 +123,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                 ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Card(child: favouriteWidget());
+                    return Card(child: orderWidget());
                   },
                 ),
                 ListView.builder(

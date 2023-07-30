@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'book_model.dart';
 
 final bookByIdStateProvider = StateProvider<String>((ref) => "");
-
+final  favBookFutureProvider = StateProvider<String>((ref) => "");
 final bookByIdFutureProvider =
     FutureProvider<BookDetailModel>((ref) async {
   // ignore: non_constant_identifier_names
@@ -19,5 +19,13 @@ final  booksFutureProvider=
   // ignore: non_constant_identifier_names
   final ApiService = ref.watch(apiServiceProvider);
   return ApiService.getBooks();
+});
+
+
+final  favFutureProvider =
+    FutureProvider<List<FavModel>>((ref) async {
+  // ignore: non_constant_identifier_names
+  final ApiService = ref.watch(apiServiceProvider);
+  return ApiService.getAllFavorites();
 });
 

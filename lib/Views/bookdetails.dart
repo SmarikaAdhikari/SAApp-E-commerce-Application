@@ -33,6 +33,8 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
               children: [
                 IconButton(onPressed: ()
                 {
+
+                  //  ref.read(apiServiceProvider.notifier).update((state) =>);
                   //  ref
                   //       .read(apiServiceProvider)
                   //       .addReadingList(data.id.toString())
@@ -53,7 +55,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                         .read(apiServiceProvider)
                         .addFavorite(data.id.toString())
                         .then((value) {
-                      ref.refresh(booksFutureProvider);
+                      ref.refresh(bookByIdFutureProvider);
                     });
                   },
                 ),

@@ -110,7 +110,8 @@ class Firstpage extends ConsumerWidget {
                       fontWeight: FontWeight.bold)),
               // const SizedBox(height: 10),
               FutureProvider.when(
-                  data: (data) => GridView.builder(
+                  data: (data) => 
+                  GridView.builder(
                         shrinkWrap: true,
                         physics: const ScrollPhysics(),
                         gridDelegate:
