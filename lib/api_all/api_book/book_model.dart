@@ -45,6 +45,7 @@ class BookDetailModel {
   final String? releasedate;
   final int genre;
   final bool isFavorite;
+  final bool isReading;
   
 
 
@@ -63,6 +64,7 @@ class BookDetailModel {
     required this.length,
     required this.releasedate,
     required this.isFavorite,
+    required this.isReading,
   });
 
   factory BookDetailModel.fromJson(Map<String, dynamic> json) {
@@ -80,6 +82,7 @@ class BookDetailModel {
       length: json['length'],
       releasedate: json['releasedate'],
       isFavorite: json['isFavorite'],
+      isReading: json['isReading'],
     );
   }
 }

@@ -7,11 +7,12 @@ import 'book_model.dart';
 
 final bookByIdStateProvider = StateProvider<String>((ref) => "");
 final  favBookFutureProvider = StateProvider<String>((ref) => "");
+final  readBookFutureProvider = StateProvider<String>((ref) => "");
 final bookByIdFutureProvider =
-    FutureProvider<BookDetailModel>((ref) async {
+    FutureProvider.family<BookDetailModel, String>((ref, id) async {
   // ignore: non_constant_identifier_names
   final ApiService = ref.watch(apiServiceProvider);
-  return ApiService.getBooksById(ref.watch(bookByIdStateProvider));
+  return ApiService.getBooksById(id);
 });
 
 final  booksFutureProvider=
@@ -27,5 +28,12 @@ final  favFutureProvider =
   // ignore: non_constant_identifier_names
   final ApiService = ref.watch(apiServiceProvider);
   return ApiService.getAllFavorites();
+});
+
+final  readFutureProvider =
+    FutureProvider<List<FavModel>>((ref) async {
+  // ignore: non_constant_identifier_names
+  final ApiService = ref.watch(apiServiceProvider);
+  return ApiService.getAllReading();
 });
 

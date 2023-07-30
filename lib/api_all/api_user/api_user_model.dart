@@ -5,6 +5,7 @@ class User {
  final String password;
  final String phone;
   final String address;
+ final  dynamic image;
 
   User({
     required this.id,
@@ -13,6 +14,7 @@ class User {
     required this.password,
     required this.phone,
     required this.address,
+    required this.image,
 
   });
   factory User.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class User {
       password: json['password'],
       phone: json['phone'],
       address: json['address'],
+      image: json['image'],
    
     );
   } 

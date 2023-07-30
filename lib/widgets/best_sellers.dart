@@ -19,7 +19,7 @@ Widget bestSellers(
       onPressed: () {
         ref.read(bookByIdStateProvider.notifier).update((state) => data.id);
         Get.to(() => BookDetails(
-            
+            id: data.id,
             ));
        
       },

@@ -1,5 +1,7 @@
 // ignore_for_file: file_names, must_be_immutable
 
+// import 'package:app/widgets/read.dart';
+import 'package:app/widgets/orderwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -36,26 +38,9 @@ class BuyNow extends ConsumerWidget {
                       // color: mainColor,
                       child: Padding(
                         padding: const EdgeInsets.all(5.0),
-                        child: Row(children: [
-                          Image.asset(
-                            "pics/north.jpeg",
-                            height: 100,
-                            width: 100,
-                          ),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          const Column(
-                            children: [
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Text("Name:", style: TextStyle(fontSize: 15)),
-                              Text("Price:", style: TextStyle(fontSize: 15)),
-                              Text("Quality:", style: TextStyle(fontSize: 15)),
-                            ],
-                          ),
-                        ]),
+                        child: orderWidget(
+
+                        ),
                       ),
                     );
                   },

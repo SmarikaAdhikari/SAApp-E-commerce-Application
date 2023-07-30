@@ -2,23 +2,25 @@
 
 import 'dart:convert';
 
-import 'package:app/api_all/api_book/book_model.dart';
+import 'package:app/api_all/api_book/api_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 import '../Views/bookdetails.dart';
-import '../api_all/api_book/api_provider.dart';
+import '../api_all/api_book/book_model.dart';
 
-Widget favouriteWidget(
+Widget readWidget(
 FavModel data,
   String id,
  WidgetRef ref,
 
-) {
-  return InkWell(
+)
+{
+ 
+ return InkWell(
     onTap: () {
-      ref.read(favBookFutureProvider.notifier).update((state) => data.id);
+      ref.read(readBookFutureProvider.notifier).update((state) => data.id);
       Get.to(() => BookDetails(
         id: data.book.id,
             // data: data,
@@ -48,3 +50,5 @@ FavModel data,
     ),
   );
 }
+
+

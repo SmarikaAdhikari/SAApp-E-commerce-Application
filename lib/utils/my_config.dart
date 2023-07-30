@@ -4,4 +4,4 @@ class MyConfig {
   MyConfig._();
 }
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0MTdhODEyLWFkOWUtNDgxYi05MTFmLThkMWIxYWFlNDc5YyIsImlhdCI6MTY5MDY5NjgxNCwiZXhwIjoxNjkzMjg4ODE0fQ.ijirU8nVdblUQKAypiYoGveMMZln-S5bZ6UfGkrTM1E";
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg1N2FjNjc3LWE0ZjgtNDJiMy04N2RkLTkzMmIzMTMyNmFkMyIsImlhdCI6MTY5MDcxNDM4NywiZXhwIjoxNjkzMzA2Mzg3fQ.lOktS4VGlBgul8cUbOIxH64_nYbYiDakGECO4PH2K7A";

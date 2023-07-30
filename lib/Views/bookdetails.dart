@@ -13,7 +13,8 @@ import '../api_all/api_book/api_service.dart';
 import '../widgets/author.dart';
 
 class BookDetails extends ConsumerStatefulWidget {
-  BookDetails({super.key});
+  BookDetails({super.key, required this.id});
+  final String id;
 
   @override
   ConsumerState<BookDetails> createState() => _BookDetailsState();
@@ -22,7 +23,7 @@ class BookDetails extends ConsumerStatefulWidget {
 class _BookDetailsState extends ConsumerState<BookDetails> {
   @override
   Widget build(BuildContext context) {
-    final FutureProvider = ref.watch(bookByIdFutureProvider);
+    final FutureProvider = ref.watch(bookByIdFutureProvider(widget.id));
     final listProvider = ref.watch(booksFutureProvider);
 
     return Scaffold(
@@ -32,16 +33,22 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
             data: (data) => Row(
               children: [
                 IconButton(
+                   icon: data.isReading
+                      ? const Icon(Icons.menu_book_outlined, color: Colors.blue)
+                      : const Icon(
+                          Icons.menu_book_outlined,
+                        ),
                     onPressed: () {
-                      //  ref.read(apiServiceProvider.notifier).update((state) =>);
-                      //  ref
-                      //       .read(apiServiceProvider)
-                      //       .addReadingList(data.id.toString())
-                      //       .then((value) {
-                      //     ref.refresh(booksFutureProvider);
-                      //   });
+                       
+                       ref
+                            .read(apiServiceProvider)
+                            .addReadingList(data.id.toString())
+                            .then((value) {
+                          ref.refresh(bookByIdFutureProvider(widget.id));
+                          ref.refresh(readFutureProvider);
+                        });
                     },
-                    icon: const Icon(Icons.menu_book_outlined)),
+                    ),
                 IconButton(
                   icon: data.isFavorite
                       ? const Icon(Icons.star, color: Colors.yellow)
@@ -53,8 +60,9 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                         .read(apiServiceProvider)
                         .addFavorite(data.id.toString())
                         .then((value) {
-                      ref.refresh(bookByIdFutureProvider);
+                      ref.refresh(bookByIdFutureProvider(widget.id));
                       ref.refresh(favFutureProvider);
+                     
                     });
                   },
                 ),

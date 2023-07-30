@@ -20,6 +20,7 @@ Widget newRelease(
     onTap: () {
       ref.read(bookByIdStateProvider.notifier).update((state) => data.id);
       Get.to(() => BookDetails(
+            id: data.id,
         
             // data: data,
           ));
