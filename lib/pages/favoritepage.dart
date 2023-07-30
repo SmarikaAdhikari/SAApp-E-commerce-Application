@@ -42,7 +42,7 @@ class _FavoritePageState extends ConsumerState<FavoritePage> {
               ),
             );
           },
-          // itemCount: data.length,
+          itemCount: data.length,
         ),
          error: (Object error, StackTrace stackTrace) {
                     return Text(error.toString());

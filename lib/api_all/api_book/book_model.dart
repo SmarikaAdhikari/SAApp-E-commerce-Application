@@ -113,33 +113,44 @@ class Publisher {
 
 // ignore: file_names
 class FavModel {
-  
-  final String id;
-  final Author author;
-  final String title;
-  final dynamic image;
-  
+    String id;
+    Book book;
 
+    FavModel({
+        required this.id,
+        required this.book,
+    });
 
-
-
-  FavModel({
-   
-    required this.id,
-    required this.author,
-    required this.title,
-    required this.image,
-    
-  });
-
-  factory FavModel.fromJson(Map<String, dynamic> json) {
-    return FavModel(
-      
-      id: json['id'],
-      author: Author.fromJson(json["Author"]),
-      title: json['title'],
-      image: json['image'],
-     
+    factory FavModel.fromJson(Map<String, dynamic> json) => FavModel(
+        id: json["id"],
+        book: Book.fromJson(json["book"]),
     );
-  }
+
+   
+}
+
+class Book {
+    String id;
+    String title;
+    String image;
+    int genre;
+    Author author;
+
+    Book({
+        required this.id,
+        required this.title,
+        required this.image,
+        required this.genre,
+        required this.author,
+    });
+
+    factory Book.fromJson(Map<String, dynamic> json) => Book(
+        id: json["id"],
+        title: json["title"],
+        image: json["image"],
+        genre: json["genre"],
+        author: Author.fromJson(json["Author"]),
+    );
+
+   
 }

@@ -31,19 +31,17 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
           FutureProvider.when(
             data: (data) => Row(
               children: [
-                IconButton(onPressed: ()
-                {
-
-                  //  ref.read(apiServiceProvider.notifier).update((state) =>);
-                  //  ref
-                  //       .read(apiServiceProvider)
-                  //       .addReadingList(data.id.toString())
-                  //       .then((value) {
-                  //     ref.refresh(booksFutureProvider);
-                  //   });
-
-
-                }, icon: const Icon(Icons.menu_book_outlined)),
+                IconButton(
+                    onPressed: () {
+                      //  ref.read(apiServiceProvider.notifier).update((state) =>);
+                      //  ref
+                      //       .read(apiServiceProvider)
+                      //       .addReadingList(data.id.toString())
+                      //       .then((value) {
+                      //     ref.refresh(booksFutureProvider);
+                      //   });
+                    },
+                    icon: const Icon(Icons.menu_book_outlined)),
                 IconButton(
                   icon: data.isFavorite
                       ? const Icon(Icons.star, color: Colors.yellow)
@@ -56,6 +54,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                         .addFavorite(data.id.toString())
                         .then((value) {
                       ref.refresh(bookByIdFutureProvider);
+                      ref.refresh(favFutureProvider);
                     });
                   },
                 ),
@@ -118,7 +117,6 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                         ),
                         const Text(
                           "Description",
-                           
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -130,10 +128,6 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                             trimMode: TrimMode.Line,
                             trimLines: 5,
                             trimCollapsedText: '...Show more',
-                           
-
-
-                        
                             style: const TextStyle(fontSize: 15),
                           ),
                         ),
@@ -172,7 +166,6 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                             const SizedBox(
                               width: 20,
                             ),
-                            
                             ElevatedButton(
                                 onPressed: () {
                                   Get.to(() => BuyNow());

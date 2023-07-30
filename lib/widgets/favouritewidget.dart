@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:convert';
 
 import 'package:app/api_all/api_book/book_model.dart';
@@ -27,16 +29,16 @@ FavModel data,
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          // data.widget=null?
-          Image.asset("pics/north.jpeg", height: 100, width: 100),
+          data.book.image ==  null 
+         ? Image.asset("pics/north.jpeg", height: 100, width: 100):
         
-          Image.memory(base64Decode(data.image.toString()),
+          Image.memory(base64Decode(data.book.image.toString()),
                     height: 120,width: 100,),
            Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(data.title),
-              Text(data.author.name),
+              Text(data.book.title),
+              Text(data.book.author.name),
             
             ],
           ),

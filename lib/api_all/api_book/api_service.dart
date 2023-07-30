@@ -60,9 +60,8 @@ class ApiService {
     try {
 
       final res = await Api().get(MyConfig.appUrl + url);
-      Map<String, dynamic> map = json.decode(res.data);
+      List data = json.decode(res.data);
 
-       List data = map["book"];
       return data.map((e) => FavModel.fromJson(e)).toList();
      
       
