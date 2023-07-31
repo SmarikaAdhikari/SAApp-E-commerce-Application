@@ -29,7 +29,7 @@ class Firstpage extends ConsumerWidget {
                       height: 200,
                       decoration: const BoxDecoration(
                         // borderRadius: BorderRadius.circular(9),
-                        color: Color.fromARGB(255, 170, 187, 193),
+                        color: Color.fromARGB(255, 206, 228, 255),
                       ),
                     ),
                   ),
@@ -45,13 +45,13 @@ class Firstpage extends ConsumerWidget {
                                 Text("Embrace your inner bookworm...",
                                     style: TextStyle(
                                         fontSize: 12,
-                                        color: Color.fromARGB(255, 0, 43, 116),
+                                        color: Color.fromARGB(255, 3, 36, 92),
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FontStyle.italic)),
                                 Text("with",
                                     style: TextStyle(
                                       fontSize: 10,
-                                      color: Color.fromARGB(255, 0, 43, 116),
+                                      color: Color.fromARGB(255, 3, 36, 92),
                                       fontWeight: FontWeight.bold,
                                     )),
                                 Image(

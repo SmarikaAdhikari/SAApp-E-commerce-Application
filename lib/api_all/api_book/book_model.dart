@@ -135,7 +135,7 @@ class FavModel {
 class Book {
     String id;
     String title;
-    String image;
+    dynamic image;
     int genre;
     Author author;
 

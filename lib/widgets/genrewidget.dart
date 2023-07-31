@@ -39,9 +39,11 @@ WidgetRef ref
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              "pics/north.jpeg",
-              fit: BoxFit.cover, height: 90, width:140,
-            ),
+                          'view/kitabalaya.png',
+                          fit: BoxFit.cover,
+                          height: 90,
+                          width: 130,
+                        ),
             const SizedBox(height:10),
            Text( name,
                 style: const TextStyle(

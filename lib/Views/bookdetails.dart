@@ -88,11 +88,10 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                           child: Row(children: [
                             data.image == null
                                 ? Image.asset(
-                                    'view/kitabalaya.png',
-                                    fit: BoxFit.cover,
-                                    height: 150,
-                                    width: 180,
-                                  )
+                    "pics/daisy.jpeg",
+                    height: 120,
+                    width: 100,
+                  )
                                 : Image.memory(base64Decode(data.image),
                                     height: 120, width: 100),
                             const SizedBox(

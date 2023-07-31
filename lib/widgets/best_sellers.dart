@@ -14,9 +14,9 @@ Widget bestSellers(
   WidgetRef ref,
 ) {
   return Padding(
-    padding: const EdgeInsets.only(left: 0, top: 10, bottom: 10),
-    child: TextButton(
-      onPressed: () {
+    padding: const EdgeInsets.all(8),
+    child: InkWell(
+      onTap: () {
         ref.read(bookByIdStateProvider.notifier).update((state) => data.id);
         Get.to(() => BookDetails(
             id: data.id,

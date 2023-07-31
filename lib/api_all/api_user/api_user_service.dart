@@ -34,7 +34,7 @@ class ApiService {
       
           };
     try {
-      // print("entered");
+     
 
       final res = await Api().put(MyConfig.appUrl + url, data: data);
      

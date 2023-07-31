@@ -31,7 +31,11 @@ FavModel data,
       child: Row(
         children: [
           data.book.image ==  null 
-         ? Image.asset("pics/north.jpeg", height: 100, width: 100):
+         ? Image.asset(
+                    "pics/daisy.jpeg",
+                    height: 120,
+                    width: 100,
+                  ):
         
           Image.memory(base64Decode(data.book.image.toString()),
                     height: 120,width: 100,),
