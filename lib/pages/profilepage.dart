@@ -5,7 +5,7 @@
 
 import 'dart:convert';
 
-import 'package:app/screens/edits.dart';
+import 'package:app/pages/edits.dart';
 import 'package:app/widgets/read.dart';
 // import 'package:app/widgets/favouritewidget.dart';
 import 'package:flutter/material.dart';
@@ -110,6 +110,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
               onPressed: () {
               Get.to(() => Edits(
                 name: data.name,
+                bio: data.bio,
                 email: data.email,
                 password: data.password,
               ));
@@ -140,7 +141,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
             tabs: const [
               Tab(
                 icon: Icon(Icons.bookmark_added),
-                text: "Reading List",
+                text: "Want to Read",
               ),
               Tab(
                 icon: Icon(Icons.credit_card),

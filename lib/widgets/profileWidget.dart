@@ -13,8 +13,8 @@ Widget profileWidget(
      crossAxisAlignment: CrossAxisAlignment.start,
      children: [
        Text(profile.name),
+       Text(profile.bio),
        Text(profile.email),
-       Text(profile.phone),
      ],
         ),
   );

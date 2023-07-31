@@ -37,6 +37,7 @@ class UserProviderPage extends ConsumerWidget {
                 Text(data.phone),
                 Text(data.address),
                 Text(data.image),
+                Text(data.bio),
               ],
             );
           },

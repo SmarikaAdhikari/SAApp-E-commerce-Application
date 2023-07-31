@@ -24,12 +24,13 @@ class ApiService {
     }
   }
 
-   Future<void> updateUserProfile(String name, String email, String password) async {
+   Future<void> updateUserProfile(String name, String email, String password, String bio) async {
     const url = "/user/updateUserProfile";
     var data = {
       "name": name,
      "email": email,
        "password": password,
+       "bio": bio,
       
           };
     try {

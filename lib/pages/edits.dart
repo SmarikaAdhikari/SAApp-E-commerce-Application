@@ -14,8 +14,9 @@ import 'package:get/get.dart';
 
 class Edits extends ConsumerStatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
-  Edits({super.key, required this.name, required this.email, required this.password});
+  Edits({super.key, required this.name, required this.email, required this.bio, required this.password});
   final String name;
+  final String bio;
   final String email;
   final String password;
 
@@ -32,6 +33,7 @@ class _EditsState extends ConsumerState<Edits> {
   @override
   void initState(){
     nameEditingController.text = widget.name;
+     bioEditingController.text = widget.bio;
     emailEditingController.text = widget.email;
     passwordEditingController.text = widget.password;
     super.initState();
@@ -58,6 +60,16 @@ class _EditsState extends ConsumerState<Edits> {
           SizedBox(
             width: 200,
             child: TextField(
+              controller: bioEditingController,
+              decoration: const InputDecoration(
+                hintText: "bio",
+              ),
+            ),
+          ),
+              const SizedBox(height: 10),
+          SizedBox(
+            width: 200,
+            child: TextField(
               controller: passwordEditingController,
               decoration: const InputDecoration(
                 hintText: "password",
@@ -75,7 +87,7 @@ class _EditsState extends ConsumerState<Edits> {
           ),
           ElevatedButton(
             onPressed: () {
-              ref.read(userServiceProvider).updateUserProfile(nameEditingController.value.text, emailEditingController.value.text, passwordEditingController.value.text).then((value) {
+              ref.read(userServiceProvider).updateUserProfile(nameEditingController.value.text, emailEditingController.value.text, passwordEditingController.value.text,bioEditingController.value.text,).then((value) {
                 ref.refresh(userFutureProvider);
               });
               
