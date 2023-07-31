@@ -98,5 +98,34 @@ class ApiService {
       throw Exception('Error getting suggestion $e');
     }
   }
+     Future<List<CartModel>> getAllCart() async {
+    const url = "/cart/getAllCart";
+   
+    try {
+
+      final res = await Api().get(MyConfig.appUrl + url);
+      List data = json.decode(res.data);
+
+      return data.map((e) => CartModel.fromJson(e)).toList();
+     
+      
+    } catch (e) {
+      throw Exception('Error getting suggestion $e');
+    }
+  }
+    Future<void> addCartList(String bookId) async {
+    const url = "/cart/addToCart";
+    var data = {
+      "bookId": bookId,
+    };
+    try {
+
+      final res = await Api().post(MyConfig.appUrl + url, data: data);
+     
+      
+    } catch (e) {
+      throw Exception('Error getting suggestion $e');
+    }
+  }
  
 }

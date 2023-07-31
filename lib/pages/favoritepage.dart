@@ -19,6 +19,9 @@ class _FavoritePageState extends ConsumerState<FavoritePage> {
   Widget build(BuildContext context) {
      final FavProvider = ref.watch(favFutureProvider);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Favorite'),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(
           right: 8.0,

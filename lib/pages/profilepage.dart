@@ -6,6 +6,7 @@
 import 'dart:convert';
 
 import 'package:app/pages/edits.dart';
+import 'package:app/widgets/drawerWidget.dart';
 import 'package:app/widgets/read.dart';
 // import 'package:app/widgets/favouritewidget.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import '../api_all/api_book/api_provider.dart';
 import '../api_all/api_user/api_user_provider.dart';
-import '../widgets/orderwidget.dart';
+// import '../widgets/orderwidget.dart';
 import '../widgets/profileWidget.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
@@ -72,7 +73,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
               
               CircleAvatar(
                 radius: 50.0,
-                backgroundColor: Colors.transparent,
+                backgroundColor: const Color.fromARGB(255, 0, 206, 203),
                 backgroundImage: 
               MemoryImage(base64Decode(data.image)),
             
@@ -190,7 +191,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                 ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Card(child: orderWidget());
+                    return Card(child: drawerWidget());
                   },
                 ),
               ],

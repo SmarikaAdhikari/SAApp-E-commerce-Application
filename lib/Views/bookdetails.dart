@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:app/Views/Buynow.dart';
 import 'package:app/api_all/api_book/api_provider.dart';
+// import 'package:app/pages/favoritepage.dart';
 import 'package:app/widgets/best_sellers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,7 +31,8 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
       appBar: AppBar(
         actions: [
           FutureProvider.when(
-            data: (data) => Row(
+            data: (data) => 
+            Row(
               children: [
                 IconButton(
                    icon: data.isReading
@@ -39,6 +41,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                           Icons.menu_book_outlined,
                         ),
                     onPressed: () {
+                      // Get.to(() => const FavoritePage());
                        
                        ref
                             .read(apiServiceProvider)
@@ -158,31 +161,49 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                         Row(
                           children: [
                             const SizedBox(
-                              width: 50,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  Get.to(() => BuyNow());
-                                },
-                                child: const Row(
-                                  children: [
-                                    Text("Add to Cart"),
-                                    Icon(Icons.add_shopping_cart)
-                                  ],
-                                )),
-                            const SizedBox(
                               width: 20,
                             ),
                             ElevatedButton(
                                 onPressed: () {
-                                  Get.to(() => BuyNow());
+                                  // Get.to(() => BuyNow());
+                                   ref
+                            .read(apiServiceProvider)
+                            .addCartList(data.id.toString())
+                            .then((value) {
+                          ref.refresh(bookByIdFutureProvider(widget.id));
+                          ref.refresh(cartFutureProvider);
+                        });
                                 },
-                                child: const Row(
+                                child: data.isCart
+                                ? const Row(
                                   children: [
-                                    Text("Buy Now"),
-                                    Icon(Icons.bookmark)
+                                    Text("Remove",style:TextStyle(color: Colors.red)),
+                                    Icon(Icons.add_shopping_cart,color:Colors.red)
                                   ],
-                                )),
+                                ):
+                                const Row(
+                                  children: [
+                                    Text("Add to Cart",style:TextStyle(color: Colors.black)),
+                                    Icon(Icons.add_shopping_cart,color:Colors.black)
+                                  ],
+                                )
+                                ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Visibility(
+                              visible: data.isCart,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Get.to(() => BuyNow());
+                                  },
+                                  child: const Row(
+                                    children: [
+                                      Text("Buy Now"),
+                                      Icon(Icons.bookmark)
+                                    ],
+                                  )),
+                            ),
                           ],
                         ),
                         const SizedBox(

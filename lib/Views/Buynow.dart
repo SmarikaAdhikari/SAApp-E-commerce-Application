@@ -1,6 +1,7 @@
-// ignore_for_file: file_names, must_be_immutable
+// ignore_for_file: file_names, must_be_immutable, non_constant_identifier_names
 
 // import 'package:app/widgets/read.dart';
+import 'package:app/api_all/api_book/api_provider.dart';
 import 'package:app/widgets/orderwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,6 +20,7 @@ class BuyNow extends ConsumerWidget {
     });
     // ignore: unused_local_variable
     final paymentData = ref.watch(expansionStateProvider);
+    final CartProvider = ref.watch(cartFutureProvider);
     return Scaffold(
         appBar: AppBar(
           title: const Center(child: Text("Payment Summary  ")),
@@ -29,24 +31,37 @@ class BuyNow extends ConsumerWidget {
             child: Column(children: [
               SizedBox(
                 height: 350,
-                child: ListView.builder(
-                  physics: const ScrollPhysics(),
+                child: CartProvider.when(
+                  data: (data) => 
+        ListView.builder(
+          physics: const ScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: 4,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      // color: mainColor,
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: orderWidget(
+          itemBuilder: (context, index) {
+            return Card(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: orderWidget(
+                data[index],
+                data[index].id.toString(),
+                ref,
 
-                        ),
-                      ),
-                    );
-                  },
+                  
                 ),
               ),
-              const SizedBox(
+            );
+          },
+          itemCount: data.length,
+        ),
+         error: (Object error, StackTrace stackTrace) {
+                    return Text(error.toString());
+                  },
+                  loading: () {
+                    return const CircularProgressIndicator();
+                  }
+
+              ),
+              ),
+               const SizedBox(
                 height: 10,
               ),
               const Text('Order Summary',

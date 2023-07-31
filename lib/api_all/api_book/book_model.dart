@@ -46,6 +46,7 @@ class BookDetailModel {
   final int genre;
   final bool isFavorite;
   final bool isReading;
+  final bool isCart;
   
 
 
@@ -65,6 +66,7 @@ class BookDetailModel {
     required this.releasedate,
     required this.isFavorite,
     required this.isReading,
+    required this.isCart,
   });
 
   factory BookDetailModel.fromJson(Map<String, dynamic> json) {
@@ -83,6 +85,7 @@ class BookDetailModel {
       releasedate: json['releasedate'],
       isFavorite: json['isFavorite'],
       isReading: json['isReading'],
+      isCart: json['isCart'],
     );
   }
 }
@@ -156,4 +159,48 @@ class Book {
     );
 
    
+}
+
+
+class CartModel {
+    String id;
+    String userId;
+    String bookId;
+    Kitab kitab;
+
+   CartModel ({
+        required this.id,
+        required this.userId,
+        required this.bookId,
+        required this.kitab,
+    });
+
+    factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
+        id: json["id"],
+        userId: json["userId"],
+        bookId: json["bookId"],
+        kitab: Kitab.fromJson(json["book"]),
+    );
+
+}
+class Kitab {
+    String id;
+    String title;
+    String price;
+    dynamic image;
+
+    Kitab({
+        required this.id,
+        required this.title,
+        required this.price,
+        required this.image,
+    });
+
+    factory Kitab.fromJson(Map<String, dynamic> json) => Kitab(
+        id: json["id"],
+        title: json["title"],
+        price: json["price"],
+        image: json["image"],
+    );
+
 }
