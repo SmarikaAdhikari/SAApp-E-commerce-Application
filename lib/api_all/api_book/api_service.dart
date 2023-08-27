@@ -96,6 +96,7 @@ class ApiService {
     try {
       final res = await Api().get(getAppUrl() + url);
       List datas = json.decode(res.data);
+      print(datas);
       final returnData = datas.map((e) => CartModel.fromJson(e)).toList();
       // final box = Hive.box<CartNotifierModel>('cart');
 

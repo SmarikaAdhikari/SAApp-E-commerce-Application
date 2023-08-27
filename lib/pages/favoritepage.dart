@@ -35,6 +35,7 @@ class _FavoritePageState extends ConsumerState<FavoritePage> {
                           data[index],
                           data[index].id.toString(),
                           ref,
+                          context,
                         ),
                       ),
                     );

@@ -1,5 +1,5 @@
 // import 'package:app/Views/bookdetails.dart';
-import 'package:app/Views/bookdetails.dart';
+// import 'package:app/Views/bookdetails.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,16 +12,19 @@ Widget newRelease(
   BookModel data,
   String id,
   WidgetRef ref,
+  BuildContext context,
 ) {
   return Padding(
     padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
     child: InkWell(
       onTap: () {
-        Get.to(() => BookDetails(
-              id: data.id,
 
-              // data: data,
-            ));
+        Get.toNamed("/bookdetails", arguments: {"id": id});
+        // Get.to(() => BookDetails(
+        //       id: data.id,
+
+        //       // data: data,
+        //     ));
       },
       child: Container(
         decoration: BoxDecoration(

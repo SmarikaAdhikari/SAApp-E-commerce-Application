@@ -13,14 +13,13 @@ Widget favouriteWidget(
   FavModel data,
   String id,
   WidgetRef ref,
+  BuildContext context,
 ) {
   return InkWell(
     onTap: () {
       ref.read(favBookFutureProvider.notifier).update((state) => data.id);
-      Get.to(() => BookDetails(
-            id: data.book.id,
-            // data: data,
-          ));
+     
+      Get.toNamed("/bookdetails", arguments: {"id": id});
     },
     child: Padding(
       padding: const EdgeInsets.all(8.0),

@@ -1,11 +1,12 @@
 // import 'package:app/api_all/api_book/book_model.dart';
+import 'package:app/api_all/api_book/book_model.dart';
 import 'package:app/api_all/api_book/cart_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Widget orderWidget(
-  CartNotifierModel data,
+  CartModel data,
   String id,
   WidgetRef ref,
 ) {
@@ -13,14 +14,14 @@ Widget orderWidget(
     padding: const EdgeInsets.all(8.0),
     child: Row(
       children: [
-        data.image == null
+        data.kitab.image == null
             ? Image.asset(
                 "pics/daisy.jpeg",
                 height: 120,
                 width: 100,
               )
             : CachedNetworkImage(
-                imageUrl: data.image,
+                imageUrl: data.kitab.image,
                 height: 120,
                 width: 100,
               ),
@@ -28,8 +29,8 @@ Widget orderWidget(
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(data.title),
-            Text(data.price.toString()),
+            Text(data.kitab.title),
+            Text(data.kitab.price),
           ],
         ),
         const Spacer(),
@@ -53,7 +54,7 @@ Widget orderWidget(
                 },
                 icon: const Icon(Icons.add),
               ),
-              Text(data.quantity.toString()),
+              Text("0"),
               IconButton(
                 onPressed: () {
                   // ref.read(cartProvider.notifier).decrement(data);

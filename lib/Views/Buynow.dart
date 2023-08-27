@@ -20,7 +20,7 @@ class BuyNow extends ConsumerWidget {
     });
     // ignore: unused_local_variable
     final paymentData = ref.watch(expansionStateProvider);
-    final CartProvider = ref.watch(cartHiveFutureProvider);
+    final CartProvider = ref.watch(cartFutureProvider);
     return Scaffold(
         appBar: AppBar(
           title: const Center(child: Text("Payment Summary  ")),
