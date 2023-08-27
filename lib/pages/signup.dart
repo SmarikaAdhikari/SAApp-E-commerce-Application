@@ -1,29 +1,50 @@
-import 'package:app/pages/loginpage.dart';
+import 'package:app/api_all/Auth/signup_repo.dart';
+import 'package:app/pages/update_ip_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:get/get.dart';
 
-class Signup extends StatefulWidget {
+class Signup extends ConsumerStatefulWidget {
   const Signup({super.key});
 
   @override
-  State<Signup> createState() => _SignupState();
+  ConsumerState<Signup> createState() => _SignupState();
 }
 
-class _SignupState extends State<Signup> {
+class _SignupState extends ConsumerState<Signup> {
+  bool isCheck = false;
   final _formKey = GlobalKey<FormState>();
+  final nameEditingController = TextEditingController();
+  final emailEditingController = TextEditingController();
+  final phoneEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final bioEditingController = TextEditingController();
+
+  final locationEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 174, 211, 241),
-        elevation: 0,
-      ),
+          backgroundColor: const Color.fromARGB(255, 174, 211, 241),
+          elevation: 0,
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UpdateIpPage(),
+                    ));
+              },
+              child: const Text("Update IP"),
+            ),
+            const SizedBox(width: 10)
+          ]),
       backgroundColor: const Color.fromARGB(255, 174, 211, 241),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.only(left: 16.0, right: 16),
           child: Form(
             key: _formKey,
             child: Column(children: <Widget>[
@@ -37,6 +58,7 @@ class _SignupState extends State<Signup> {
                     color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  controller: nameEditingController,
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
@@ -57,6 +79,7 @@ class _SignupState extends State<Signup> {
                     color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  controller: emailEditingController,
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
@@ -76,6 +99,7 @@ class _SignupState extends State<Signup> {
                     color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  controller: phoneEditingController,
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
@@ -84,7 +108,7 @@ class _SignupState extends State<Signup> {
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                     FormBuilderValidators.numeric(),
-                    FormBuilderValidators.minLength(10),
+                    FormBuilderValidators.equalLength(10),
                   ]),
                   onSaved: (value) {},
                 ),
@@ -97,6 +121,7 @@ class _SignupState extends State<Signup> {
                     color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  controller: passwordEditingController,
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
@@ -117,16 +142,51 @@ class _SignupState extends State<Signup> {
                     color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  controller: locationEditingController,
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
                       labelText: 'Location'),
-                  obscureText: true,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
                   ]),
                   onSaved: (value) {},
                 ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 225, 243, 252),
+                    borderRadius: BorderRadius.circular(10)),
+                child: TextFormField(
+                  maxLines: 2,
+                  controller: bioEditingController,
+                  decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.all(10),
+                      border: InputBorder.none,
+                      hintText: 'Bio'),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(),
+                    FormBuilderValidators.minLength(5),
+                  ]),
+                  onSaved: (value) {},
+                ),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Checkbox(
+                    value: isCheck,
+                    onChanged: (value) {
+                      setState(() {
+                        isCheck = !isCheck;
+                      });
+                    },
+                  ),
+                  const Text('I am publisher'),
+                ],
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -139,8 +199,25 @@ class _SignupState extends State<Signup> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Get.to(() => const Loginpage());
-                    _formKey.currentState?.save();
+                    ref
+                        .read(signUpServiceProvider)
+                        .signUp(
+                            nameEditingController.text,
+                            emailEditingController.text,
+                            phoneEditingController.text,
+                            passwordEditingController.text,
+                            locationEditingController.text,
+                            bioEditingController.text,
+                            isCheck)
+                        .then((value) {
+                      nameEditingController.clear();
+                      emailEditingController.clear();
+                      phoneEditingController.clear();
+                      passwordEditingController.clear();
+                      locationEditingController.clear();
+                      bioEditingController.clear();
+                      isCheck = false;
+                    });
                   }
                 },
               ),

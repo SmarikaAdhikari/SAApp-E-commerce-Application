@@ -7,27 +7,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'api_user_service.dart';
 
-
-final userFutureProvider =
-    FutureProvider.autoDispose<User>((ref) async {
-
+final userFutureProvider = FutureProvider<User>((ref) async {
   final ApiService = ref.watch(userServiceProvider);
   return ApiService.getUsers();
 });
+
 class UserProviderPage extends ConsumerWidget {
   const UserProviderPage({super.key});
 
-  
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-     final userProvider = ref.watch(userFutureProvider  );
+    final userProvider = ref.watch(userFutureProvider);
     return Scaffold(
-      appBar:AppBar(
-        title: const Text('User Provider'),
-      ),
-       body:Center(
-          child: 
-          userProvider.when(data: (data) {
+        appBar: AppBar(
+          title: const Text('User Provider'),
+        ),
+        body: Center(
+          child: userProvider.when(data: (data) {
             return Column(
               children: [
                 Text(data.id.toString()),
@@ -40,19 +36,11 @@ class UserProviderPage extends ConsumerWidget {
                 Text(data.bio),
               ],
             );
-          },
-           error: (error, _) {
+          }, error: (error, _) {
             return Text(error.toString());
-          }, 
-          loading: () {
-            return const CircularProgressIndicator();
+          }, loading: () {
+            return const SizedBox();
           }),
-        )
-       
-
-
-
-
-    );
+        ));
   }
 }

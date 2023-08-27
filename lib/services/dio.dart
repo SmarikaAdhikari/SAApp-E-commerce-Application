@@ -2,9 +2,12 @@
 
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:get/get.dart' as gt;
 import 'package:nb_utils/nb_utils.dart';
 
+import '../api_all/Auth/constants.dart';
 import '../utils/my_config.dart';
 
 // import '../config/my_config.dart';
@@ -16,7 +19,7 @@ class Api {
 
   final dio = createDio();
 
-  final tokenDio = Dio(BaseOptions(baseUrl: MyConfig.appUrl));
+  final tokenDio = Dio(BaseOptions(baseUrl: getAppUrl()));
 
   Api._internal();
 
@@ -27,7 +30,7 @@ class Api {
   static Dio createDio() {
     // String accesstoken = StorageUtil.getString(access);
     var dio = Dio(BaseOptions(
-      baseUrl: MyConfig.appUrl,
+      baseUrl: getAppUrl(),
       receiveTimeout: 150000, // 15 seconds
       connectTimeout: 150000,
       sendTimeout: 150000,
@@ -73,6 +76,7 @@ class Api {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
+
       final message = json.decode(response.data)["message"];
       Fluttertoast.showToast(msg: message);
 
@@ -83,10 +87,6 @@ class Api {
       throw const FormatException("Unable to process the data");
     } catch (e) {
       print(e.toString());
-
-      Fluttertoast.showToast(
-        msg: e.toString(),
-      );
       rethrow;
     }
   }
@@ -115,9 +115,7 @@ class Api {
       throw const FormatException("Unable to get the data");
     } catch (e) {
       print(e.toString());
-      Fluttertoast.showToast(
-        msg: e.toString(),
-      );
+
       rethrow;
     }
   }
@@ -142,7 +140,7 @@ class Api {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
-final message = json.decode(response.data)["message"];
+      final message = json.decode(response.data)["message"];
       Fluttertoast.showToast(msg: message);
 
       return response;
@@ -192,10 +190,11 @@ class AppInterceptors extends Interceptor {
   @override
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    // final token = await getStringAsync(accessToken);
-    // print(token);
+    final token = await getStringAsync(accessToken);
+    print(token);
+
     options.headers.addAll({
-      "Authorization": "Bearer $token",
+      "Authorization": token.isEmptyOrNull ? "" : "Bearer $token",
       'content-Type': 'application/json',
       "validateStatus": (_) => true,
     });
@@ -212,8 +211,8 @@ class AppInterceptors extends Interceptor {
       case DioErrorType.receiveTimeout:
         throw DeadlineExceededException(err.requestOptions, "");
       case DioErrorType.response:
-        String errorMsg =
-            json.decode(err.response.toString())["error"]["message"];
+        String errorMsg = json.decode(err.response.toString())["message"];
+        Fluttertoast.showToast(msg: errorMsg);
         switch (err.response?.statusCode) {
           case 400:
             throw BadRequestException(err.requestOptions, errorMsg);
@@ -250,7 +249,6 @@ class BadRequestException extends DioError {
 class InternalServerErrorException extends DioError {
   InternalServerErrorException(RequestOptions r, String errorMsg)
       : super(requestOptions: r, error: errorMsg);
-
   @override
   String toString() {
     return error.toString();
@@ -276,6 +274,7 @@ class UnauthorizedException extends DioError {
 
   @override
   String toString() {
+    gt.Get.toNamed("/login");
     // AppNavigatorService.pushNamedAndRemoveUntil("login");
     return error.toString();
   }
@@ -311,9 +310,3 @@ class DeadlineExceededException extends DioError {
     return error.toString();
   }
 }
-
-
-
-
-
-

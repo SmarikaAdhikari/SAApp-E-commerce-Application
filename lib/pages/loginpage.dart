@@ -1,16 +1,19 @@
-import 'package:app/main.dart';
 import 'package:app/pages/signup.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Loginpage extends StatefulWidget {
+import '../api_all/Auth/login_repo.dart';
+
+class LoginPage extends ConsumerStatefulWidget {
+  const LoginPage({super.key});
+
   @override
-  // ignore: library_private_types_in_public_api
-  _LoginpageState createState() => _LoginpageState();
-  const Loginpage({super.key});
+  ConsumerState<ConsumerStatefulWidget> createState() => _LoginPageState();
 }
 
-class _LoginpageState extends State<Loginpage> {
+class _LoginPageState extends ConsumerState<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -37,10 +40,11 @@ class _LoginpageState extends State<Loginpage> {
                     color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  controller: emailController,
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
-                      labelText: 'Name'),
+                      labelText: 'Email'),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your name.';
@@ -58,6 +62,7 @@ class _LoginpageState extends State<Loginpage> {
                     color: const Color.fromARGB(255, 225, 243, 252),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  controller: passwordController,
                   decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
@@ -84,8 +89,8 @@ class _LoginpageState extends State<Loginpage> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    Get.to(() => const MyHomePage());
-                    _formKey.currentState?.save();
+                    ref.read(loginServiceProvider).login(
+                        emailController.text, passwordController.text, context);
                   }
                 },
               ),
@@ -99,15 +104,19 @@ class _LoginpageState extends State<Loginpage> {
                   ),
                   const SizedBox(width: 10),
                   ElevatedButton(
-                    child: const Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: Text(
-                        'Signup',
-                        style: TextStyle(fontSize: 13),
+                      child: const Padding(
+                        padding: EdgeInsets.all(5.0),
+                        child: Text(
+                          'Signup',
+                          style: TextStyle(fontSize: 13),
+                        ),
                       ),
-                    ),
-                    onPressed: () => Get.to(() => const Signup()),
-                  ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Signup()));
+                      }),
                 ],
               ),
             ],

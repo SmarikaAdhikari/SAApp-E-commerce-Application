@@ -38,6 +38,10 @@ dependencies:
   dio: ^4.0.6
   nb_utils: ^6.0.0
   readmore: ^2.2.0
+  hive: ^2.2.3
+  fluro: ^2.0.5
+  hive_flutter: ^1.1.0
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to

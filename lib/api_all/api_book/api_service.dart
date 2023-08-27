@@ -4,9 +4,12 @@ import 'dart:convert';
 
 import 'package:app/api_all/api_book/book_model.dart';
 import 'package:app/services/dio.dart';
-import 'package:app/utils/my_config.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
+// import 'package:nb_utils/nb_utils.dart';
 
+import '../../utils/my_config.dart';
+// import 'cart_model.dart';
 
 final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
 
@@ -14,8 +17,7 @@ class ApiService {
   Future<List<BookModel>> getBooks() async {
     const url = "/book/getallbooks";
     try {
-
-      final res = await Api().get(MyConfig.appUrl + url);
+      final res = await Api().get(getAppUrl() + url);
       List data = json.decode(res.data);
 
       return data.map((e) => BookModel.fromJson(e)).toList();
@@ -24,108 +26,103 @@ class ApiService {
     }
   }
 
-   Future<void> addFavorite(String bookId) async {
+  Future<void> addFavorite(String bookId) async {
     const url = "/favorite/createFavorite";
     var data = {
       "bookId": bookId,
     };
     try {
-
-      final res = await Api().post(MyConfig.appUrl + url, data: data);
-     
-      
+      final res = await Api().post(getAppUrl() + url, data: data);
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }
   }
+
   Future<BookDetailModel> getBooksById(String bookId) async {
-   final url = "/book/getBookById/$bookId";
+    final url = "/book/getBookById/$bookId";
 
     try {
-
-      final res = await Api().get(MyConfig.appUrl + url);
+      final res = await Api().get(getAppUrl() + url);
       // print(res.statusCode);
       final data = json.decode(res.data);
-      return  BookDetailModel.fromJson(data);
-     
-      
+      print(data);
+
+      return BookDetailModel.fromJson(data);
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }
   }
 
-     Future<List<FavModel>> getAllFavorites() async {
+  Future<List<FavModel>> getAllFavorites() async {
     const url = "/favorite/getAllFavorites";
-   
+
     try {
-
-      final res = await Api().get(MyConfig.appUrl + url);
+      final res = await Api().get(getAppUrl() + url);
+      print(res.statusCode);
       List data = json.decode(res.data);
-
       return data.map((e) => FavModel.fromJson(e)).toList();
-     
-      
     } catch (e) {
-      throw Exception('Error getting suggestion $e');
+      rethrow;
     }
   }
-    Future<List<FavModel>> getAllReading() async {
+
+  Future<List<FavModel>> getAllReading() async {
     const url = "/reading/getAllReading";
-   
     try {
-
-      final res = await Api().get(MyConfig.appUrl + url);
+      final res = await Api().get(getAppUrl() + url);
       List data = json.decode(res.data);
 
       return data.map((e) => FavModel.fromJson(e)).toList();
-     
-      
     } catch (e) {
-      throw Exception('Error getting suggestion $e');
+    throw Exception('Error getting suggestion $e');
     }
   }
-    Future<void> addReadingList(String bookId) async {
+
+  Future<void> addReadingList(String bookId) async {
     const url = "/reading/createReading";
     var data = {
       "bookId": bookId,
     };
     try {
-
-      final res = await Api().post(MyConfig.appUrl + url, data: data);
-     
-      
+      final res = await Api().post(getAppUrl() + url, data: data);
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }
   }
-     Future<List<CartModel>> getAllCart() async {
+
+  Future<List<CartModel>> getAllCart() async {
     const url = "/cart/getAllCart";
-   
+
     try {
+      final res = await Api().get(getAppUrl() + url);
+      List datas = json.decode(res.data);
+      final returnData = datas.map((e) => CartModel.fromJson(e)).toList();
+      // final box = Hive.box<CartNotifierModel>('cart');
 
-      final res = await Api().get(MyConfig.appUrl + url);
-      List data = json.decode(res.data);
-
-      return data.map((e) => CartModel.fromJson(e)).toList();
-     
-      
+      // for (var element in returnData) {
+      //   box.add(CartNotifierModel(
+      //       id: element.bookId,
+      //       price: element.kitab.price.toDouble(),
+      //       quantity: 0,
+      //       title: element.kitab.title,
+      //       image: element.kitab.image));
+      // }
+      return returnData;
+      // return data.map((e) => CartModel.fromJson(e)).toList();
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }
   }
-    Future<void> addCartList(String bookId) async {
+
+  Future<void> addCartList(String bookId) async {
     const url = "/cart/addToCart";
     var data = {
       "bookId": bookId,
     };
     try {
-
-      final res = await Api().post(MyConfig.appUrl + url, data: data);
-     
-      
+      final res = await Api().post(getAppUrl() + url, data: data);
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }
   }
- 
 }

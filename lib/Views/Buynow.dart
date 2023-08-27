@@ -20,48 +20,43 @@ class BuyNow extends ConsumerWidget {
     });
     // ignore: unused_local_variable
     final paymentData = ref.watch(expansionStateProvider);
-    final CartProvider = ref.watch(cartFutureProvider);
+    final CartProvider = ref.watch(cartHiveFutureProvider);
     return Scaffold(
         appBar: AppBar(
           title: const Center(child: Text("Payment Summary  ")),
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(bottom: 8.0, right: 8.0, left: 8.0),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8.0, right: 8.0, left: 8.0),
             child: Column(children: [
               SizedBox(
                 height: 350,
                 child: CartProvider.when(
-                  data: (data) => 
-        ListView.builder(
-          physics: const ScrollPhysics(),
-                  shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: orderWidget(
-                data[index],
-                data[index].id.toString(),
-                ref,
-
-                  
-                ),
+                    data: (data) => ListView.builder(
+                          physics: const ScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: orderWidget(
+                                  data[index],
+                                  data[index].id.toString(),
+                                  ref,
+                                ),
+                              ),
+                            );
+                          },
+                          itemCount: data.length,
+                        ),
+                    error: (Object error, StackTrace stackTrace) {
+                      return Text(error.toString());
+                    },
+                    loading: () {
+                      return const CircularProgressIndicator();
+                    }),
               ),
-            );
-          },
-          itemCount: data.length,
-        ),
-         error: (Object error, StackTrace stackTrace) {
-                    return Text(error.toString());
-                  },
-                  loading: () {
-                    return const CircularProgressIndicator();
-                  }
-
-              ),
-              ),
-               const SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               const Text('Order Summary',

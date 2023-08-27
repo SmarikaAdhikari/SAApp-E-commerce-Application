@@ -1,15 +1,13 @@
 // ignore_for_file: must_be_immutable, unused_local_variable, non_constant_identifier_names, no_leading_underscores_for_local_identifiers, unused_result, prefer_const_constructors_in_immutables
-
-import 'dart:convert';
-
 import 'package:app/Views/Buynow.dart';
 import 'package:app/api_all/api_book/api_provider.dart';
-// import 'package:app/pages/favoritepage.dart';
 import 'package:app/widgets/best_sellers.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
+
 import '../api_all/api_book/api_service.dart';
 import '../widgets/author.dart';
 
@@ -24,34 +22,32 @@ class BookDetails extends ConsumerStatefulWidget {
 class _BookDetailsState extends ConsumerState<BookDetails> {
   @override
   Widget build(BuildContext context) {
-    final FutureProvider = ref.watch(bookByIdFutureProvider(widget.id));
+    final FutureProvider =
+        ref.watch(bookByIdFutureProvider(Get.arguments['id']));
     final listProvider = ref.watch(booksFutureProvider);
 
     return Scaffold(
       appBar: AppBar(
         actions: [
           FutureProvider.when(
-            data: (data) => 
-            Row(
+            data: (data) => Row(
               children: [
                 IconButton(
-                   icon: data.isReading
+                  icon: data.isReading
                       ? const Icon(Icons.menu_book_outlined, color: Colors.blue)
                       : const Icon(
                           Icons.menu_book_outlined,
                         ),
-                    onPressed: () {
-                      // Get.to(() => const FavoritePage());
-                       
-                       ref
-                            .read(apiServiceProvider)
-                            .addReadingList(data.id.toString())
-                            .then((value) {
-                          ref.refresh(bookByIdFutureProvider(widget.id));
-                          ref.refresh(readFutureProvider);
-                        });
-                    },
-                    ),
+                  onPressed: () {
+                    ref
+                        .read(apiServiceProvider)
+                        .addReadingList(data.id.toString())
+                        .then((value) {
+                      ref.refresh(bookByIdFutureProvider(Get.arguments['id']));
+                      ref.refresh(readFutureProvider);
+                    });
+                  },
+                ),
                 IconButton(
                   icon: data.isFavorite
                       ? const Icon(Icons.star, color: Colors.yellow)
@@ -63,9 +59,8 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                         .read(apiServiceProvider)
                         .addFavorite(data.id.toString())
                         .then((value) {
-                      ref.refresh(bookByIdFutureProvider(widget.id));
+                      ref.refresh(bookByIdFutureProvider(Get.arguments['id']));
                       ref.refresh(favFutureProvider);
-                     
                     });
                   },
                 ),
@@ -74,7 +69,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
             error: (Object error, StackTrace stackTrace) {
               return Text(error.toString());
             },
-            loading: () => const CircularProgressIndicator(),
+            loading: () => const SizedBox(),
           ),
         ],
       ),
@@ -91,12 +86,15 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                           child: Row(children: [
                             data.image == null
                                 ? Image.asset(
-                    "pics/daisy.jpeg",
-                    height: 120,
-                    width: 100,
-                  )
-                                : Image.memory(base64Decode(data.image),
-                                    height: 120, width: 100),
+                                    'view/kitabalaya.png',
+                                    fit: BoxFit.cover,
+                                    height: 150,
+                                    width: 180,
+                                  )
+                                : CachedNetworkImage(
+                                    imageUrl: data.image,
+                                    height: 120,
+                                    width: 100),
                             const SizedBox(
                               width: 50,
                             ),
@@ -166,28 +164,34 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                             ElevatedButton(
                                 onPressed: () {
                                   // Get.to(() => BuyNow());
-                                   ref
-                            .read(apiServiceProvider)
-                            .addCartList(data.id.toString())
-                            .then((value) {
-                          ref.refresh(bookByIdFutureProvider(widget.id));
-                          ref.refresh(cartFutureProvider);
-                        });
+                                  ref
+                                      .read(apiServiceProvider)
+                                      .addCartList(data.id.toString())
+                                      .then((value) {
+                                    ref.refresh(bookByIdFutureProvider(
+                                        Get.arguments['id']));
+                                    ref.refresh(cartFutureProvider);
+                                  });
                                 },
                                 child: data.isCart
-                                ? const Row(
-                                  children: [
-                                    Text("Remove",style:TextStyle(color: Colors.red)),
-                                    Icon(Icons.add_shopping_cart,color:Colors.red)
-                                  ],
-                                ):
-                                const Row(
-                                  children: [
-                                    Text("Add to Cart",style:TextStyle(color: Colors.black)),
-                                    Icon(Icons.add_shopping_cart,color:Colors.black)
-                                  ],
-                                )
-                                ),
+                                    ? const Row(
+                                        children: [
+                                          Text("Remove",
+                                              style:
+                                                  TextStyle(color: Colors.red)),
+                                          Icon(Icons.add_shopping_cart,
+                                              color: Colors.red)
+                                        ],
+                                      )
+                                    : const Row(
+                                        children: [
+                                          Text("Add to Cart",
+                                              style: TextStyle(
+                                                  color: Colors.black)),
+                                          Icon(Icons.add_shopping_cart,
+                                              color: Colors.black)
+                                        ],
+                                      )),
                             const SizedBox(
                               width: 20,
                             ),
@@ -195,6 +199,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                               visible: data.isCart,
                               child: ElevatedButton(
                                   onPressed: () {
+                                    ref.refresh(cartFutureProvider);
                                     Get.to(() => BuyNow());
                                   },
                                   child: const Row(
@@ -220,14 +225,14 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                                 child: Row(
                                     children:
                                         List.generate(data.length, (index) {
-                                  return bestSellers(
-                                      data[index], data[index].id, ref);
+                                  return bestSellers(data[index],
+                                      data[index].id, ref, context);
                                 }))),
                             error: (Object error, StackTrace stackTrace) {
                               return Text(error.toString());
                             },
                             loading: () {
-                              return const CircularProgressIndicator();
+                              return const SizedBox();
                             }),
                         const SizedBox(
                           height: 10,
@@ -239,7 +244,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
             return Text(error.toString());
           },
           loading: () {
-            return const CircularProgressIndicator();
+            return const SizedBox();
           }),
     );
   }

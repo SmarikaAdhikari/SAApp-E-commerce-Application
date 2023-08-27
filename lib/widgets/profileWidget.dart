@@ -10,12 +10,12 @@ Widget profileWidget(
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(
-     crossAxisAlignment: CrossAxisAlignment.start,
-     children: [
-       Text(profile.name),
-       Text(profile.bio),
-       Text(profile.email),
-     ],
-        ),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(profile.name),
+        Text(profile.bio.toString()),
+        Text(profile.email),
+      ],
+    ),
   );
 }

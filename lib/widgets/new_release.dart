@@ -1,13 +1,10 @@
-import 'dart:convert';
-
 // import 'package:app/Views/bookdetails.dart';
 import 'package:app/Views/bookdetails.dart';
-import 'package:app/widgets/constants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-import '../api_all/api_book/api_provider.dart';
 import '../api_all/api_book/book_model.dart';
 // import 'package:get/get.dart';
 
@@ -16,40 +13,52 @@ Widget newRelease(
   String id,
   WidgetRef ref,
 ) {
-  return InkWell(
-    onTap: () {
-      ref.read(bookByIdStateProvider.notifier).update((state) => data.id);
-      Get.to(() => BookDetails(
-            id: data.id,
-        
-            // data: data,
-          ));
-    },
-    child: Container(
-      padding: const EdgeInsets.all(8 ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(9),
-        color: mainColor,
-      ),
-      child: Column(
-        children: [
-          
+  return Padding(
+    padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+    child: InkWell(
+      onTap: () {
+        Get.to(() => BookDetails(
+              id: data.id,
+
+              // data: data,
+            ));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(9),
+          color: Colors.white,
+          boxShadow: const [
+            BoxShadow(
+              color: Color.fromARGB(60, 0, 0, 0),
+              offset: Offset(0, 5),
+              blurRadius: 10,
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
             data.image == null
                 ? Image.asset(
                     "pics/daisy.jpeg",
                     height: 120,
-                    width: 100,
                   )
-                : Image.memory(base64Decode(data.image.toString()),
-                    height: 120,width: 100,),
-          Column(
-            children: [
-              Text(data.title, maxLines: 1, overflow: TextOverflow.ellipsis,),
-              // Text(data.author),
-              Text(data.price.toString()),
-            ],
-          ),
-        ],
+                : CachedNetworkImage(
+                    imageUrl: data.image,
+                    height: 120,
+                  ),
+            Column(
+              children: [
+                Text(
+                  data.title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                // Text(data.author),
+                Text(data.price.toString()),
+              ],
+            ),
+          ],
+        ),
       ),
     ),
   );

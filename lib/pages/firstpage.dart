@@ -2,10 +2,9 @@
 
 import 'package:app/api_all/api_book/api_provider.dart';
 import 'package:app/widgets/best_sellers.dart';
-import 'package:flutter/material.dart';
 import 'package:app/widgets/new_release.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 
 class Firstpage extends ConsumerWidget {
   const Firstpage({super.key});
@@ -29,7 +28,7 @@ class Firstpage extends ConsumerWidget {
                       height: 200,
                       decoration: const BoxDecoration(
                         // borderRadius: BorderRadius.circular(9),
-                        color: Color.fromARGB(255, 206, 228, 255),
+                        color: Color.fromARGB(255, 170, 187, 193),
                       ),
                     ),
                   ),
@@ -45,13 +44,13 @@ class Firstpage extends ConsumerWidget {
                                 Text("Embrace your inner bookworm...",
                                     style: TextStyle(
                                         fontSize: 12,
-                                        color: Color.fromARGB(255, 3, 36, 92),
+                                        color: Color.fromARGB(255, 0, 43, 116),
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FontStyle.italic)),
                                 Text("with",
                                     style: TextStyle(
                                       fontSize: 10,
-                                      color: Color.fromARGB(255, 3, 36, 92),
+                                      color: Color.fromARGB(255, 0, 43, 116),
                                       fontWeight: FontWeight.bold,
                                     )),
                                 Image(
@@ -82,49 +81,45 @@ class Firstpage extends ConsumerWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
               FutureProvider.when(
-                  data: (data) => Container(
-                    color:const Color.fromARGB(255, 60, 60, 60),
-                    child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                            children: List.generate(data.length, (index) {
-                          return bestSellers(
-                            data[index],
-                             data[index].id.toString(),
-                            
-                            ref,
-                          );
-                        }))),
-                  ),
+                  data: (data) => SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                          children: List.generate(data.length, (index) {
+                        return bestSellers(
+                          data[index],
+                          data[index].id.toString(),
+                          ref,
+                          context,
+                        );
+                      }))),
                   error: (Object error, StackTrace stackTrace) {
                     return Text(error.toString());
                   },
                   loading: () {
-                    return const CircularProgressIndicator();
+                    return const SizedBox();
                   }),
-                  const SizedBox(height: 10),
+              const SizedBox(height: 10),
               const Text("New Releases",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold)),
-              // const SizedBox(height: 10),
+              const SizedBox(height: 10),
               FutureProvider.when(
-                  data: (data) => 
-                  GridView.builder(
+                  data: (data) => GridView.builder(
                         shrinkWrap: true,
                         physics: const ScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
-                          childAspectRatio:1.2 / 2,
-                          crossAxisSpacing: 5,
+                          childAspectRatio: 1.4 / 2,
+                          crossAxisSpacing: 0,
                           mainAxisSpacing: 5,
                         ),
                         itemBuilder: (context, index) {
                           return newRelease(
                             data[index],
-                             data[index].id.toString(),
+                            data[index].id.toString(),
                             ref,
                           );
                         },
@@ -134,7 +129,7 @@ class Firstpage extends ConsumerWidget {
                     return Text(error.toString());
                   },
                   loading: () {
-                    return const CircularProgressIndicator();
+                    return const SizedBox();
                   }),
             ]),
           ),

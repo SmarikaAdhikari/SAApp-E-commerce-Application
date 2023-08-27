@@ -14,10 +14,9 @@ class ApiService {
   Future<Authors> getAuthor() async {
     const url = "/book/getallauthors";
     try {
-
-      final res = await Api().get(MyConfig.appUrl + url);
-     final data = json.decode(res.data);
-      return  Authors.fromJson(data);
+      final res = await Api().get(getAppUrl() + url);
+      final data = json.decode(res.data);
+      return Authors.fromJson(data);
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }
