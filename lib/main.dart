@@ -137,6 +137,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
 
               RestartAppTry.isL = true;
               Get.reset();
+              // ignore: use_build_context_synchronously
               RestartAppTry.init(context);
             },
             child: Row(
@@ -214,6 +215,7 @@ class RestartAppTry extends StatefulWidget {
   const RestartAppTry({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _RestartAppTryState createState() => _RestartAppTryState();
 
   static init(BuildContext context) {

@@ -5,11 +5,10 @@ import 'dart:convert';
 import 'package:app/api_all/api_book/book_model.dart';
 import 'package:app/services/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:hive_flutter/hive_flutter.dart';
-// import 'package:nb_utils/nb_utils.dart';
+
 
 import '../../utils/my_config.dart';
-// import 'cart_model.dart';
+
 
 final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
 
@@ -28,7 +27,9 @@ class ApiService {
 
   Future<void> addFavorite(String bookId) async {
     const url = "/favorite/createFavorite";
-    var data = {
+    var data = 
+    {
+
       "bookId": bookId,
     };
     try {
@@ -45,7 +46,7 @@ class ApiService {
       final res = await Api().get(getAppUrl() + url);
       // print(res.statusCode);
       final data = json.decode(res.data);
-      print(data);
+      // print(data);
 
       return BookDetailModel.fromJson(data);
     } catch (e) {
@@ -58,7 +59,7 @@ class ApiService {
 
     try {
       final res = await Api().get(getAppUrl() + url);
-      print(res.statusCode);
+      // print(res.statusCode);
       List data = json.decode(res.data);
       return data.map((e) => FavModel.fromJson(e)).toList();
     } catch (e) {
@@ -96,20 +97,11 @@ class ApiService {
     try {
       final res = await Api().get(getAppUrl() + url);
       List datas = json.decode(res.data);
-      print(datas);
+      
       final returnData = datas.map((e) => CartModel.fromJson(e)).toList();
-      // final box = Hive.box<CartNotifierModel>('cart');
-
-      // for (var element in returnData) {
-      //   box.add(CartNotifierModel(
-      //       id: element.bookId,
-      //       price: element.kitab.price.toDouble(),
-      //       quantity: 0,
-      //       title: element.kitab.title,
-      //       image: element.kitab.image));
-      // }
+   
       return returnData;
-      // return data.map((e) => CartModel.fromJson(e)).toList();
+      
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }

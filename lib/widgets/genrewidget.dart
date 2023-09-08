@@ -28,18 +28,17 @@ WidgetRef ref
           left: 10,
           right: 10,
           top: 10,
-          // bottom: 10,
+          
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(9),
-          color:const Color.fromARGB(255, 194, 220, 241),
+          color:const Color.fromARGB(255, 248, 251, 246),
         ),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.center,
+         
           children: [
             Image.asset(
-              "pics/north.jpeg",
+              "pics/genre.jpg",
               fit: BoxFit.cover, height: 90, width:140,
             ),
             const SizedBox(height:10),

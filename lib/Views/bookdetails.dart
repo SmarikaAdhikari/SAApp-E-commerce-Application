@@ -226,7 +226,9 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                                     children:
                                         List.generate(data.length, (index) {
                                   return bestSellers(data[index],
-                                      data[index].id, ref, context);
+                                      data[index].id,
+                                       ref,
+                                       context);
                                 }))),
                             error: (Object error, StackTrace stackTrace) {
                               return Text(error.toString());

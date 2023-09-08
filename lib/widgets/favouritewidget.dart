@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-import '../Views/bookdetails.dart';
+// import '../Views/bookdetails.dart';
 import '../api_all/api_book/api_provider.dart';
 
 Widget favouriteWidget(

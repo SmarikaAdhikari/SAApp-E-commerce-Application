@@ -25,6 +25,7 @@ class LoginRepo {
         await setValue(accessToken, token);
         RestartAppTry.isL = true;
         Get.reset();
+        // ignore: use_build_context_synchronously
         RestartAppTry.init(context);
       }
       return res.statusCode;

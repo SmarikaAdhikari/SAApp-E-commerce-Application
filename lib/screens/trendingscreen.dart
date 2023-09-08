@@ -21,16 +21,18 @@ class _TrendingscreenState extends State<Trendingscreen> {
         appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ListView.builder(
-            itemBuilder: (context, position) {
-              return Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: drawerWidget(),
-                ),
-              );
-            },
-            itemCount: 15,
+          child: InkWell(
+            child: ListView.builder(
+              itemBuilder: (context, position) {
+                return Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: drawerWidget(),
+                  ),
+                );
+              },
+              itemCount: 15,
+            ),
           ),
         ));
   }

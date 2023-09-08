@@ -31,9 +31,10 @@ class _EditsState extends ConsumerState<Edits> {
   TextEditingController passwordEditingController = TextEditingController();
 
   @override
-  void initState(){
+  void initState()
+  {
     nameEditingController.text = widget.name;
-     bioEditingController.text = widget.bio;
+    bioEditingController.text = widget.bio;
     emailEditingController.text = widget.email;
     passwordEditingController.text = widget.password;
     super.initState();
