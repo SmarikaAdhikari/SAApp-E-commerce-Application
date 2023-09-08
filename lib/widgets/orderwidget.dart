@@ -25,7 +25,7 @@ Widget orderWidget(
                 height: 120,
                 width: 100,
               ),
-        const SizedBox(width: 20),
+        const SizedBox(width: 10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

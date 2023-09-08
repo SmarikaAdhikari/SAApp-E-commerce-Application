@@ -19,7 +19,7 @@ Widget favouriteWidget(
     onTap: () {
       ref.read(favBookFutureProvider.notifier).update((state) => data.id);
      
-      Get.toNamed("/bookdetails", arguments: {"id": id});
+      Get.toNamed("/bookdetails", arguments: {"id" : data.id});
     },
     child: Padding(
       padding: const EdgeInsets.all(8.0),

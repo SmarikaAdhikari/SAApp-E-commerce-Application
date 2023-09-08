@@ -57,7 +57,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                 child: data.image == null
                     ? const CircleAvatar(
                         radius: 50.0,
-                        backgroundColor: Colors.transparent,
+                        backgroundColor: Colors.yellow,
                         backgroundImage: AssetImage("pics/daisy.jpeg"),
                       )
                     : CircleAvatar(

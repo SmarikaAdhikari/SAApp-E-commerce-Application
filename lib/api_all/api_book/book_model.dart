@@ -166,20 +166,17 @@ class CartModel {
 }
 
 class Kitab {
-
   String title;
   String price;
   dynamic image;
 
   Kitab({
-  
     required this.title,
     required this.price,
     required this.image,
   });
 
   factory Kitab.fromJson(Map<String, dynamic> json) => Kitab(
-      
         title: json["title"],
         price: json["price"],
         image: json["image"],

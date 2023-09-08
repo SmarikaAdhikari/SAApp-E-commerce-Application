@@ -23,7 +23,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
   @override
   Widget build(BuildContext context) {
     final FutureProvider =
-        ref.watch(bookByIdFutureProvider(Get.arguments['id']));
+    ref.watch(bookByIdFutureProvider(Get.arguments ["id"]));
     final listProvider = ref.watch(booksFutureProvider);
 
     return Scaffold(
@@ -43,7 +43,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                         .read(apiServiceProvider)
                         .addReadingList(data.id.toString())
                         .then((value) {
-                      ref.refresh(bookByIdFutureProvider(Get.arguments['id']));
+                      ref.refresh(bookByIdFutureProvider(Get.arguments["id"]));
                       ref.refresh(readFutureProvider);
                     });
                   },

@@ -29,7 +29,6 @@ class ApiService {
     const url = "/favorite/createFavorite";
     var data = 
     {
-
       "bookId": bookId,
     };
     try {

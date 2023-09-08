@@ -13,7 +13,7 @@ Widget drawerWidget() {
     Get.to(
     const Pageseven(),
     duration: const Duration(seconds: 1),
-    transition: Transition.cupertinoDialog,
+    transition: Transition.leftToRight,
         ),
     // Get.toNamed("/page7"),
     child: Column(

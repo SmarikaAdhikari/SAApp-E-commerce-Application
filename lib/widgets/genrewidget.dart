@@ -19,7 +19,7 @@ WidgetRef ref
     onTap: () {
       ref.read(genreStateProvider.notifier).update((state) => index);
       Get.to(() => 
-      const EnumList(          
+      const EnumList(        
           )
           );
     },
