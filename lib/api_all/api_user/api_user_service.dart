@@ -34,7 +34,7 @@ class ApiService {
       "bio": bio,
     };
     try {
-      // print("entered");
+     
 
       final res = await Api().put(getAppUrl() + url, data: data);
     } catch (e) {

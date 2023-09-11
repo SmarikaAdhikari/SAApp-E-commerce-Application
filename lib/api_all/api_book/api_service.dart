@@ -62,7 +62,7 @@ class ApiService {
       List data = json.decode(res.data);
       return data.map((e) => FavModel.fromJson(e)).toList();
     } catch (e) {
-      rethrow;
+      throw Exception('Error getting suggestion $e');
     }
   }
 

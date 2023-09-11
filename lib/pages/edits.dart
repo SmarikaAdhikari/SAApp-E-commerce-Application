@@ -73,7 +73,7 @@ class _EditsState extends ConsumerState<Edits> {
             child: TextField(
               controller: passwordEditingController,
               decoration: const InputDecoration(
-                hintText: "password",
+                hintText: "email",
               ),
             ),
           ),
@@ -82,7 +82,7 @@ class _EditsState extends ConsumerState<Edits> {
             child: TextField(
               controller: emailEditingController,
               decoration: const InputDecoration(
-                hintText: "email",
+                hintText: "password",
               ),
             ),
           ),

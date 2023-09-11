@@ -1,45 +1,52 @@
-// import 'package:app/main.dart';
-import 'package:app/widgets/drawerWidget.dart';
+
+// import 'package:app/widgets/drawerWidget.dart';
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// import '../widgets/genrelist.dart';
+import '../api_all/api_book/api_provider.dart';
+import '../widgets/new_release.dart';
 
-class Bestsellers extends StatefulWidget {
+
+class Bestsellers extends ConsumerWidget {
   const Bestsellers({super.key});
 
+ 
   @override
-  State<Bestsellers> createState() => _BestsellersState();
-}
-
-class _BestsellersState extends State<Bestsellers> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+      // ignore: unused_local_variable, non_constant_identifier_names
+      final FutureProvider = ref.watch(booksFutureProvider);
     return Scaffold(
         appBar: AppBar(),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView.builder(
-            itemBuilder: (context, position) {
-              return  Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: 
-                  drawerWidget(),
-                ),
-              );
-            },
-            itemCount: 15,
-          ),
-        ));
+        body:  FutureProvider.when(
+                data: (data) => GridView.builder(
+                      shrinkWrap: true,
+                      physics: const ScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        childAspectRatio: 1.4 / 2,
+                        crossAxisSpacing: 0,
+                        mainAxisSpacing: 5,
+                      ),
+                      itemBuilder: (context, index) {
+                        return newRelease(
+                          data[index],
+                          data[index].id.toString(),
+                          ref,
+                          context,
+                        );
+                      },
+                      itemCount: data.length,
+                    ),
+                error: (Object error, StackTrace stackTrace) {
+                  return Text(error.toString());
+                },
+                loading: () {
+                  return const SizedBox();
+                }),
+        
+        );
 
-    // return Drawer(
-    //   child: ElevatedButton(
-    //     onPressed: () {
-    //       Get.back();
-    //     },
-    //     child: const Text('Go back!'),
-    //   ),
-    // );
+  
   }
 }

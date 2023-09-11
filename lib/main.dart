@@ -166,10 +166,10 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) =>(BuyNow())));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => (BuyNow())));
             },
-            icon: const Icon(Icons.person_2_outlined),
+            icon: const Icon(Icons. shopping_cart_outlined),
           )
         ],
       ),

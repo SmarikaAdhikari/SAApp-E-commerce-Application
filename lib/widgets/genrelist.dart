@@ -1,4 +1,4 @@
-import 'package:app/Views/Buynow.dart';
+// import 'package:app/Views/Buynow.dart';
 // import 'package:app/Views/page8.dart';
 import 'package:app/api_all/api_genre/api_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 // ignore: non_constant_identifier_names
-Widget GenreList(
+Widget  GenreList(
   EnumModel data,
 ) {
   return Padding(
@@ -39,18 +39,18 @@ Widget GenreList(
               ),
             ],
           ),
-          TextButton(
-              onPressed: () {
-                Get.to(() => BuyNow());
-              },
-              child: const Row(
-                children: [
-                  // SizedBox(width: 70),
-                  Spacer(),
-                  Text("Add to Cart"),
-                  Icon(Icons.add_shopping_cart)
-                ],
-              )),
+          // TextButton(
+          //     onPressed: () {
+          //       Get.to(() => BuyNow());
+          //     },
+          //     child: const Row(
+          //       children: [
+          //         // SizedBox(width: 70),
+          //         Spacer(),
+          //         Text("Add to Cart"),
+          //         Icon(Icons.add_shopping_cart)
+          //       ],
+          //     )),
         ],
       ),
     ),

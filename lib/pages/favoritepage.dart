@@ -27,21 +27,16 @@ class _FavoritePageState extends ConsumerState<FavoritePage> {
         ),
         child: FavProvider.when(
             data: (data) => ListView.builder(
-                  itemBuilder: (context, index) {
-                    return Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: favouriteWidget(
-                          data[index],
-                          data[index].id.toString(),
-                          ref,
-                          context,
-                        ),
-                      ),
-                    );
-                  },
-                  itemCount: data.length,
-                ),
+                    itemBuilder: (context, index) {
+                      return favouriteWidget(
+                        data[index],
+                        data[index].book.id.toString(),
+                        ref,
+                        context,
+                      );
+                    },
+                    itemCount: data.length,
+                  ),
             error: (Object error, StackTrace stackTrace) {
               return Center(
                 child: Column(

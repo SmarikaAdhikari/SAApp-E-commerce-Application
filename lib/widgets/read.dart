@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
+// import '../Views/bookdetails.dart';
 import '../Views/bookdetails.dart';
 import '../api_all/api_book/book_model.dart';
 
@@ -13,14 +14,15 @@ Widget readWidget(
   FavModel data,
   String id,
   WidgetRef ref,
+
 ) {
   return InkWell(
     onTap: () {
-      ref.read(readBookFutureProvider.notifier).update((state) => data.id);
-      Get.to(() => BookDetails(
-            id: data.book.id,
-            // data: data,
-          ));
+      // ref.read(readBookFutureProvider.notifier).update((state) => data.id);
+      Get.toNamed("/bookdetails", arguments: {"id": id});
+      // Get.to(() => BookDetails(
+      //       id: data.book.id,
+      //     ));
     },
     child: Padding(
       padding: const EdgeInsets.all(8.0),

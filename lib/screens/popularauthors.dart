@@ -1,11 +1,9 @@
-// import 'package:app/Views/enumlist.dart';
-import 'package:app/widgets/drawerWidget.dart';
-// import 'package:app/widgets/favouritewidget.dart';
-import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
 
-// import '../main.dart';
-// import '../widgets/genrelist.dart';
+import 'package:app/widgets/drawerWidget.dart';
+// ignore: unused_import
+import 'package:app/widgets/trial.dart';
+import 'package:flutter/material.dart';
+
 
 class Popularauthors extends StatefulWidget {
   const Popularauthors({super.key});
@@ -24,10 +22,7 @@ class _PopularauthorsState extends State<Popularauthors> {
           child: ListView.builder(
             itemBuilder: (context, position) {
               return Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: drawerWidget(),
-                ),
+                child: drawerWidget(),
               );
             },
             itemCount: 15,

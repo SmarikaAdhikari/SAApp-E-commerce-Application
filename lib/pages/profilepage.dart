@@ -134,8 +134,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                     padding: const EdgeInsets.all(8.0),
                                     child: readWidget(
                                       data[index],
-                                      data[index].id.toString(),
-                                      ref,
+                                      data[index].book.id.toString(),
+                                      ref
+                                  
                                     ),
                                   ),
                                 );

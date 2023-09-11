@@ -17,9 +17,9 @@ Widget favouriteWidget(
 ) {
   return InkWell(
     onTap: () {
-      ref.read(favBookFutureProvider.notifier).update((state) => data.id);
+      // ref.read(favBookFutureProvider.notifier).update((state) => data.id);
      
-      Get.toNamed("/bookdetails", arguments: {"id" : data.id});
+      Get.toNamed("/bookdetails", arguments: {"id" : id});
     },
     child: Padding(
       padding: const EdgeInsets.all(8.0),

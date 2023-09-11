@@ -1,4 +1,4 @@
-import 'package:app/Views/Buynow.dart';
+// import 'package:app/Views/Buynow.dart';
 import 'package:app/widgets/genrelist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,7 +26,7 @@ class _EnumListState extends ConsumerState<EnumList> {
         padding: const EdgeInsets.only(right: 8, left: 8),
         child: TextButton(
           onPressed: () {
-            Get.to(() => BuyNow());
+            Get.back();
           },
           child: userProvider.when(
               data: (data) => data.isEmpty

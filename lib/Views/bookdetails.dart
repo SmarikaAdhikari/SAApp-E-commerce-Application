@@ -129,7 +129,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
 
-                        Padding(
+                       Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ReadMoreText(
                             data.description,
