@@ -25,11 +25,18 @@ class Firstpage extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0, left: 8),
                     child: Container(
+                       decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(9),
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(60, 0, 0, 0),
+                offset: Offset(0, 5),
+                blurRadius: 10,
+              ),
+            ],
+            color:const Color.fromARGB(255, 224, 224, 224),),
                       height: 200,
-                      decoration: const BoxDecoration(
-                        // borderRadius: BorderRadius.circular(9),
-                        color: Color.fromARGB(255, 170, 187, 193),
-                      ),
+                    
                     ),
                   ),
                   Positioned(

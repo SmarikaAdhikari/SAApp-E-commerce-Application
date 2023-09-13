@@ -5,10 +5,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+
+final cartProvider = StateProvider<int>((ref) => 0);
 Widget orderWidget(
   CartModel data,
   String id,
   WidgetRef ref,
+  
+
 ) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
@@ -50,14 +54,17 @@ Widget orderWidget(
             children: [
               IconButton(
                 onPressed: () {
-                  // ref.read(cartProvider.notifier).increment(data);
+                  // ref.read(cartStateProvider.notifier).increment(data);
+                  ref.read(cartProvider.notifier).state++;
                 },
                 icon: const Icon(Icons.add),
               ),
-              const Text("0"),
+              const Text("1"),
               IconButton(
                 onPressed: () {
-                  // ref.read(cartProvider.notifier).decrement(data);
+                
+                  // ref.read(cartStateProvider.notifier).decrement(data);
+                  ref.read(cartProvider.notifier).state--;
                 },
                 icon: const Icon(Icons.remove),
               ),

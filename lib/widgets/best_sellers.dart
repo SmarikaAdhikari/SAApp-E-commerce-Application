@@ -26,31 +26,34 @@ Widget bestSellers(
               ),
             ],
             color: Colors.white),
-        child: Column(
-          children: [
-            data.image == null
-                ? Image.asset(
-                    "pics/daisy.jpeg",
-                    height: 120,
-                    width: 120,
-                  )
-                : CachedNetworkImage(
-                    imageUrl: data.image,
-                    height: 120,
-                    width: 120,
-                  ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
-              child: Column(
-                children: [
-                  Text(
-                    data.title,
-                  ),
-                  Text(data.price.toString()),
-                ],
+        child: Padding(
+          padding: const EdgeInsets.only(top:5),
+          child: Column(
+            children: [
+              data.image == null
+                  ? Image.asset(
+                      "pics/daisy.jpeg",
+                      height: 120,
+                      width: 120,
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: data.image,
+                      height: 120,
+                      width: 120,
+                    ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
+                child: Column(
+                  children: [
+                    Text(
+                      data.title,
+                    ),
+                    Text(data.price.toString()),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     ),

@@ -1,13 +1,13 @@
 // ignore_for_file: unnecessary_null_comparison
 
-import 'package:app/api_all/api_book/api_provider.dart';
+// import 'package:app/api_all/api_book/api_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 // import '../Views/bookdetails.dart';
-import '../Views/bookdetails.dart';
+// import '../Views/bookdetails.dart';
 import '../api_all/api_book/book_model.dart';
 
 Widget readWidget(

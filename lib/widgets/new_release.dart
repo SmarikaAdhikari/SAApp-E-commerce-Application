@@ -38,29 +38,32 @@ Widget newRelease(
             ),
           ],
         ),
-        child: Column(
-          children: [
-            data.image == null
-                ? Image.asset(
-                    "pics/daisy.jpeg",
-                    height: 120,
-                  )
-                : CachedNetworkImage(
-                    imageUrl: data.image,
-                    height: 120,
+        child: Padding(
+          padding: const EdgeInsets.only(top:2.0),
+          child: Column(
+            children: [
+              data.image == null
+                  ? Image.asset(
+                      "pics/daisy.jpeg",
+                      height: 120,
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: data.image,
+                      height: 120,
+                    ),
+              Column(
+                children: [
+                  Text(
+                    data.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-            Column(
-              children: [
-                Text(
-                  data.title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                // Text(data.author),
-                Text(data.price.toString()),
-              ],
-            ),
-          ],
+                  // Text(data.author),
+                  Text(data.price.toString()),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     ),

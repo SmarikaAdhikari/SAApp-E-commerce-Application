@@ -1,5 +1,5 @@
 import 'package:app/api_all/api_book/book_model.dart';
-import 'package:app/pages/searchpage.dart';
+import 'package:app/pages/genrepage.dart';
 import 'package:flutter/material.dart';
 
 Widget author(

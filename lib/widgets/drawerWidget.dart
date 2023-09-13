@@ -3,24 +3,21 @@
 
 import 'package:app/Views/Buynow.dart';
 import 'package:app/Views/page7.dart';
-// import 'package:app/Views/page7.dart';
+// import 'package:app/pages/searchpage.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-// import '../api_all/api_book/book_model.dart';
-
 Widget drawerWidget(
-  // BookModel data, String id, WidgetRef ref, BuildContext context
+
 ) {
-  return InkWell(
+  return InkWell( 
     onTap: () =>
     Get.to(
     const Pageseven(),
     duration: const Duration(seconds: 1),
     transition: Transition.leftToRight,
         ),
-    // Get.toNamed("/page7"),
+  
     child: Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -46,7 +43,7 @@ Widget drawerWidget(
               },
               child: const Row(
                 children: [
-                  // SizedBox(width: 70),
+                  
     
                   Spacer(),
     

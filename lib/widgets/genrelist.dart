@@ -20,38 +20,41 @@ Widget  GenreList(
       onTap: () {
         Get.toNamed("/bookdetails", arguments: {"id": data.id});
       },
-      child: Column(
-        children: [
-          Row(
-            children: [
-              data.image == null
-                  ? Image.asset("pics/north.jpeg", height: 100, width: 100)
-                  : CachedNetworkImage(
-                      imageUrl: data.image.toString(), height: 120, width: 100),
-              const SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(data.title),
-                  Text(data.author.name),
-                  Text(data.price.toString()),
-                ],
-              ),
-            ],
-          ),
-          // TextButton(
-          //     onPressed: () {
-          //       Get.to(() => BuyNow());
-          //     },
-          //     child: const Row(
-          //       children: [
-          //         // SizedBox(width: 70),
-          //         Spacer(),
-          //         Text("Add to Cart"),
-          //         Icon(Icons.add_shopping_cart)
-          //       ],
-          //     )),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.only(top:8.0,bottom:8),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                data.image == null
+                    ? Image.asset("pics/north.jpeg", height: 100, width: 100)
+                    : CachedNetworkImage(
+                        imageUrl: data.image.toString(), height: 120, width: 100),
+                const SizedBox(width: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(data.title),
+                    Text(data.author.name),
+                    Text(data.price.toString()),
+                  ],
+                ),
+              ],
+            ),
+            // TextButton(
+            //     onPressed: () {
+            //       Get.to(() => BuyNow());
+            //     },
+            //     child: const Row(
+            //       children: [
+            //         // SizedBox(width: 70),
+            //         Spacer(),
+            //         Text("Add to Cart"),
+            //         Icon(Icons.add_shopping_cart)
+            //       ],
+            //     )),
+          ],
+        ),
       ),
     ),
   );

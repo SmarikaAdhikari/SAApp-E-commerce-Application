@@ -1,13 +1,10 @@
 import 'package:app/Views/enumlist.dart';
 import 'package:app/api_all/api_genre/api_provider.dart';
-// import 'package:app/pages/searchpage.dart';
-// import 'package:app/api/api_model.dart';
-// import 'package:app/widgets/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-// import '../pages/searchpage.dart';
+
 
 Widget genreWidget(String name,
 int index,

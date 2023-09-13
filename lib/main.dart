@@ -4,6 +4,7 @@ import 'package:app/api_all/api_book/cart_model.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
 import 'package:app/pages/profilepage.dart';
+import 'package:app/pages/genrepage.dart';
 import 'package:app/pages/searchpage.dart';
 import 'package:app/screens/bestsellers.dart';
 import 'package:app/screens/newreleases.dart';
@@ -58,6 +59,7 @@ class MyHomePage extends ConsumerStatefulWidget {
 class _MyHomePageState extends ConsumerState<MyHomePage> {
   final screens = [
     const Firstpage(),
+    const GenrePage(),
     const SearchPage(),
     const FavoritePage(),
     ProfilePage()
@@ -181,6 +183,10 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.menu_book_sharp),
+            label: 'Genre',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Search',
           ),
@@ -201,7 +207,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         onTap: (value) {
           ref.read(navProvider.notifier).update((state) => value);
         },
-        elevation: 5,
+        elevation: 6,
         backgroundColor: Colors.black,
       ),
     );
@@ -238,4 +244,14 @@ class _RestartAppTryState extends State<RestartAppTry> {
           child: MyApp(
         isLogin: RestartAppTry.isL,
       )));
+      void main() {
+  runApp(
+    ProviderScope(
+      child: MyApp(
+        isLogin: RestartAppTry.isL ,
+      ),
+      
+    ),
+  );
+}
 }
