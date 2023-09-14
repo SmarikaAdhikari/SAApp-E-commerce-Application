@@ -1,4 +1,5 @@
-import 'package:app/Views/page7.dart';
+// import 'package:app/Views/page7.dart';
+import 'package:app/Views/page9.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,7 +7,7 @@ Widget trial()
 {
   return InkWell(
 
-    onTap: () =>  Get.to( const Pageseven(),
+    onTap: () =>  Get.to( const PageNine(),
     duration: const Duration(seconds: 1),
     transition: Transition.leftToRight,),
     child: const Padding(

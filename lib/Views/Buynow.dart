@@ -17,6 +17,7 @@ class BuyNow extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    
     final expansionStateProvider =
         StateNotifierProvider<ExpansionStateNotifier, String>((ref) {
       return ExpansionStateNotifier();

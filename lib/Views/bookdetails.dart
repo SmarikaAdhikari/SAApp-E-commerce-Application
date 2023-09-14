@@ -96,7 +96,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                                     height: 120,
                                     width: 100),
                             const SizedBox(
-                              width: 50,
+                              width: 20,
                             ),
                             const VerticalDivider(
                               color: Colors.black,
@@ -107,6 +107,8 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                                 children: [
                                   Text(
                                     data.title,
+                                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold),
