@@ -1,14 +1,16 @@
 // import 'package:app/Views/listgenre.dart';
 import 'package:app/Views/Buynow.dart';
+import 'package:app/Views/page5.dart';
 import 'package:app/api_all/api_book/cart_model.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
+import 'package:app/pages/loginpage.dart';
 import 'package:app/pages/profilepage.dart';
 import 'package:app/pages/genrepage.dart';
 import 'package:app/pages/searchpage.dart';
 import 'package:app/screens/bestsellers.dart';
 import 'package:app/screens/newreleases.dart';
-import 'package:app/screens/popularauthors.dart';
+// import 'package:app/screens/popularauthors.dart';
 import 'package:app/screens/routes.dart';
 import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +43,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: !isLogin ? '/welcome' : '/home',
+      initialRoute: 
+      // '/try'
+      !isLogin ? '/welcome' : '/home'
+      ,
       getPages: pages,
     );
   }
@@ -68,6 +73,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final currentIndex = ref.watch(navProvider);
+    final token = getStringAsync(accessToken);
     return Scaffold(
       drawer: Drawer(
         key: const Key("E-library"),
@@ -121,7 +127,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           ),
           const Divider(),
           InkWell(
-            onTap: () => Get.to(() => const Popularauthors()),
+            onTap: () => Get.to(() => const TryPage()),
             child: Row(
               children: [
                 IconButton(onPressed: () {}, icon: const Icon(Icons.person)),
@@ -132,11 +138,42 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               ],
             ),
           ),
+          Visibility(
+            visible: token.isEmptyOrNull? true: false,
+            child: Column(
+              children: [
+                const Divider(),
+                 InkWell(
+              onTap: (){
+          Get.to(() => const LoginPage());
+      
+          
+              } ,
+              child: Row(
+                children: [
+                  IconButton(
+                      onPressed: () 
+                      
+                {
+             
+              }, icon: const Icon(Icons.exit_to_app)),
+                  const Text(
+                    "Log in",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
+              ],
+            ),
+          ),
+         
+          
+
           const Divider(),
           InkWell(
             onTap: () async {
               await setValue(accessToken, '');
-
               RestartAppTry.isL = true;
               Get.reset();
               // ignore: use_build_context_synchronously
@@ -153,6 +190,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               ],
             ),
           ),
+          
+
           const Divider(),
         ]),
       ),

@@ -34,7 +34,7 @@ Widget orderWidget(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(data.kitab.title),
-            Text(data.kitab.price),
+            Text(data.kitab.price.toString()),
           ],
         ),
         const Spacer(),

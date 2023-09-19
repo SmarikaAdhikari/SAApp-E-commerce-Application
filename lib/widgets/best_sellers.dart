@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
 
 Widget bestSellers(
     BookModel data, String id, WidgetRef ref, BuildContext context) {
@@ -10,14 +11,13 @@ Widget bestSellers(
     padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
     child: InkWell(
       onTap: () {
-        // Navigator.push(context,
-        //     MaterialPageRoute(builder: (context) => BookDetails(id: id)));
+        
         Get.toNamed("/bookdetails", arguments: {"id": id});
       },
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(9),
-            // color: const Color.fromARGB(255, 255, 255, 255),
+            
             boxShadow: const [
               BoxShadow(
                 color: Color.fromARGB(60, 0, 0, 0),
@@ -34,11 +34,12 @@ Widget bestSellers(
                   ? Image.asset(
                       "pics/daisy.jpeg",
                       height: 120,
-                      width: 120,
+                      // width: 120,
                     )
                   : CachedNetworkImage(
                       imageUrl: data.image,
                       height: 120,
+                      // fit:BoxFit.fitWidth,
                       width: 120,
                     ),
               Padding(
@@ -47,6 +48,8 @@ Widget bestSellers(
                   children: [
                     Text(
                       data.title,
+                      maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     ),
                     Text(data.price.toString()),
                   ],

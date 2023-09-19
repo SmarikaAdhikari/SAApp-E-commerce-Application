@@ -1,7 +1,8 @@
 class EnumModel {
     String id;
     String title;
-    String price;
+    
+    int price;
     dynamic image;
     Author author;
 
@@ -21,13 +22,13 @@ class EnumModel {
         author: Author.fromJson(json["Author"]),
     );
 
-    Map<String, dynamic> toJson() => {
-        "id": id,
-        "title": title,
-        "price": price,
-        "image": image,
-        "Author": author.toJson(),
-    };
+    // Map<String, dynamic> toJson() => {
+    //     "id": id,
+    //     "title": title,
+    //     "price": price,
+    //     "image": image,
+    //     "Author": author.toJson(),
+    // };
 }
 
 class Author {

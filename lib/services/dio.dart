@@ -10,10 +10,6 @@ import 'package:nb_utils/nb_utils.dart';
 import '../api_all/Auth/constants.dart';
 import '../utils/my_config.dart';
 
-// import '../config/my_config.dart';
-// import '../helper/constants.dart';
-// import 'app_navigator_service.dart';
-
 class Api {
   final Dio api = Dio();
 

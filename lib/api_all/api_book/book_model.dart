@@ -2,7 +2,7 @@
 
 class BookModel {
   final String id;
-  final String price;
+  final int price;
   final String title;
   final dynamic image;
 
@@ -26,7 +26,7 @@ class BookModel {
 class BookDetailModel {
   final String description;
   final String id;
-  final String price;
+  final int price;
   final String title;
   final dynamic image;
   final Author author;
@@ -167,7 +167,7 @@ class CartModel {
 
 class Kitab {
   String title;
-  String price;
+  int price;
   dynamic image;
 
   Kitab({

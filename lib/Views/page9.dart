@@ -1,8 +1,6 @@
-// import 'package:app/Views/page7.dart';
-// import 'package:app/Views/page8.dart';
-// import 'package:app/widgets/trial.dart';
+
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
+
 
 class PageNine extends StatefulWidget {
   const PageNine({super.key});

@@ -1,4 +1,5 @@
 import 'package:app/Views/bookdetails.dart';
+import 'package:app/Views/page5.dart';
 import 'package:app/api_all/Auth/constants.dart';
 import 'package:app/main.dart';
 import 'package:app/pages/loginpage.dart';
@@ -29,6 +30,12 @@ List<GetPage> pages = [
   GetPage(
     name: '/bookdetails',
     page: () => BookDetails(id: "1"),
+    transition: Transition.leftToRightWithFade,
+    transitionDuration: const Duration(milliseconds: 500),
+  ),
+  GetPage(
+    name: '/try',
+    page: () => const TryPage(),
     transition: Transition.leftToRightWithFade,
     transitionDuration: const Duration(milliseconds: 500),
   )

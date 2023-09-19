@@ -1,17 +1,61 @@
+import 'package:app/widgets/trial.dart';
 import 'package:flutter/material.dart';
 
-class Pagefive extends StatefulWidget {
-  const Pagefive({super.key});
+class TryPage extends StatefulWidget {
+  const TryPage({super.key});
 
   @override
-  State<Pagefive> createState() => _PagefiveState();
+  State<TryPage> createState() => _TryPageState();
 }
 
-class _PagefiveState extends State<Pagefive> {
+class _TryPageState extends State<TryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: ListView.builder(
+        itemCount: 10,
+         
+        itemBuilder:  (context, index) {
+        return ExpansionTile(title: Card(
+          child: Column(
+            children: [
+              trial(),
+              const Icon(Icons.add),
+              Text("New $index"),
+            ],
+          ),
+        ),
+        onExpansionChanged: (value) {
+          if(value) {
+          
+              // print("Expanded");
+         
+          } else {
+         
+              // print("Not Expanded");
+           
+          }
+        },
+
+        children: [
+          ListView.builder(
+             shrinkWrap: true,
+            itemCount: 3,
+            itemBuilder:  (context, index) => Card(
+            child: ListTile(
+              title: Column(
+                children: [
+                  trial(),
+                  const Text("Old"),
+                ],
+              ),
+            ),
+          
+          ),)
+        ],
+        );
+      },)
     );
   }
 }

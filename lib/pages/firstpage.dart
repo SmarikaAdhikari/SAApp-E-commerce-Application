@@ -92,11 +92,14 @@ class Firstpage extends ConsumerWidget {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                           children: List.generate(data.length, (index) {
-                        return bestSellers(
-                          data[index],
-                          data[index].id.toString(),
-                          ref,
-                          context,
+                        return SizedBox(
+                          width: 150,
+                          child: bestSellers(
+                            data[index],
+                            data[index].id.toString(),
+                            ref,
+                            context,
+                          ),
                         );
                       }))),
                   error: (Object error, StackTrace stackTrace) {

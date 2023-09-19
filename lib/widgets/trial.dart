@@ -8,7 +8,7 @@ Widget trial()
   return InkWell(
 
     onTap: () =>  Get.to( const PageNine(),
-    duration: const Duration(seconds: 1),
+    duration: const Duration(milliseconds: 700),
     transition: Transition.leftToRight,),
     child: const Padding(
       padding: EdgeInsets.all(8.0),
@@ -16,11 +16,11 @@ Widget trial()
       
         child: Row(children: [
           SizedBox(width: 10,),
-          Image(image: AssetImage("pics/north.jpeg"),height: 100,width: 100,),
+          Image(image: AssetImage("pics/north.jpeg"),height: 50,width: 50,),
           SizedBox(width: 10,), 
-           Text("Trial",style: TextStyle(fontSize: 30),),
+           Text("Trial",style: TextStyle(fontSize: 15),),
             SizedBox(width: 100,),
-            Text("500",style: TextStyle(fontSize: 30),),
+            Text("500",style: TextStyle(fontSize: 15),),
            
         
         
