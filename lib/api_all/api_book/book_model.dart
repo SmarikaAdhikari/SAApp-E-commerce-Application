@@ -141,44 +141,44 @@ class Book {
       );
 }
 
-class CartModel {
-  String id;
-  String userId;
-  String bookId;
-  String publisherId;
-  Kitab kitab;
+// class CartModel {
+//   String id;
+//   String userId;
+//   String bookId;
+//   String publisherId;
+//   Kitab kitab;
 
-  CartModel({
-    required this.id,
-    required this.userId,
-    required this.bookId,
-    required this.publisherId,
-    required this.kitab,
-  });
+//   CartModel({
+//     required this.id,
+//     required this.userId,
+//     required this.bookId,
+//     required this.publisherId,
+//     required this.kitab,
+//   });
 
-  factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
-        id: json["id"],
-        userId: json["userId"],
-        bookId: json["bookId"],
-        publisherId: json["publisherId"],
-        kitab: Kitab.fromJson(json["book"]),
-      );
-}
+//   factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
+//         id: json["id"],
+//         userId: json["userId"],
+//         bookId: json["bookId"],
+//         publisherId: json["publisherId"],
+//         kitab: Kitab.fromJson(json["book"]),
+//       );
+// }
 
-class Kitab {
-  String title;
-  int price;
-  dynamic image;
+// class Kitab {
+//   String title;
+//   int price;
+//   dynamic image;
 
-  Kitab({
-    required this.title,
-    required this.price,
-    required this.image,
-  });
+//   Kitab({
+//     required this.title,
+//     required this.price,
+//     required this.image,
+//   });
 
-  factory Kitab.fromJson(Map<String, dynamic> json) => Kitab(
-        title: json["title"],
-        price: json["price"],
-        image: json["image"],
-      );
-}
+//   factory Kitab.fromJson(Map<String, dynamic> json) => Kitab(
+//         title: json["title"],
+//         price: json["price"],
+//         image: json["image"],
+//       );
+// }

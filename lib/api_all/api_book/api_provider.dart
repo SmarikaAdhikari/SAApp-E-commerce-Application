@@ -1,8 +1,9 @@
 import 'package:app/api_all/api_book/api_service.dart';
-import 'package:app/api_all/api_book/cart_model.dart';
+import 'package:app/api_all/api_cart/api_model.dart';
+// import 'package:app/api_all/api_book/cart_model.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
 
 import 'book_model.dart';
 
@@ -39,8 +40,8 @@ final cartFutureProvider = FutureProvider<List<CartModel>>((ref) async {
   return ApiService.getAllCart();
 });
 
-final cartHiveFutureProvider =
-    FutureProvider<List<CartNotifierModel>>((ref) async {
-  final data = Hive.box<CartNotifierModel>('cart');
-  return data.values.toList();
-});
+// final cartHiveFutureProvider =
+//     FutureProvider<List<CartNotifierModel>>((ref) async {
+//   final data = Hive.box<CartNotifierModel>('cart');
+//   return data.values.toList();
+// });

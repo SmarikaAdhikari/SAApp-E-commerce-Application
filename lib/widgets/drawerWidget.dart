@@ -1,10 +1,6 @@
-// import 'package:flutter/cupertino.dart';
-// ignore_for_file: file_names
 
-import 'package:app/Views/Buynow.dart';
+import 'package:app/Views/buynow%20.dart';
 import 'package:app/Views/page5.dart';
-// import 'package:app/Views/page7.dart';
-// import 'package:app/pages/searchpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +36,7 @@ Widget drawerWidget(
           ),
           TextButton(
               onPressed: () {
-                Get.to(() => BuyNow());
+                Get.to(() => const CartPage());
               },
               child: const Row(
                 children: [

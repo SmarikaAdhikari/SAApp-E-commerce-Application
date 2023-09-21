@@ -42,6 +42,8 @@ dependencies:
   fluro: ^2.0.5
   hive_flutter: ^1.1.0
   cached_network_image: ^3.2.3
+  reactive_forms: ^16.1.0
+  http: ^1.1.0
 
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to

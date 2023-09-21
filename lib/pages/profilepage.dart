@@ -12,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
 import '../api_all/api_book/api_provider.dart';
+import '../api_all/api_cart/api_service.dart';
 import '../api_all/api_user/api_user_provider.dart';
 import '../widgets/profileWidget.dart';
 
@@ -37,6 +38,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
   Widget build(BuildContext context) {
     final ApiService = ref.watch(userFutureProvider);
     final ReadProvider = ref.watch(readFutureProvider);
+    final details = ref.watch(orderProvider);
     return Scaffold(
       body: SafeArea(
         child: ApiService.when(
@@ -149,12 +151,69 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                         loading: () {
                           return const Center();
                         }),
-                    ListView.builder(
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return const Card();
-                      },
-                    ),
+                    // ListView.builder(
+                    //   itemCount: 10,
+                    //   itemBuilder: (context, index) {
+                    //     return const Card();
+                    //   },
+                    // ),
+                    details.when(
+          data: (data) => Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.separated(
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 30,
+              ),
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: data.length,
+              itemBuilder: (context, index) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Order ID: ${data[index].id}"),
+                  Text("User Name: ${data[index].user!.name}"),
+                  Text("Order Date: ${data[index].createdAt}"),
+                  Text("Total: ${data[index].total}"),
+                  Text(" ${data[index].status}"),
+                  ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: data[index].orderItem!.length,
+                    itemBuilder: (context, dindex) {
+                      return Card(
+                        child: ListTile(
+                          horizontalTitleGap: 0,
+                          title: Text(
+                              " ${data[index].orderItem![dindex].book!.title.toString()}"),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  "Price : ${data[index].orderItem![dindex].price.toString()}"),
+                              Text(
+                                  "Quantity :${data[index].orderItem![dindex].quantity.toString()}"),
+                            ],
+                          ),
+                          trailing: Text(
+                              data[index].orderItem![dindex].status.toString()),
+                        ),
+                     );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+          error: (Object error, StackTrace stackTrace) {
+            return const Card();
+          },
+          loading: () {
+            return const Card();
+          },
+        )
+
+
+
+
                   ],
                 ),
               ),

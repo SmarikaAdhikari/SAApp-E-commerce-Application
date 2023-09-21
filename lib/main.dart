@@ -1,7 +1,8 @@
 // import 'package:app/Views/listgenre.dart';
-import 'package:app/Views/Buynow.dart';
+// import 'package:app/Views/Buynow.dart';
+import 'package:app/Views/buynow%20.dart';
 import 'package:app/Views/page5.dart';
-import 'package:app/api_all/api_book/cart_model.dart';
+// import 'package:app/api_all/api_book/cart_model.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
 import 'package:app/pages/loginpage.dart';
@@ -16,17 +17,17 @@ import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'api_all/Auth/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
+  // await Hive.initFlutter();
   await initialize();
 
-  Hive.registerAdapter(CartNotifierModelAdapter());
-  await Hive.openBox<CartNotifierModel>('cart');
+  // Hive.registerAdapter(CartNotifierModelAdapter());
+  // await Hive.openBox<CartNotifierModel>('cart');
   runApp(const RestartAppTry());
 }
 
@@ -146,8 +147,6 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                  InkWell(
               onTap: (){
           Get.to(() => const LoginPage());
-      
-          
               } ,
               child: Row(
                 children: [
@@ -208,7 +207,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           IconButton(
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => (BuyNow())));
+                  context, MaterialPageRoute(builder: (context) => (const CartPage())));
             },
             icon: const Icon(Icons. shopping_cart_outlined),
           )

@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable, unused_local_variable, non_constant_identifier_names, no_leading_underscores_for_local_identifiers, unused_result, prefer_const_constructors_in_immutables
-import 'package:app/Views/Buynow.dart';
+// import 'package:app/Views/Buynow.dart';
+import 'package:app/Views/buynow%20.dart';
 import 'package:app/api_all/api_book/api_provider.dart';
 import 'package:app/widgets/best_sellers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -202,7 +203,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                               child: ElevatedButton(
                                   onPressed: () {
                                     ref.refresh(cartFutureProvider);
-                                    Get.to(() => BuyNow());
+                                    Get.to(() => const CartPage());
                                   },
                                   child: const Row(
                                     children: [
