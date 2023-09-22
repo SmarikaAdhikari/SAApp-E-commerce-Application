@@ -206,6 +206,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold)),
                             Container(
+                              // height: 200,
                               foregroundDecoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(
@@ -248,7 +249,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                               ),
                             ),
                             const SizedBox(
-                              height: 180,
+                              height: 190,
                             ),
                             Row(
                               children: [
@@ -277,15 +278,15 @@ class _CartPageState extends ConsumerState<CartPage> {
                                           .toList()
                                     };
 
-                                    // ref
-                                    //     .read(cartRepoProvider)
-                                    //     .postOrder(newGroup)
-                                    //     .then((value) {
-                                    //   if (value== 200) {
-                                    //     Navigator.pop(context);
+                                    ref
+                                        .read(cartRepoProvider)
+                                        .postOrder(newGroup)
+                                        .then((value) {
+                                      // if (value== 200) {
+                                      //   Navigator.pop(context);
 
-                                    //   }
-                                    // });
+                                      // }
+                                    });
                                   },
                                   child: const Text("Place Order")),
                             ),

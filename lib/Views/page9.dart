@@ -113,46 +113,5 @@ class _PageNineState extends State<PageNine> {
                   ),
                 )
                 .toList()));
-
-    // Card(
-    //   child: Padding(
-    //     padding: const EdgeInsets.all(15.0),
-    //     child: SizedBox(
-    //       width: 400,
-    //       height: 50,
-    //       child: Column(
-    //         children: [
-    //           Row(
-    //             children: [
-    //               const SizedBox(
-    //                 width: 10,
-    //               ),
-    //               const Text(
-    //                 'Book 1 is done reading',
-    //                 style: TextStyle(fontSize: 20.0),
-    //               ),
-    //               const SizedBox(width: 50),
-    //               Checkbox(
-    //                 value: _isChecked,
-    //                 onChanged: ( newValue) {
-    //                   if (newValue != null){
-    //                   setState(() {
-    //                     _isChecked = newValue;
-    //                   });}
-    //                   else{
-    //                     setState(() {
-    //                       _isChecked = false;
-    //                     });
-    //                   }
-    //                 },
-    //               )
-    //             ],
-    //           ),
-
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // ),
   }
 }

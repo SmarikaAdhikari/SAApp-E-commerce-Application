@@ -28,13 +28,9 @@ class _TryPageState extends State<TryPage> {
         ),
         onExpansionChanged: (value) {
           if(value) {
-          
-              // print("Expanded");
-         
+            // print("Expanded");
           } else {
-         
-              // print("Not Expanded");
-           
+            // print("Collapsed");
           }
         },
 

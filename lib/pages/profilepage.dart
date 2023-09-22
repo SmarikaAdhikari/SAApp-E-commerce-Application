@@ -1,16 +1,11 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable
 
-// import 'dart:convert';
-
 import 'dart:convert';
-
 import 'package:app/pages/edits.dart';
 import 'package:app/widgets/read.dart';
-// import 'package:app/widgets/favouritewidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-
 import '../api_all/api_book/api_provider.dart';
 import '../api_all/api_cart/api_service.dart';
 import '../api_all/api_user/api_user_provider.dart';
@@ -134,12 +129,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 return Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: readWidget(
-                                      data[index],
-                                      data[index].book.id.toString(),
-                                      ref
-                                  
-                                    ),
+                                    child: readWidget(data[index],
+                                        data[index].book.id.toString(), ref),
                                   ),
                                 );
                               },
@@ -158,62 +149,61 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                     //   },
                     // ),
                     details.when(
-          data: (data) => Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const SizedBox(
-                height: 30,
-              ),
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemCount: data.length,
-              itemBuilder: (context, index) => Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Order ID: ${data[index].id}"),
-                  Text("User Name: ${data[index].user!.name}"),
-                  Text("Order Date: ${data[index].createdAt}"),
-                  Text("Total: ${data[index].total}"),
-                  Text(" ${data[index].status}"),
-                  ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: data[index].orderItem!.length,
-                    itemBuilder: (context, dindex) {
-                      return Card(
-                        child: ListTile(
-                          horizontalTitleGap: 0,
-                          title: Text(
-                              " ${data[index].orderItem![dindex].book!.title.toString()}"),
-                          subtitle: Column(
+                      data: (data) => Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListView.separated(
+                          separatorBuilder: (context, index) => const SizedBox(
+                            height: 30,
+                          ),
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          itemCount: data.length,
+                          itemBuilder: (context, index) => Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                  "Price : ${data[index].orderItem![dindex].price.toString()}"),
-                              Text(
-                                  "Quantity :${data[index].orderItem![dindex].quantity.toString()}"),
+                              Text("Order ID: ${data[index].id}"),
+                              Text("User Name: ${data[index].user!.name}"),
+                              Text("Order Date: ${data[index].createdAt}"),
+                              Text("Total: ${data[index].total}"),
+                              Text(" ${data[index].status}"),
+                              ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: data[index].orderItem!.length,
+                                itemBuilder: (context, dindex) {
+                                  return Card(
+                                    child: ListTile(
+                                      horizontalTitleGap: 0,
+                                      title: Text(
+                                          " ${data[index].orderItem![dindex].book!.title.toString()}"),
+                                      subtitle: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                              "Price : ${data[index].orderItem![dindex].price.toString()}"),
+                                          Text(
+                                              "Quantity :${data[index].orderItem![dindex].quantity.toString()}"),
+                                        ],
+                                      ),
+                                      trailing: Text(data[index]
+                                          .orderItem![dindex]
+                                          .status
+                                          .toString()),
+                                    ),
+                                  );
+                                },
+                              ),
                             ],
                           ),
-                          trailing: Text(
-                              data[index].orderItem![dindex].status.toString()),
                         ),
-                     );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-          error: (Object error, StackTrace stackTrace) {
-            return const Card();
-          },
-          loading: () {
-            return const Card();
-          },
-        )
-
-
-
-
+                      ),
+                      error: (Object error, StackTrace stackTrace) {
+                        return const Card();
+                      },
+                      loading: () {
+                        return const Card();
+                      },
+                    ),
                   ],
                 ),
               ),

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, unused_local_variable
+
 import 'dart:convert';
 
 import 'package:app/api_all/api_cart/api_model.dart';
@@ -45,27 +47,24 @@ class CartProvider {
     }
   }
 
-//   Future<int> postOrder(var data) async {
-//     try {
-//       final  res = await post(Uri.parse("${postsURL}order/createOrder"),
-//           headers: {
-//             "Content-Type": "application/json",
-//             "Authorization": "Bearer $token",
-//           },
-//           body: json.encode(data));
-
-//       return res.statusCode;
-//     } catch (e) {
-//       throw Exception('Error getting suggestion $e');
-//     }
-//   }
+  Future<void>postOrder(var data) async {
+    const url = "/order/createOrder";
+    
+    try {
+      final res = await Api().post(getAppUrl() + url,data: data);
+      // print(res.statusCode);
+     
+    } catch (e) {
+      throw Exception('Error getting suggestion $e');
+    }
+  }
   
-//   get(Uri parse, {required Map<String, String> headers}) {}
-// }
-
-// post(Uri parse, {required Map<String, String> headers, required String body}) {
-// }
+  get(Uri parse, {required Map<String, String> headers}) {}
 }
+
+post(Uri parse, {required Map<String, String> headers, required String body}) {
+}
+
 
 final cartRepoProvider = Provider<CartProvider>((ref) {
   return CartProvider();

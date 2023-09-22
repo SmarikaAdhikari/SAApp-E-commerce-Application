@@ -3,7 +3,7 @@ import 'package:app/pages/firstpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../widgets/trial.dart';
+// import '../widgets/trial.dart';
 
 
 class SearchPage extends StatefulWidget {
@@ -39,14 +39,14 @@ class _SearchPageState extends State<SearchPage> {
                 ),
          ),
         
-       Flexible(
-         child: ListView.builder( itemCount:10,
-         scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          physics: const AlwaysScrollableScrollPhysics(),
-         itemBuilder:   (context, index) => trial(),
-          ),
-       ),
+      //  Flexible(
+      //    child: ListView.builder( itemCount:10,
+      //    scrollDirection: Axis.vertical,
+      //     shrinkWrap: true,
+      //     physics: const AlwaysScrollableScrollPhysics(),
+      //    itemBuilder:   (context, index) => trial(),
+      //     ),
+      //  ),
          
         ],
       ),
