@@ -58,9 +58,34 @@ class CartProvider {
       throw Exception('Error getting suggestion $e');
     }
   }
+
   
   get(Uri parse, {required Map<String, String> headers}) {}
+
+
+
+
+    Future<List<SearchModel>> searchBook(dynamic data) async {
+      final url = "/report/search?title=$data";
+    try {
+      final res = await Api().get(getAppUrl() + url,
+     
+      );
+         List datas = json.decode(res.data);
+        //  print(res.realUri);
+      
+      final returnData = datas.map((e) => SearchModel.fromJson(e)).toList();
+   
+      return returnData;
+      
+      
+    } catch (e) {
+      throw Exception('Error getting suggestion $e');
+    }
+  }
+  
 }
+
 
 post(Uri parse, {required Map<String, String> headers, required String body}) {
 }
@@ -79,3 +104,12 @@ final cartProvider = FutureProvider.autoDispose<List<CartModel>>((ref) async {
   final repo = ref.watch(cartRepoProvider);
   return repo.getAllCart();
 });
+
+final searchProvider = FutureProvider.family.autoDispose<List<SearchModel>,dynamic>((ref,data) async {
+  final repo = ref.watch(cartRepoProvider);
+  return repo.searchBook(data);
+});
+// final searchProvider = FutureProvider.family.autoDispose<List<SearchModel>, dynamic>((ref, data) async {
+//   final repo = ref.watch(cartRepoProvider);
+//   return repo.searchBook(data);
+// });

@@ -14,7 +14,14 @@ import 'package:get/get.dart';
 
 class Edits extends ConsumerStatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
-  Edits({super.key, required this.name, required this.email, required this.bio, required this.password});
+  Edits(
+      {super.key,
+      // required this.image,
+      required this.name,
+      required this.email,
+      required this.bio,
+      required this.password});
+  // final dynamic image;
   final String name;
   final String bio;
   final String email;
@@ -25,14 +32,15 @@ class Edits extends ConsumerStatefulWidget {
 }
 
 class _EditsState extends ConsumerState<Edits> {
-  TextEditingController nameEditingController = TextEditingController( );
+  // TextEditingController imageEditingController = TextEditingController();
+  TextEditingController nameEditingController = TextEditingController();
   TextEditingController bioEditingController = TextEditingController();
   TextEditingController emailEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
 
   @override
-  void initState()
-  {
+  void initState() {
+    // imageEditingController.text = widget.image;
     nameEditingController.text = widget.name;
     bioEditingController.text = widget.bio;
     emailEditingController.text = widget.email;
@@ -47,7 +55,23 @@ class _EditsState extends ConsumerState<Edits> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+        
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  ElevatedButton(onPressed: ()
+                    {}, 
+                    child: const Text("Gallery")),
+                  const SizedBox(width: 10),
+                      ElevatedButton(onPressed: ()
+                    {}, 
+                    child: const Text("Camera")),
+
+                  ],
+                ),
+
           const SizedBox(height: 10),
+
           SizedBox(
             width: 200,
             child: TextField(
@@ -67,7 +91,7 @@ class _EditsState extends ConsumerState<Edits> {
               ),
             ),
           ),
-              const SizedBox(height: 10),
+          const SizedBox(height: 10),
           SizedBox(
             width: 200,
             child: TextField(
@@ -88,12 +112,19 @@ class _EditsState extends ConsumerState<Edits> {
           ),
           ElevatedButton(
             onPressed: () {
-              ref.read(userServiceProvider).updateUserProfile(nameEditingController.value.text, emailEditingController.value.text, passwordEditingController.value.text,bioEditingController.value.text,).then((value) {
+              ref
+                  .read(userServiceProvider)
+                  .updateUserProfile(
+                    nameEditingController.value.text,
+                    emailEditingController.value.text,
+                    passwordEditingController.value.text,
+                    bioEditingController.value.text,
+                  )
+                  .then((value) {
                 ref.refresh(userFutureProvider);
               });
-              
+
               Get.back();
-             
             },
             child: const Text("Done"),
           ),

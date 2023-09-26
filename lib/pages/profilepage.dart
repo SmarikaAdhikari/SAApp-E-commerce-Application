@@ -73,6 +73,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                   ElevatedButton(
                     onPressed: () {
                       Get.to(() => Edits(
+                            // image: data.image,
                             name: data.name,
                             bio: data.bio.toString(),
                             email: data.email,
@@ -127,11 +128,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                         data: (data) => ListView.builder(
                               itemBuilder: (context, index) {
                                 return Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: readWidget(data[index],
-                                        data[index].book.id.toString(), ref),
-                                  ),
+                                  child: readWidget(data[index],
+                                      data[index].book.id.toString(), ref),
                                 );
                               },
                               itemCount: data.length,
@@ -142,61 +140,63 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                         loading: () {
                           return const Center();
                         }),
-                    // ListView.builder(
-                    //   itemCount: 10,
-                    //   itemBuilder: (context, index) {
-                    //     return const Card();
-                    //   },
-                    // ),
+                   
                     details.when(
                       data: (data) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListView.separated(
-                          separatorBuilder: (context, index) => const SizedBox(
-                            height: 30,
-                          ),
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          itemCount: data.length,
-                          itemBuilder: (context, index) => Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Order ID: ${data[index].id}"),
-                              Text("User Name: ${data[index].user!.name}"),
-                              Text("Order Date: ${data[index].createdAt}"),
-                              Text("Total: ${data[index].total}"),
-                              Text(" ${data[index].status}"),
-                              ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: data[index].orderItem!.length,
-                                itemBuilder: (context, dindex) {
-                                  return Card(
-                                    child: ListTile(
-                                      horizontalTitleGap: 0,
-                                      title: Text(
-                                          " ${data[index].orderItem![dindex].book!.title.toString()}"),
-                                      subtitle: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                              "Price : ${data[index].orderItem![dindex].price.toString()}"),
-                                          Text(
-                                              "Quantity :${data[index].orderItem![dindex].quantity.toString()}"),
-                                        ],
-                                      ),
-                                      trailing: Text(data[index]
-                                          .orderItem![dindex]
-                                          .status
-                                          .toString()),
+                          padding: const EdgeInsets.all(0.0),
+                          child: ListView.builder(
+                            itemCount: data.length,
+                            itemBuilder: (context, index) {
+                              return ExpansionTile(
+                                title: Container(
+                                  color: Colors.grey[100],
+                                  height:120,
+                                  width:800,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                                                
+                                    Text("User: ${data[index].user!.name}"),
+                                    Text("Order Date: ${data[index].createdAt}",maxLines: 1,),
+                                    Text("Total: ${data[index].total}"),
+                                    Text("Payment: ${data[index].status}"),
+                                                               
+                                      ],
                                     ),
-                                  );
-                                },
-                              ),
-                            ],
+                                  ),
+                                ),
+                               
+                                children: [
+                                  ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: data[index].orderItem!.length,
+                                    itemBuilder: (context, dindex) => Card(
+                                      child:  ListTile(
+                                        horizontalTitleGap: 1,
+                                        title: 
+                                            Text(data[index].orderItem![dindex].book?.title ?? ''),
+                                        subtitle: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                                "Price : ${data[index].orderItem![dindex].price.toString()}"),
+                                            Text(
+                                                "Quantity :${data[index].orderItem![dindex].quantity.toString()}"),
+                                          ],
+                                        ),
+                                        // trailing: Text(
+                                        //     data[index].orderItem![dindex].status.toString()),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
+                          )
+          
                           ),
-                        ),
-                      ),
                       error: (Object error, StackTrace stackTrace) {
                         return const Card();
                       },

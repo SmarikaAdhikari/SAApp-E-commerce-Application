@@ -1,7 +1,7 @@
 // import 'package:app/Views/listgenre.dart';
 // import 'package:app/Views/Buynow.dart';
 import 'package:app/Views/buynow%20.dart';
-import 'package:app/Views/page5.dart';
+// import 'package:app/Views/page5.dart';
 // import 'package:app/api_all/api_book/cart_model.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
@@ -11,6 +11,7 @@ import 'package:app/pages/genrepage.dart';
 import 'package:app/pages/searchpage.dart';
 import 'package:app/screens/bestsellers.dart';
 import 'package:app/screens/newreleases.dart';
+import 'package:app/screens/popularauthors.dart';
 // import 'package:app/screens/popularauthors.dart';
 import 'package:app/screens/routes.dart';
 import 'package:app/screens/trendingscreen.dart';
@@ -128,7 +129,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           ),
           const Divider(),
           InkWell(
-            onTap: () => Get.to(() => const TryPage()),
+            onTap: () => Get.to(() => const Popularauthors()),
             child: Row(
               children: [
                 IconButton(onPressed: () {}, icon: const Icon(Icons.person)),
@@ -148,7 +149,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               onTap: (){
           Get.to(() => const LoginPage());
               } ,
-              child: Row(
+              child: Row( 
                 children: [
                   IconButton(
                       onPressed: () 
@@ -169,22 +170,30 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
          
           
 
-          const Divider(),
-          InkWell(
-            onTap: () async {
-              await setValue(accessToken, '');
-              RestartAppTry.isL = true;
-              Get.reset();
-              // ignore: use_build_context_synchronously
-              RestartAppTry.init(context);
-            },
-            child: Row(
+          // const Divider(),
+          Visibility(
+            visible: token.isEmptyOrNull? false: true,
+            child: Column(
               children: [
-                IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.exit_to_app)),
-                const Text(
-                  "Log out",
-                  style: TextStyle(fontSize: 20),
+                 const Divider(),
+                InkWell(
+                  onTap: () async {
+                    await setValue(accessToken, '');
+                    RestartAppTry.isL = true;
+                    Get.reset();
+                    // ignore: use_build_context_synchronously
+                    RestartAppTry.init(context);
+                  },
+                  child: Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {}, icon: const Icon(Icons.exit_to_app)),
+                      const Text(
+                        "Log out",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -240,8 +249,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        iconSize: 30,
+        unselectedItemColor:Colors.grey,
+        iconSize: 25,
         onTap: (value) {
           ref.read(navProvider.notifier).update((state) => value);
         },

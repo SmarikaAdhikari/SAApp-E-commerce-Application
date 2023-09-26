@@ -30,7 +30,7 @@ class _WelcomePageState extends ConsumerState<WelcomePage> {
     return Scaffold(
       backgroundColor: Colors.blue.shade800,
       body: const Center(
-          child: Text('Demo',
+          child: Text('Welcome to Book Stack',
               style: TextStyle(
                   fontSize: 25,
                   color: Colors.white,

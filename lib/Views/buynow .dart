@@ -1,10 +1,11 @@
 // ignore_for_file: file_names
 
 import 'package:app/api_all/api_cart/api_model.dart';
-// import 'package:app/widgets/e_pay.dart';
+import 'package:app/pages/payment.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../api_all/api_cart/api_service.dart';
@@ -23,6 +24,9 @@ class _CartPageState extends ConsumerState<CartPage> {
   FormGroup cartGroup(List<CartModel> data) {
     return FormGroup({
       'total': FormControl<int>(
+        value: 0,
+      ),
+      'Subtotal': FormControl<int>(
         value: 0,
       ),
       'books': FormArray([for (final qualif in data) bookGroup(qualif)]),
@@ -62,7 +66,17 @@ class _CartPageState extends ConsumerState<CartPage> {
                       form: () => cartGroup(data),
                       builder: (context, formGroup, child) {
                         getTotal() {
-                          formGroup.control('total').value = formGroup
+                          int value = formGroup
+                                      .control('books')
+                                      .value
+                                      .where((element) =>
+                                          element['isChecked'] == true)
+                                      .length ==
+                                  0
+                              ? 0
+                              : 100;
+
+                               formGroup.control('Subtotal').value = formGroup
                               .control('books')
                               .value
                               .where((element) => element['isChecked'] == true)
@@ -70,12 +84,18 @@ class _CartPageState extends ConsumerState<CartPage> {
                                   0,
                                   (dynamic prev, dynamic product) =>
                                       prev + product['price']);
+
+                          formGroup.control('total').value =  formGroup.control('Subtotal').value + value;
+
+                             setState(() {
+                               
+                             });
                         }
 
                         return Column(
                           children: [
                             SizedBox(
-                              height: 350,
+                              height: MediaQuery.of(context).size.height * 0.57,
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: data.length,
@@ -249,15 +269,39 @@ class _CartPageState extends ConsumerState<CartPage> {
                               ),
                             ),
                             const SizedBox(
-                              height: 190,
+                              height: 40,
                             ),
+                               Row(
+                              children: [
+                                const Text("Product Amount"),
+                                const Spacer(),
+                                ReactiveValueListenableBuilder(
+                                  builder: (context, controller, child) {
+                                    return Text("Rs: ${controller.value.toString()}");
+                                  },
+                                  formControlName: 'Subtotal',
+                                ),
+                              ],
+                            ),
+                             Visibility(
+                              visible: formGroup.control('Subtotal').value == 0? false: true,
+                              child:  const Row(
+                                children: [
+                                  
+                                  Text("Shipping Charge"),
+                                  Spacer(),
+                                  Text("Rs: 100"),
+                                ],
+                              ),
+                            ),
+                         
                             Row(
                               children: [
                                 const Text("Total Amount"),
                                 const Spacer(),
                                 ReactiveValueListenableBuilder(
                                   builder: (context, controller, child) {
-                                    return Text(controller.value.toString());
+                                    return Text("Rs: ${controller.value.toString()}");
                                   },
                                   formControlName: 'total',
                                 ),
@@ -267,8 +311,10 @@ class _CartPageState extends ConsumerState<CartPage> {
                               width: double.infinity,
                               child: ElevatedButton(
                                   onPressed: () {
+                                     Get.to(() => const PaymentPage());
                                     // ignore: unused_local_variable
                                     final newGroup = {
+                                    
                                       "total": formGroup.control('total').value,
                                       "books": formGroup
                                           .control('books')
@@ -303,7 +349,6 @@ class _CartPageState extends ConsumerState<CartPage> {
                   );
                 },
               ),
-          
             ],
           ),
         ),
