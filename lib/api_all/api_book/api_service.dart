@@ -118,4 +118,5 @@ class ApiService {
       throw Exception('Error getting suggestion $e');
     }
   }
+
 }

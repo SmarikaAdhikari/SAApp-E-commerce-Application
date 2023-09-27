@@ -1,12 +1,11 @@
-// import 'package:app/pages/firstpage.dart';
-// import 'package:app/widgets/trial.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:get/get.dart';
+
 
 import '../api_all/api_cart/api_service.dart';
+import '../widgets/search.dart';
 
-// import '../widgets/trial.dart';
 
 class SearchPage extends ConsumerStatefulWidget {
   const SearchPage({super.key});
@@ -58,7 +57,11 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                   shrinkWrap: true,
                   itemCount: data.length,
                   itemBuilder: (context, index) {
-                    return Text(data[index].title!);
+                    return searchWidget(
+                      data[index],
+                      data[index].id.toString(),
+                      ref,
+                    );
                   },
                 ),
               ),

@@ -40,8 +40,4 @@ final cartFutureProvider = FutureProvider<List<CartModel>>((ref) async {
   return ApiService.getAllCart();
 });
 
-// final cartHiveFutureProvider =
-//     FutureProvider<List<CartNotifierModel>>((ref) async {
-//   final data = Hive.box<CartNotifierModel>('cart');
-//   return data.values.toList();
-// });
+

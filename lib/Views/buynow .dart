@@ -311,7 +311,10 @@ class _CartPageState extends ConsumerState<CartPage> {
                               width: double.infinity,
                               child: ElevatedButton(
                                   onPressed: () {
-                                     Get.to(() => const PaymentPage());
+                                    if (formGroup.control('total').value == 0) {
+                                      return;}
+                                      else {
+                                     Get.to(() => const PaymentPage());}
                                     // ignore: unused_local_variable
                                     final newGroup = {
                                     
@@ -328,10 +331,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                         .read(cartRepoProvider)
                                         .postOrder(newGroup)
                                         .then((value) {
-                                      // if (value== 200) {
-                                      //   Navigator.pop(context);
-
-                                      // }
+                                    
                                     });
                                   },
                                   child: const Text("Place Order")),
