@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:app/api_all/api_cart/api_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:http/retry.dart';
+// import 'package:http/retry.dart';
 
 import '../../services/dio.dart';
 import '../../utils/my_config.dart';
@@ -53,8 +53,7 @@ class CartProvider {
     
     try {
       final res = await Api().post(getAppUrl() + url,data: data);
-      // print(res.statusCode);
-      print(res.data);
+     
       return res.statusCode!;
      
     } catch (e) {
@@ -112,7 +111,3 @@ final searchProvider = FutureProvider.family.autoDispose<List<SearchModel>,dynam
   final repo = ref.watch(cartRepoProvider);
   return repo.searchBook(data);
 });
-// final searchProvider = FutureProvider.family.autoDispose<List<SearchModel>, dynamic>((ref, data) async {
-//   final repo = ref.watch(cartRepoProvider);
-//   return repo.searchBook(data);
-// });

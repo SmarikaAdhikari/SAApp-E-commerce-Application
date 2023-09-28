@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable
 
-import 'dart:convert';
+// import 'dart:convert';
 import 'package:app/pages/edits.dart';
 import 'package:app/widgets/read.dart';
 import 'package:flutter/material.dart';
@@ -59,8 +59,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                       )
                     : CircleAvatar(
                         radius: 50.0,
-                        backgroundColor: Colors.transparent,
-                        backgroundImage: MemoryImage(base64Decode(data.image)),
+                        backgroundColor: Colors.grey,
+                        
+                        backgroundImage: NetworkImage(data.image.toString(),
+                        
+                        )
+                    ,
                       ),
               ),
             ]),

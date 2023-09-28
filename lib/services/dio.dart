@@ -74,7 +74,9 @@ class Api {
       );
 
       final message = json.decode(response.data)["message"];
-      Fluttertoast.showToast(msg: message);
+      if(message != null) {
+        Fluttertoast.showToast(msg: message);
+      }
 
       return response;
     } on SocketException catch (e) {

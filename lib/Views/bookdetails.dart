@@ -2,6 +2,7 @@
 // import 'package:app/Views/Buynow.dart';
 import 'package:app/Views/buynow%20.dart';
 import 'package:app/api_all/api_book/api_provider.dart';
+import 'package:app/api_all/api_cart/api_service.dart';
 import 'package:app/widgets/best_sellers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -173,7 +174,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                                       .then((value) {
                                     ref.refresh(bookByIdFutureProvider(
                                         Get.arguments['id']));
-                                    ref.refresh(cartFutureProvider);
+                                    ref.refresh(cartProvider);
                                   });
                                 },
                                 child: data.isCart
@@ -202,7 +203,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                               visible: data.isCart,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    ref.refresh(cartFutureProvider);
+                                    ref.refresh(cartProvider);
                                     Get.to(() => const CartPage());
                                   },
                                   child: const Row(

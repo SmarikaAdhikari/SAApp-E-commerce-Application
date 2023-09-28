@@ -31,7 +31,7 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                   amt: 10,
                   pdc: 18,
                   
-                  tAmt: 10,
+                  tAmt: 28,
                   fu: 'https://esewa.com.np/merchant/invoice',
                   pid: '1022', //order id
                 ),

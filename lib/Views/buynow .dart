@@ -51,7 +51,7 @@ class _CartPageState extends ConsumerState<CartPage> {
     // ignore: unused_local_variable
     final value = ref.watch(cartProvider);
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( 
         title: const Text('Cart Page'),
         backgroundColor: const Color.fromARGB(255, 165, 182, 190),
       ),
@@ -105,117 +105,124 @@ class _CartPageState extends ConsumerState<CartPage> {
                                         formGroup
                                             .control('books.$index.quantity')
                                             .value;
-
+                              
                                     formGroup
                                         .control('books.$index.price')
                                         .value = value;
                                   }
-
-                                  return Card(
-                                      child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      children: [
-                                        ReactiveCheckbox(
-                                          formControlName:
-                                              'books.$index.isChecked',
-                                          onChanged: (control) {
-                                            formGroup
-                                                .control(
-                                                    'books.$index.isChecked')
-                                                .value = control.value;
-
-                                            getTotal();
-                                          },
-                                        ),
-                                        data[index].book!.image == null
-                                            ? Image.asset(
-                                                "pics/daisy.jpeg",
-                                                height: 60,
-                                                width: 50,
-                                              )
-                                            : CachedNetworkImage(
-                                                imageUrl:
-                                                    data[index].book!.image,
-                                                height: 60,
-                                                width: 50,
+                              
+                                  return InkWell(
+                                    onTap: ()
+                                    {
+                                     
+                                      Get.toNamed("/bookdetails", arguments: {"id" : data[index].bookId});
+                                    },
+                                    child: Card(
+                                        child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          ReactiveCheckbox(
+                                            formControlName:
+                                                'books.$index.isChecked',
+                                            onChanged: (control) {
+                                              formGroup
+                                                  .control(
+                                                      'books.$index.isChecked')
+                                                  .value = control.value;
+                                                                
+                                              getTotal();
+                                            },
+                                          ),
+                                          data[index].book!.image == null
+                                              ? Image.asset(
+                                                  "pics/daisy.jpeg",
+                                                  height: 60,
+                                                  width: 50,
+                                                )
+                                              : CachedNetworkImage(
+                                                  imageUrl:
+                                                      data[index].book!.image,
+                                                  height: 60,
+                                                  width: 50,
+                                                ),
+                                          SizedBox(
+                                              width: 110,
+                                              child: Text(
+                                                data[index]
+                                                    .book!
+                                                    .title
+                                                    .toString(),
+                                              )),
+                                          const Spacer(),
+                                          Column(
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Card(
+                                                    child: IconButton(
+                                                        onPressed: () {
+                                                          formGroup
+                                                              .control(
+                                                                  'books.$index.quantity')
+                                                              .value++;
+                                                          productTotal();
+                                                          getTotal();
+                                                        },
+                                                        icon: const Icon(
+                                                            Icons.add)),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  ReactiveValueListenableBuilder(
+                                                    builder: (context, controller,
+                                                        child) {
+                                                      return Text(controller.value
+                                                          .toString());
+                                                    },
+                                                    formControlName:
+                                                        'books.$index.quantity',
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Card(
+                                                    child: IconButton(
+                                                        onPressed: () {
+                                                          formGroup
+                                                                      .control(
+                                                                          'books.$index.quantity')
+                                                                      .value-- <=
+                                                                  1
+                                                              ? formGroup
+                                                                  .control(
+                                                                      'books.$index.quantity')
+                                                                  .value = 1
+                                                              : null;
+                                                          productTotal();
+                                                          getTotal();
+                                                        },
+                                                        icon: const Icon(
+                                                            Icons.remove)),
+                                                  ),
+                                                ],
                                               ),
-                                        SizedBox(
-                                            width: 110,
-                                            child: Text(
-                                              data[index]
-                                                  .book!
-                                                  .title
-                                                  .toString(),
-                                            )),
-                                        const Spacer(),
-                                        Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Card(
-                                                  child: IconButton(
-                                                      onPressed: () {
-                                                        formGroup
-                                                            .control(
-                                                                'books.$index.quantity')
-                                                            .value++;
-                                                        productTotal();
-                                                        getTotal();
-                                                      },
-                                                      icon: const Icon(
-                                                          Icons.add)),
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                ReactiveValueListenableBuilder(
-                                                  builder: (context, controller,
-                                                      child) {
-                                                    return Text(controller.value
-                                                        .toString());
-                                                  },
-                                                  formControlName:
-                                                      'books.$index.quantity',
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                Card(
-                                                  child: IconButton(
-                                                      onPressed: () {
-                                                        formGroup
-                                                                    .control(
-                                                                        'books.$index.quantity')
-                                                                    .value-- <=
-                                                                1
-                                                            ? formGroup
-                                                                .control(
-                                                                    'books.$index.quantity')
-                                                                .value = 1
-                                                            : null;
-                                                        productTotal();
-                                                        getTotal();
-                                                      },
-                                                      icon: const Icon(
-                                                          Icons.remove)),
-                                                ),
-                                              ],
-                                            ),
-                                            ReactiveValueListenableBuilder(
-                                              builder:
-                                                  (context, controller, child) {
-                                                return Text(
-                                                    "Rs: ${controller.value.toString()}");
-                                              },
-                                              formControlName:
-                                                  'books.$index.price',
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ));
+                                              ReactiveValueListenableBuilder(
+                                                builder:
+                                                    (context, controller, child) {
+                                                  return Text(
+                                                      "Rs: ${controller.value.toString()}");
+                                                },
+                                                formControlName:
+                                                    'books.$index.price',
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    )),
+                                  );
                                 },
                               ),
                             ),
@@ -311,7 +318,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                               width: double.infinity,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    if (formGroup.control('total').value == 0) {
+                                    if (formGroup.control('total').value == 0 ) {
                                       return;}
                                       else {
                                      Get.to(() => const PaymentPage());}

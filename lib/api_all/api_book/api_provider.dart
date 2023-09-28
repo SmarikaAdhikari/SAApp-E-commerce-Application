@@ -1,5 +1,5 @@
 import 'package:app/api_all/api_book/api_service.dart';
-import 'package:app/api_all/api_cart/api_model.dart';
+// import 'package:app/api_all/api_cart/api_model.dart';
 // import 'package:app/api_all/api_book/cart_model.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,10 +34,10 @@ final readFutureProvider = FutureProvider<List<FavModel>>((ref) async {
   final ApiService = ref.watch(apiServiceProvider);
   return ApiService.getAllReading();
 });
-final cartFutureProvider = FutureProvider<List<CartModel>>((ref) async {
-  // ignore: non_constant_identifier_names
-  final ApiService = ref.watch(apiServiceProvider);
-  return ApiService.getAllCart();
-});
+// final cartFutureProvider = FutureProvider<List<CartModel>>((ref) async {
+//   // ignore: non_constant_identifier_names
+//   final ApiService = ref.watch(apiServiceProvider);
+//   return ApiService.getAllCart();
+// });
 
 

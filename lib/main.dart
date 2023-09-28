@@ -1,8 +1,7 @@
-// import 'package:app/Views/listgenre.dart';
-// import 'package:app/Views/Buynow.dart';
+
+// ignore_for_file: unused_local_variable
+
 import 'package:app/Views/buynow%20.dart';
-// import 'package:app/Views/page5.dart';
-// import 'package:app/api_all/api_book/cart_model.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
 import 'package:app/pages/loginpage.dart';
@@ -12,15 +11,15 @@ import 'package:app/pages/searchpage.dart';
 import 'package:app/screens/bestsellers.dart';
 import 'package:app/screens/newreleases.dart';
 import 'package:app/screens/popularauthors.dart';
-// import 'package:app/screens/popularauthors.dart';
 import 'package:app/screens/routes.dart';
 import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-// import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'api_all/Auth/constants.dart';
+import 'api_all/api_cart/api_service.dart';
+// import 'package:badges/badges.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +37,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     return GetMaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -76,6 +76,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   Widget build(BuildContext context) {
     final currentIndex = ref.watch(navProvider);
     final token = getStringAsync(accessToken);
+    final details = ref.watch(cartProvider);
     return Scaffold(
       drawer: Drawer(
         key: const Key("E-library"),
@@ -213,13 +214,49 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => (const CartPage())));
-            },
-            icon: const Icon(Icons. shopping_cart_outlined),
-          )
+
+     
+          details.when
+          ( data: (data) =>
+             Stack(
+              children: [
+                 IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => (const CartPage())));
+                    },
+                    icon: const Icon(Icons. shopping_cart_outlined),
+                    
+                  ),
+ Positioned(
+  top: 5,
+  right: 5,
+   child: Badge(
+    smallSize: 6,
+    largeSize: 18,
+                  label: Text(
+                  data.length.toString(),
+                    style: const TextStyle(color: Colors.white, fontSize: 13),
+                  
+                  ),
+                  alignment: Alignment.topRight,
+                  backgroundColor: const Color.fromARGB(255, 186, 51, 41),
+                  // child: 
+                 
+                           ),
+ ),
+              ],
+             
+             ),
+            error: (Object error, StackTrace stackTrace) {
+                  return const Center();
+                },
+                loading: () {
+                  return const Center();
+                },
+          ),
+            
+        
         ],
       ),
       body: screens[currentIndex],
