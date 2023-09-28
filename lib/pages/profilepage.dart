@@ -144,7 +144,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                         loading: () {
                           return const Center();
                         }),
-                   
                     details.when(
                       data: (data) => Padding(
                           padding: const EdgeInsets.all(0.0),
@@ -154,35 +153,40 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                               return ExpansionTile(
                                 title: Container(
                                   color: Colors.grey[100],
-                                  height:120,
-                                  width:800,
+                                  height: 120,
+                                  width: 800,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
-                                                                
-                                    Text("User: ${data[index].user!.name}"),
-                                    Text("Order Date: ${data[index].createdAt}",maxLines: 1,),
-                                    Text("Total: ${data[index].total}"),
-                                    Text("Payment: ${data[index].status}"),
-                                                               
+                                        Text("User: ${data[index].user!.name}"),
+                                        Text(
+                                          "Order Date: ${data[index].createdAt}",
+                                          maxLines: 1,
+                                        ),
+                                        Text("Total: ${data[index].total}"),
+                                        Text("Payment: ${data[index].status}"),
                                       ],
                                     ),
                                   ),
                                 ),
-                               
                                 children: [
                                   ListView.builder(
                                     shrinkWrap: true,
                                     itemCount: data[index].orderItem!.length,
                                     itemBuilder: (context, dindex) => Card(
-                                      child:  ListTile(
+                                      child: ListTile(
                                         horizontalTitleGap: 1,
-                                        title: 
-                                            Text(data[index].orderItem![dindex].book?.title ?? ''),
+                                        title: Text(data[index]
+                                                .orderItem![dindex]
+                                                .book
+                                                ?.title ??
+                                            ''),
                                         subtitle: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                                 "Price : ${data[index].orderItem![dindex].price.toString()}"),
@@ -198,9 +202,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                 ],
                               );
                             },
-                          )
-          
-                          ),
+                          )),
                       error: (Object error, StackTrace stackTrace) {
                         return const Card();
                       },

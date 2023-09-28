@@ -6,7 +6,7 @@ import '../../utils/my_config.dart';
 
 class SignUpRepo {
   Future<void> signUp(String name, String email, String phone, String password,
-      String address, String bio, bool isPublisher) async {
+      String address, String bio, bool isPublisher, String? image) async {
     const url = "/user/register";
     var data = {
       "name": name,
@@ -15,7 +15,8 @@ class SignUpRepo {
       "address": address,
       "password": password,
       "bio": bio,
-      "isPublisher": isPublisher
+      "isPublisher": isPublisher,
+      "image": image
     };
     try {
       final res = await Api().post(getAppUrl() + url, data: data);

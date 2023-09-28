@@ -208,7 +208,9 @@ class _SignupState extends ConsumerState<Signup> {
                             passwordEditingController.text,
                             locationEditingController.text,
                             bioEditingController.text,
-                            isCheck)
+                            isCheck,
+                            null
+                            )
                         .then((value) {
                       nameEditingController.clear();
                       emailEditingController.clear();

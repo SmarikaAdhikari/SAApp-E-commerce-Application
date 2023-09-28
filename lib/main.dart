@@ -1,6 +1,3 @@
-
-// ignore_for_file: unused_local_variable
-
 import 'package:app/Views/buynow%20.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
@@ -16,6 +13,7 @@ import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'api_all/Auth/constants.dart';
 import 'api_all/api_cart/api_service.dart';
@@ -23,17 +21,13 @@ import 'api_all/api_cart/api_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Hive.initFlutter();
   await initialize();
-
-  // Hive.registerAdapter(CartNotifierModelAdapter());
-  // await Hive.openBox<CartNotifierModel>('cart');
   runApp(const RestartAppTry());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.isLogin});
-  final bool isLogin;
+   MyApp({super.key,  this.isLogin});
+   bool? isLogin;
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +39,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: 
-      // '/try'
-      !isLogin ? '/welcome' : '/home'
-      ,
+      initialRoute:
+          // '/try'
+          isLogin == null
+              ? '/login'
+              : !isLogin!
+                  ? '/welcome'
+                  : '/home',
       getPages: pages,
     );
   }
@@ -71,6 +68,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     const FavoritePage(),
     ProfilePage()
   ];
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -142,41 +140,36 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             ),
           ),
           Visibility(
-            visible: token.isEmptyOrNull? true: false,
+            visible: token.isEmptyOrNull ? true : false,
             child: Column(
               children: [
                 const Divider(),
-                 InkWell(
-              onTap: (){
-          Get.to(() => const LoginPage());
-              } ,
-              child: Row( 
-                children: [
-                  IconButton(
-                      onPressed: () 
-                      
-                {
-             
-              }, icon: const Icon(Icons.exit_to_app)),
-                  const Text(
-                    "Log in",
-                    style: TextStyle(fontSize: 20),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => const LoginPage());
+                  },
+                  child: Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.exit_to_app)),
+                      const Text(
+                        "Log in",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                ),
               ],
             ),
           ),
-         
-          
 
           // const Divider(),
           Visibility(
-            visible: token.isEmptyOrNull? false: true,
+            visible: token.isEmptyOrNull ? false : true,
             child: Column(
               children: [
-                 const Divider(),
+                const Divider(),
                 InkWell(
                   onTap: () async {
                     await setValue(accessToken, '');
@@ -184,11 +177,13 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                     Get.reset();
                     // ignore: use_build_context_synchronously
                     RestartAppTry.init(context);
+                    _googleSignIn.signOut();
                   },
                   child: Row(
                     children: [
                       IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.exit_to_app)),
+                          onPressed: () {},
+                          icon: const Icon(Icons.exit_to_app)),
                       const Text(
                         "Log out",
                         style: TextStyle(fontSize: 20),
@@ -199,7 +194,6 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               ],
             ),
           ),
-          
 
           const Divider(),
         ]),
@@ -214,49 +208,13 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         backgroundColor: Colors.white,
         elevation: 0,
         actions: [
-
-     
-          details.when
-          ( data: (data) =>
-             Stack(
-              children: [
-                 IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => (const CartPage())));
-                    },
-                    icon: const Icon(Icons. shopping_cart_outlined),
-                    
-                  ),
- Positioned(
-  top: 5,
-  right: 5,
-   child: Badge(
-    smallSize: 6,
-    largeSize: 18,
-                  label: Text(
-                  data.length.toString(),
-                    style: const TextStyle(color: Colors.white, fontSize: 13),
-                  
-                  ),
-                  alignment: Alignment.topRight,
-                  backgroundColor: const Color.fromARGB(255, 186, 51, 41),
-                  // child: 
-                 
-                           ),
- ),
-              ],
-             
-             ),
-            error: (Object error, StackTrace stackTrace) {
-                  return const Center();
-                },
-                loading: () {
-                  return const Center();
-                },
-          ),
-            
-        
+          IconButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => (const CartPage())));
+            },
+            icon: const Icon(Icons.shopping_cart_outlined),
+          )
         ],
       ),
       body: screens[currentIndex],
@@ -286,7 +244,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         selectedItemColor: Colors.white,
-        unselectedItemColor:Colors.grey,
+        unselectedItemColor: Colors.grey,
         iconSize: 25,
         onTap: (value) {
           ref.read(navProvider.notifier).update((state) => value);
@@ -300,7 +258,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
 
 /// RestartAppWidget
 class RestartAppTry extends StatefulWidget {
-  static bool isL = false;
+  static bool? isL = false;
 
   const RestartAppTry({Key? key}) : super(key: key);
 
@@ -328,14 +286,13 @@ class _RestartAppTryState extends State<RestartAppTry> {
           child: MyApp(
         isLogin: RestartAppTry.isL,
       )));
-      void main() {
-  runApp(
-    ProviderScope(
-      child: MyApp(
-        isLogin: RestartAppTry.isL ,
+  void main() {
+    runApp(
+      ProviderScope(
+        child: MyApp(
+          isLogin: RestartAppTry.isL,
+        ),
       ),
-      
-    ),
-  );
-}
+    );
+  }
 }
