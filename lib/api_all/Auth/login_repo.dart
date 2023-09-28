@@ -20,14 +20,13 @@ class LoginRepo {
     };
     try {
       final res = await Api().post(getAppUrl() + url, data: data);
-      if (res.statusCode == 200) {
-        final token = json.decode(res.data)['token'];
-        await setValue(accessToken, token);
-        RestartAppTry.isL = true;
-        Get.reset();
-        // ignore: use_build_context_synchronously
-        RestartAppTry.init(context);
-      }
+
+      final token = json.decode(res.data)['token'];
+      await setValue(accessToken, token);
+      RestartAppTry.isL = true;
+      Get.reset();
+      // ignore: use_build_context_synchronously
+      RestartAppTry.init(context);
       return res.statusCode;
     } catch (e) {
       return null;

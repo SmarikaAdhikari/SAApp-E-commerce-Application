@@ -1,8 +1,4 @@
-// import 'package:app/Views/listgenre.dart';
-// import 'package:app/Views/Buynow.dart';
 import 'package:app/Views/buynow%20.dart';
-// import 'package:app/Views/page5.dart';
-// import 'package:app/api_all/api_book/cart_model.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';
 import 'package:app/pages/loginpage.dart';
@@ -12,29 +8,24 @@ import 'package:app/pages/searchpage.dart';
 import 'package:app/screens/bestsellers.dart';
 import 'package:app/screens/newreleases.dart';
 import 'package:app/screens/popularauthors.dart';
-// import 'package:app/screens/popularauthors.dart';
 import 'package:app/screens/routes.dart';
 import 'package:app/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-// import 'package:hive_flutter/hive_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'api_all/Auth/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Hive.initFlutter();
   await initialize();
-
-  // Hive.registerAdapter(CartNotifierModelAdapter());
-  // await Hive.openBox<CartNotifierModel>('cart');
   runApp(const RestartAppTry());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.isLogin});
-  final bool isLogin;
+   MyApp({super.key,  this.isLogin});
+   bool? isLogin;
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +36,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: 
-      // '/try'
-      !isLogin ? '/welcome' : '/home'
-      ,
+      initialRoute:
+          // '/try'
+          isLogin == null
+              ? '/login'
+              : !isLogin!
+                  ? '/welcome'
+                  : '/home',
       getPages: pages,
     );
   }
@@ -71,6 +65,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     const FavoritePage(),
     ProfilePage()
   ];
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -141,41 +136,36 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             ),
           ),
           Visibility(
-            visible: token.isEmptyOrNull? true: false,
+            visible: token.isEmptyOrNull ? true : false,
             child: Column(
               children: [
                 const Divider(),
-                 InkWell(
-              onTap: (){
-          Get.to(() => const LoginPage());
-              } ,
-              child: Row( 
-                children: [
-                  IconButton(
-                      onPressed: () 
-                      
-                {
-             
-              }, icon: const Icon(Icons.exit_to_app)),
-                  const Text(
-                    "Log in",
-                    style: TextStyle(fontSize: 20),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => const LoginPage());
+                  },
+                  child: Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.exit_to_app)),
+                      const Text(
+                        "Log in",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                ),
               ],
             ),
           ),
-         
-          
 
           // const Divider(),
           Visibility(
-            visible: token.isEmptyOrNull? false: true,
+            visible: token.isEmptyOrNull ? false : true,
             child: Column(
               children: [
-                 const Divider(),
+                const Divider(),
                 InkWell(
                   onTap: () async {
                     await setValue(accessToken, '');
@@ -183,11 +173,13 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                     Get.reset();
                     // ignore: use_build_context_synchronously
                     RestartAppTry.init(context);
+                    _googleSignIn.signOut();
                   },
                   child: Row(
                     children: [
                       IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.exit_to_app)),
+                          onPressed: () {},
+                          icon: const Icon(Icons.exit_to_app)),
                       const Text(
                         "Log out",
                         style: TextStyle(fontSize: 20),
@@ -198,7 +190,6 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               ],
             ),
           ),
-          
 
           const Divider(),
         ]),
@@ -215,10 +206,10 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => (const CartPage())));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => (const CartPage())));
             },
-            icon: const Icon(Icons. shopping_cart_outlined),
+            icon: const Icon(Icons.shopping_cart_outlined),
           )
         ],
       ),
@@ -249,7 +240,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         selectedItemColor: Colors.white,
-        unselectedItemColor:Colors.grey,
+        unselectedItemColor: Colors.grey,
         iconSize: 25,
         onTap: (value) {
           ref.read(navProvider.notifier).update((state) => value);
@@ -263,7 +254,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
 
 /// RestartAppWidget
 class RestartAppTry extends StatefulWidget {
-  static bool isL = false;
+  static bool? isL = false;
 
   const RestartAppTry({Key? key}) : super(key: key);
 
@@ -291,14 +282,13 @@ class _RestartAppTryState extends State<RestartAppTry> {
           child: MyApp(
         isLogin: RestartAppTry.isL,
       )));
-      void main() {
-  runApp(
-    ProviderScope(
-      child: MyApp(
-        isLogin: RestartAppTry.isL ,
+  void main() {
+    runApp(
+      ProviderScope(
+        child: MyApp(
+          isLogin: RestartAppTry.isL,
+        ),
       ),
-      
-    ),
-  );
-}
+    );
+  }
 }

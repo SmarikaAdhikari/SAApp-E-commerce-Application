@@ -1,6 +1,8 @@
 import 'package:app/pages/signup.dart';
+import 'package:app/widgets/Try/loginfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../api_all/Auth/login_repo.dart';
 
@@ -15,6 +17,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  late GoogleSignInAccount userObj;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +97,43 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         emailController.text, passwordController.text, context);
                   }
                 },
+              ),
+              const SizedBox(height: 10),
+              Center(
+                child: ElevatedButton(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(
+                          'view/googlelogo.png',
+                          height: 20,
+                          width: 20,
+                        ),
+                        const SizedBox(width: 10),
+                        const Text("Login with Google"),
+                      ],
+                    ),
+                    onPressed: () {
+                      _googleSignIn.signIn().then((userData) {
+                        ref
+                            .read(loginServiceProvider)
+                            .login(userData!.email, '123456', context)
+                            .then((value) {
+                          if (value == null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginFieldPage(
+                                      userData.photoUrl!,
+                                      userData.displayName!,
+                                      userData.email),
+                                ));
+                          }
+                        }).catchError((e) {
+                          print("33de: $e");
+                        });
+                      });
+                    }),
               ),
               const Spacer(),
               Row(
