@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, unused_local_variable
+
 import 'package:app/Views/buynow%20.dart';
 import 'package:app/pages/favoritepage.dart';
 import 'package:app/pages/firstpage.dart';

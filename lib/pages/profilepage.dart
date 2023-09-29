@@ -77,11 +77,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                   ElevatedButton(
                     onPressed: () {
                       Get.to(() => Edits(
-                            // image: data.image,
+                            
                             name: data.name,
                             bio: data.bio.toString(),
                             email: data.email,
                             password: data.password,
+                            image: data.image,
                           ));
                     },
                     style: ElevatedButton.styleFrom(

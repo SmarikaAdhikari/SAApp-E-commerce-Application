@@ -44,7 +44,7 @@ class CartProvider {
       return returnData;
       
     } catch (e) {
-      throw Exception('Error getting suggestion $e');
+    return [];
     }
   }
 

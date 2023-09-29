@@ -4,6 +4,7 @@
 import 'dart:convert';
 
 import 'package:app/services/dio.dart';
+import 'package:dio/dio.dart';
 // import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,14 +26,27 @@ class ApiService {
   }
 
   Future<void> updateUserProfile(
-      String name, String email, String password, String bio) async {
+      String name, String email, String password, String bio,
+       dynamic image
+       ) async {
     const url = "/user/updateUserProfile";
-    var data = {
+    // var data = {
+    //   "name": name,
+    //   "email": email,
+    //   "password": password,
+    //   "bio": bio,
+    //   "image": image,
+    // };
+
+    var data = FormData.fromMap({
       "name": name,
       "email": email,
       "password": password,
       "bio": bio,
-    };
+      "file": image,
+    });
+
+
     try {
      
 

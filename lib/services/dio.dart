@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:get/get.dart' as gt;
+// import 'package:get/get.dart' as gt;
 import 'package:nb_utils/nb_utils.dart';
 
 import '../api_all/Auth/constants.dart';
@@ -272,7 +272,7 @@ class UnauthorizedException extends DioError {
 
   @override
   String toString() {
-    gt.Get.toNamed("/login");
+    // gt.Get.toNamed("/login");
     // AppNavigatorService.pushNamedAndRemoveUntil("login");
     return error.toString();
   }

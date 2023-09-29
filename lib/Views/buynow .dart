@@ -51,7 +51,7 @@ class _CartPageState extends ConsumerState<CartPage> {
     // ignore: unused_local_variable
     final value = ref.watch(cartProvider);
     return Scaffold(
-      appBar: AppBar( 
+      appBar: AppBar(
         title: const Text('Cart Page'),
         backgroundColor: const Color.fromARGB(255, 165, 182, 190),
       ),
@@ -76,7 +76,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                               ? 0
                               : 100;
 
-                               formGroup.control('Subtotal').value = formGroup
+                          formGroup.control('Subtotal').value = formGroup
                               .control('books')
                               .value
                               .where((element) => element['isChecked'] == true)
@@ -85,11 +85,10 @@ class _CartPageState extends ConsumerState<CartPage> {
                                   (dynamic prev, dynamic product) =>
                                       prev + product['price']);
 
-                          formGroup.control('total').value =  formGroup.control('Subtotal').value + value;
+                          formGroup.control('total').value =
+                              formGroup.control('Subtotal').value + value;
 
-                             setState(() {
-                               
-                             });
+                          setState(() {});
                         }
 
                         return Column(
@@ -105,17 +104,17 @@ class _CartPageState extends ConsumerState<CartPage> {
                                         formGroup
                                             .control('books.$index.quantity')
                                             .value;
-                              
+
                                     formGroup
                                         .control('books.$index.price')
                                         .value = value;
                                   }
-                              
+
                                   return InkWell(
-                                    onTap: ()
-                                    {
-                                     
-                                      Get.toNamed("/bookdetails", arguments: {"id" : data[index].bookId});
+                                    onTap: () {
+                                      Get.toNamed("/bookdetails", arguments: {
+                                        "id": data[index].bookId
+                                      });
                                     },
                                     child: Card(
                                         child: Padding(
@@ -130,7 +129,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                                   .control(
                                                       'books.$index.isChecked')
                                                   .value = control.value;
-                                                                
+
                                               getTotal();
                                             },
                                           ),
@@ -176,9 +175,10 @@ class _CartPageState extends ConsumerState<CartPage> {
                                                     width: 10,
                                                   ),
                                                   ReactiveValueListenableBuilder(
-                                                    builder: (context, controller,
-                                                        child) {
-                                                      return Text(controller.value
+                                                    builder: (context,
+                                                        controller, child) {
+                                                      return Text(controller
+                                                          .value
                                                           .toString());
                                                     },
                                                     formControlName:
@@ -209,8 +209,8 @@ class _CartPageState extends ConsumerState<CartPage> {
                                                 ],
                                               ),
                                               ReactiveValueListenableBuilder(
-                                                builder:
-                                                    (context, controller, child) {
+                                                builder: (context, controller,
+                                                    child) {
                                                   return Text(
                                                       "Rs: ${controller.value.toString()}");
                                                 },
@@ -278,37 +278,39 @@ class _CartPageState extends ConsumerState<CartPage> {
                             const SizedBox(
                               height: 40,
                             ),
-                               Row(
+                            Row(
                               children: [
                                 const Text("Product Amount"),
                                 const Spacer(),
                                 ReactiveValueListenableBuilder(
                                   builder: (context, controller, child) {
-                                    return Text("Rs: ${controller.value.toString()}");
+                                    return Text(
+                                        "Rs: ${controller.value.toString()}");
                                   },
                                   formControlName: 'Subtotal',
                                 ),
                               ],
                             ),
-                             Visibility(
-                              visible: formGroup.control('Subtotal').value == 0? false: true,
-                              child:  const Row(
+                            Visibility(
+                              visible: formGroup.control('Subtotal').value == 0
+                                  ? false
+                                  : true,
+                              child: const Row(
                                 children: [
-                                  
                                   Text("Shipping Charge"),
                                   Spacer(),
                                   Text("Rs: 100"),
                                 ],
                               ),
                             ),
-                         
                             Row(
                               children: [
                                 const Text("Total Amount"),
                                 const Spacer(),
                                 ReactiveValueListenableBuilder(
                                   builder: (context, controller, child) {
-                                    return Text("Rs: ${controller.value.toString()}");
+                                    return Text(
+                                        "Rs: ${controller.value.toString()}");
                                   },
                                   formControlName: 'total',
                                 ),
@@ -318,13 +320,13 @@ class _CartPageState extends ConsumerState<CartPage> {
                               width: double.infinity,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    if (formGroup.control('total').value == 0 ) {
-                                      return;}
-                                      else {
-                                     Get.to(() => const PaymentPage());}
+                                    if (formGroup.control('total').value == 0) {
+                                      return;
+                                    } else {
+                                      Get.to(() => const PaymentPage());
+                                    }
                                     // ignore: unused_local_variable
                                     final newGroup = {
-                                    
                                       "total": formGroup.control('total').value,
                                       "books": formGroup
                                           .control('books')
@@ -335,11 +337,12 @@ class _CartPageState extends ConsumerState<CartPage> {
                                     };
 
                                     ref
+                                        .watch(paymentProvider.notifier)
+                                        .setPayment('E-payment');
+                                    ref
                                         .read(cartRepoProvider)
                                         .postOrder(newGroup)
-                                        .then((value) {
-                                    
-                                    });
+                                        .then((value) {});
                                   },
                                   child: const Text("Place Order")),
                             ),
