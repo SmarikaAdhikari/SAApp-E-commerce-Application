@@ -51,7 +51,7 @@ Widget bestSellers(
                       maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     ),
-                    Text(data.price.toString()),
+                    Text("Rs ${data.price.toString()}"),
                   ],
                 ),
               ),

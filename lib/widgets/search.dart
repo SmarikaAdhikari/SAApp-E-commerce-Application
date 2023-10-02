@@ -33,7 +33,7 @@ Widget searchWidget(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(data.title.toString()),
-                    Text(data.price.toString()),
+                    Text("Rs ${data.price.toString()}"),
                     
                   ],
                 ),

@@ -6,13 +6,13 @@ class ExpansionStateNotifier extends StateNotifier<String> {
 }
 
 class PaymentNotifier extends ChangeNotifier {
-  String _payment = "choose";
+  int? _payment;
 
-  String get payment => _payment;
+  int? get payment => _payment;
 
-  void setPayment(String payment) {
+  void setPayment(int payment) {
     _payment = payment;
-    notifyListeners();
+    notifyListeners();  
   }
 }
 

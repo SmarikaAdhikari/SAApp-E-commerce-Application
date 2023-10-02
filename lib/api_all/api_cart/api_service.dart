@@ -48,13 +48,13 @@ class CartProvider {
     }
   }
 
-  Future <int> postOrder(var data) async {
+  Future <String?> postOrder(var data) async {
     const url = "/order/createOrder";
     
     try {
       final res = await Api().post(getAppUrl() + url,data: data);
-     
-      return res.statusCode!;
+     final id = json.decode(res.data)['id'];
+      return id;
      
     } catch (e) {
       throw Exception('Error getting suggestion $e');

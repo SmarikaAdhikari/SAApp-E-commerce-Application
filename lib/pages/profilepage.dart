@@ -167,7 +167,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                           "Order Date: ${data[index].createdAt}",
                                           maxLines: 1,
                                         ),
-                                        Text("Total: ${data[index].total}"),
+                                        Text("Total: Rs ${data[index].total}"),
                                         Text("Payment: ${data[index].status}"),
                                       ],
                                     ),
@@ -190,7 +190,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                                "Price : ${data[index].orderItem![dindex].price.toString()}"),
+                                                "Price : RS ${data[index].orderItem![dindex].price.toString()}"),
                                             Text(
                                                 "Quantity :${data[index].orderItem![dindex].quantity.toString()}"),
                                           ],

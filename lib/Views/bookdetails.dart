@@ -115,7 +115,7 @@ class _BookDetailsState extends ConsumerState<BookDetails> {
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Text(data.price.toString(),
+                                  Text("Rs ${data.price.toString()}",
                                       style: const TextStyle(fontSize: 15)),
                                   Text(
                                     data.author.name,

@@ -36,7 +36,7 @@ Widget  GenreList(
                   children: [
                     Text(data.title),
                     Text(data.author.name),
-                    Text(data.price.toString()),
+                    Text("Rs ${data.price.toString()}"),
                   ],
                 ),
               ],

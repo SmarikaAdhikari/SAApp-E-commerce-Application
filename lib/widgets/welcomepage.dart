@@ -2,7 +2,6 @@ import 'package:app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nb_utils/nb_utils.dart';
-
 import '../api_all/Auth/constants.dart';
 import '../pages/loginpage.dart';
 
@@ -30,12 +29,30 @@ class _WelcomePageState extends ConsumerState<WelcomePage> {
     return Scaffold(
       backgroundColor: Colors.blue.shade800,
       body: const Center(
-          child: Text('Welcome to Book Stack',
-              style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 0.4))),
+        
+          child: Column(
+            children: [
+            SizedBox( height: 300),
+              Text('Welcome',
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.4)),
+                       Text('to ',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.4)),
+                       Text('The Book Stack',
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.4)),
+            ],
+          )),
     );
   }
 }

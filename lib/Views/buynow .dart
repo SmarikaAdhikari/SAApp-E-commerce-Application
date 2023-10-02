@@ -1,14 +1,17 @@
 // ignore_for_file: file_names
 
 import 'package:app/api_all/api_cart/api_model.dart';
-import 'package:app/pages/payment.dart';
+// import 'package:app/pages/payment.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:esewa_flutter/esewa_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
+// import 'package:nb_utils/nb_utils.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../api_all/api_cart/api_service.dart';
+// import '../pages/payment.dart';
 import '../provider/payment_summary.dart';
 
 class CartPage extends ConsumerStatefulWidget {
@@ -26,6 +29,8 @@ class _CartPageState extends ConsumerState<CartPage> {
       'total': FormControl<int>(
         value: 0,
       ),
+      // 'payment':
+      //     FormControl<int?>(value: ref.watch(paymentProvider).payment),
       'Subtotal': FormControl<int>(
         value: 0,
       ),
@@ -245,7 +250,14 @@ class _CartPageState extends ConsumerState<CartPage> {
                                 child: ExpansionTile(
                                   controller: expansionTileController,
                                   title: Text(
-                                      ref.watch(paymentProvider).payment,
+                                      ref.watch(paymentProvider).payment == null
+                                          ? "Choose Payment Method"
+                                          : ref
+                                                      .watch(paymentProvider)
+                                                      .payment ==
+                                                  0
+                                              ? "E-payment"
+                                              : "Cash on delivery",
                                       style: const TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold)),
@@ -254,7 +266,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                       onTap: () {
                                         ref
                                             .read(paymentProvider.notifier)
-                                            .setPayment('E-payment');
+                                            .setPayment(0);
 
                                         expansionTileController.collapse();
                                       },
@@ -266,7 +278,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                       onTap: () {
                                         ref
                                             .read(paymentProvider.notifier)
-                                            .setPayment('Cash on delivery');
+                                            .setPayment(1);
                                         expansionTileController.collapse();
                                       },
                                       title: const Text('Cash on delivery'),
@@ -320,14 +332,10 @@ class _CartPageState extends ConsumerState<CartPage> {
                               width: double.infinity,
                               child: ElevatedButton(
                                   onPressed: () {
-                                    if (formGroup.control('total').value == 0) {
-                                      return;
-                                    } else {
-                                      Get.to(() => const PaymentPage());
-                                    }
-                                    // ignore: unused_local_variable
                                     final newGroup = {
                                       "total": formGroup.control('total').value,
+                                      "payment":
+                                          ref.watch(paymentProvider).payment,
                                       "books": formGroup
                                           .control('books')
                                           .value
@@ -336,13 +344,38 @@ class _CartPageState extends ConsumerState<CartPage> {
                                           .toList()
                                     };
 
-                                    ref
-                                        .watch(paymentProvider.notifier)
-                                        .setPayment('E-payment');
-                                    ref
-                                        .read(cartRepoProvider)
-                                        .postOrder(newGroup)
-                                        .then((value) {});
+                                    if (ref.watch(paymentProvider).payment !=
+                                            null &&
+                                        formGroup.control('total').value != 0) {
+                                      // Get.to(const PaymentPage());
+                                      ref
+                                          .read(cartRepoProvider)
+                                          .postOrder(newGroup)
+                                          .then((value) async {
+                                        if (value != null) {
+                                          final config = ESewaConfig.dev(
+                                            scd: "EPAYTEST",
+                                              amt: formGroup
+                                                  .control('Subtotal')
+                                                  .value
+                                                  .toDouble(),
+                                              tAmt: formGroup
+                                                  .control('total')
+                                                  .value
+                                                  .toDouble(),
+                                              pid: value,
+                                              su: "https://esewa.com.np/merchant/invoice",
+                                              fu: "https://esewa.com.np/merchant/invoice",
+                                              pdc: 100);
+
+                                          await Esewa.i.init(
+                                              context: context,
+                                              eSewaConfig: config);
+                                        } else {
+                                          Navigator.pop(context);
+                                        }
+                                      });
+                                    }
                                   },
                                   child: const Text("Place Order")),
                             ),

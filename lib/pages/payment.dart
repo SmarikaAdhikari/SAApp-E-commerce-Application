@@ -28,12 +28,17 @@ class _PaymentPageState extends ConsumerState<PaymentPage> {
                 title: 'Pay with Esewa',
                 paymentConfig: ESewaConfig.dev(
                   su: 'https://esewa.com.np/merchant/invoice',
-                  amt: 10,
-                  pdc: 18,
+                  scd: "EPAYTEST",
+                  amt: 100,
+                  pdc: 0,
+                  // pdc:200,
                   
-                  tAmt: 28,
+                  
+                  tAmt: 100,
+                  // tAmt: data.total!,
                   fu: 'https://esewa.com.np/merchant/invoice',
-                  pid: '1022', //order id
+                  // pid: '1234'
+                  pid: 'uuuu212', //order id
                 ),
                 width: 40,
                 onFailure: (result) async {},

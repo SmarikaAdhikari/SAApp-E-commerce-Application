@@ -59,7 +59,7 @@ Widget newRelease(
                     overflow: TextOverflow.ellipsis,
                   ),
                   // Text(data.author),
-                  Text(data.price.toString()),
+                  Text("Rs ${data.price.toString()}"),
                 ],
               ),
             ],
