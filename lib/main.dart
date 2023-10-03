@@ -1,24 +1,24 @@
 // ignore_for_file: must_be_immutable, unused_local_variable
 
-import 'package:app/Views/buynow%20.dart';
-import 'package:app/pages/favoritepage.dart';
-import 'package:app/pages/firstpage.dart';
-import 'package:app/pages/loginpage.dart';
-import 'package:app/pages/profilepage.dart';
-import 'package:app/pages/genrepage.dart';
-import 'package:app/pages/searchpage.dart';
-import 'package:app/screens/bestsellers.dart';
-import 'package:app/screens/newreleases.dart';
-import 'package:app/screens/popularauthors.dart';
-import 'package:app/screens/routes.dart';
-import 'package:app/screens/trendingscreen.dart';
+import 'package:app/user/Views/buynow%20.dart';
+import 'package:app/user/pages/favoritepage.dart';
+import 'package:app/user/pages/firstpage.dart';
+import 'package:app/user/pages/loginpage.dart';
+import 'package:app/user/pages/profilepage.dart';
+import 'package:app/user/pages/genrepage.dart';
+import 'package:app/user/pages/searchpage.dart';
+import 'package:app/user/screens/bestsellers.dart';
+import 'package:app/user/screens/newreleases.dart';
+import 'package:app/user/screens/popularauthors.dart';
+import 'package:app/user/screens/routes.dart';
+import 'package:app/user/screens/trendingscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'api_all/Auth/constants.dart';
-import 'api_all/api_cart/api_service.dart';
+import 'user/api_all/Auth/constants.dart';
+import 'user/api_all/api_cart/api_service.dart';
 // import 'package:badges/badges.dart';
 
 void main() async {
