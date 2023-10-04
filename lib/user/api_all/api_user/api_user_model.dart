@@ -31,3 +31,52 @@ class User {
     );
   }
 }
+class VerifyModel
+{
+  final String? email;
+  final String? userotp;
+
+  VerifyModel({
+    this.email,
+
+    this.userotp,
+  });
+
+
+  factory VerifyModel.fromJson(Map<String, dynamic> json) => VerifyModel(
+    email: json["email"],
+
+    userotp: json["userotp"],
+  );
+
+
+
+
+
+
+
+}
+
+
+
+class SignupModel{
+  String name;
+  String email;
+  String phone;
+  String password;
+  String address;
+  String bio;
+  String? image;
+  bool isPublisher;
+
+  SignupModel({
+    required this.name,
+    required this.email,
+    required this.phone,
+    required this.password,
+    required this.address,
+    required this.bio,
+     this.image,
+    required this.isPublisher,
+  });
+}

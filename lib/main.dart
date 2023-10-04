@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialRoute:
-          // '/try'
+       
           isLogin == null
               ? '/login'
               : !isLogin!

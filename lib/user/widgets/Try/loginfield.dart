@@ -1,6 +1,7 @@
 import 'package:app/user/api_all/Auth/login_repo.dart';
 import 'package:app/user/api_all/Auth/signup_repo.dart';
 import 'package:app/main.dart';
+import 'package:app/user/api_all/api_user/api_user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -145,17 +146,13 @@ class _LoginFieldPageState extends ConsumerState<LoginFieldPage> {
               ),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
+                  final modell = SignupModel(name: widget.name, email: widget.email, phone: phoneEditingController.text, password: '123456', address: locationEditingController.text, bio: bioEditingController.text, isPublisher:  isCheck);
+
                   ref
                       .read(signUpServiceProvider)
                       .signUp(
-                          widget.name,
-                          widget.email,
-                          phoneEditingController.text,
-                          '123456',
-                          locationEditingController.text,
-                          bioEditingController.text,
-                          isCheck,
-                          widget.image)
+                          modell
+                        )
                       .then((value) {
                     ref
                         .read(loginServiceProvider)

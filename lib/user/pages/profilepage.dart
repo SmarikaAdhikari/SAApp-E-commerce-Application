@@ -60,11 +60,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                     : CircleAvatar(
                         radius: 50.0,
                         backgroundColor: Colors.grey,
-                        
-                        backgroundImage: NetworkImage(data.image.toString(),
-                        
-                        )
-                    ,
+                        backgroundImage: NetworkImage(
+                          data.image.toString(),
+                        ),
                       ),
               ),
             ]),
@@ -77,7 +75,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                   ElevatedButton(
                     onPressed: () {
                       Get.to(() => Edits(
-                            
                             name: data.name,
                             bio: data.bio.toString(),
                             email: data.email,

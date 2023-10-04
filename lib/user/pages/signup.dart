@@ -1,8 +1,16 @@
-import 'package:app/user/api_all/Auth/signup_repo.dart';
+import 'package:app/user/Views/token.dart';
+import 'package:app/user/api_all/api_user/api_user_model.dart';
+// import 'package:app/user/api_all/Auth/signup_repo.dart';
 import 'package:app/user/pages/update_ip_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:get/get.dart';
+
+// import '../api_all/api_user/api_user_provider.dart';
+import '../api_all/api_user/api_user_service.dart';
+
+// import '../api_all/api_user/api_user_service.dart';
 
 class Signup extends ConsumerStatefulWidget {
   const Signup({super.key});
@@ -24,6 +32,7 @@ class _SignupState extends ConsumerState<Signup> {
 
   @override
   Widget build(BuildContext context) {
+    //  final ApiService = ref.watch(userFutureProvider);
     return Scaffold(
       appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 174, 211, 241),
@@ -199,27 +208,46 @@ class _SignupState extends ConsumerState<Signup> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
+                    final modell = SignupModel(
+                      name: nameEditingController.text,
+                      email: emailEditingController.text,
+                      phone: phoneEditingController.text,
+                      password: passwordEditingController.text,
+                      address: locationEditingController.text,
+                      bio: bioEditingController.text,
+                      image: null,
+                      isPublisher: isCheck,
+                    );
+
                     ref
-                        .read(signUpServiceProvider)
-                        .signUp(
-                            nameEditingController.text,
-                            emailEditingController.text,
-                            phoneEditingController.text,
-                            passwordEditingController.text,
-                            locationEditingController.text,
-                            bioEditingController.text,
-                            isCheck,
-                            null
-                            )
+                        .read(userServiceProvider)
+                        .sendMail(emailEditingController.text)
                         .then((value) {
-                      nameEditingController.clear();
-                      emailEditingController.clear();
-                      phoneEditingController.clear();
-                      passwordEditingController.clear();
-                      locationEditingController.clear();
-                      bioEditingController.clear();
-                      isCheck = false;
+                      Get.to(() => TokenPage(modell));
+                    
                     });
+
+                    // ref
+                    //     .read(signUpServiceProvider)
+                    //     .signUp(
+                    //         nameEditingController.text,
+                    //         emailEditingController.text,
+                    //         phoneEditingController.text,
+                    //         passwordEditingController.text,
+                    //         locationEditingController.text,
+                    //         bioEditingController.text,
+                    //         isCheck,
+                    //         null
+                    //         )
+                    //     .then((value) {
+                    //   nameEditingController.clear();
+                    //   emailEditingController.clear();
+                    //   phoneEditingController.clear();
+                    //   passwordEditingController.clear();
+                    //   locationEditingController.clear();
+                    //   bioEditingController.clear();
+                    //   isCheck = false;
+                    // });
                   }
                 },
               ),
