@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable, unused_local_variable
 
+import 'package:app/publisher/publish.dart';
 import 'package:app/user/Views/buynow%20.dart';
 import 'package:app/user/pages/favoritepage.dart';
 import 'package:app/user/pages/firstpage.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialRoute:
-       
+          // '/publish',
           isLogin == null
               ? '/login'
               : !isLogin!
@@ -196,8 +197,22 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
               ],
             ),
           ),
-
           const Divider(),
+            InkWell(
+            onTap: () => Get.to(() => const PublishPage()),
+            child: Row(
+              children: [
+                IconButton(onPressed: () {}, icon: const Icon(Icons.book)),
+                const Text(
+                  "Publish",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
+            ),
+          ),
+          const Divider()
+
+          
         ]),
       ),
       appBar: AppBar(

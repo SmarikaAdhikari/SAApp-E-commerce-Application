@@ -1,5 +1,5 @@
 
-// ignore_for_file: unused_result
+// ignore_for_file: unused_result, avoid_print
 
 import 'dart:io';
 import 'package:app/user/api_all/api_user/api_user_provider.dart';

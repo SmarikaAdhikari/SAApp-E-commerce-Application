@@ -43,7 +43,7 @@ class ApiService {
       "email": email,
       "password": password,
       "bio": bio,
-      "file": image == null ? null : await MultipartFile.fromFile(image.path),
+      "file": image == null ? null: await MultipartFile.fromFile(image.path),
     });
 
     try {

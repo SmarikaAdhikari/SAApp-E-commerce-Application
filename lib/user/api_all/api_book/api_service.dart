@@ -5,11 +5,11 @@ import 'dart:convert';
 import 'package:app/user/api_all/api_book/book_model.dart';
 import 'package:app/user/api_all/api_cart/api_model.dart';
 import 'package:app/dio.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+// import 'package:get/get_connect/http/src/multipart/multipart_file.dart';
 
 import '../../utils/my_config.dart';
-
 
 final apiServiceProvider = Provider<ApiService>((ref) => ApiService());
 
@@ -19,7 +19,6 @@ class ApiService {
     try {
       final res = await Api().get(getAppUrl() + url);
       List data = json.decode(res.data);
-
       return data.map((e) => BookModel.fromJson(e)).toList();
     } catch (e) {
       throw Exception('Error getting suggestion $e');
@@ -28,8 +27,7 @@ class ApiService {
 
   Future<void> addFavorite(String bookId) async {
     const url = "/favorite/createFavorite";
-    var data = 
-    {
+    var data = {
       "bookId": bookId,
     };
     try {
@@ -75,7 +73,7 @@ class ApiService {
 
       return data.map((e) => FavModel.fromJson(e)).toList();
     } catch (e) {
-    throw Exception('Error getting suggestion $e');
+      throw Exception('Error getting suggestion $e');
     }
   }
 
@@ -97,11 +95,10 @@ class ApiService {
     try {
       final res = await Api().get(getAppUrl() + url);
       List datas = json.decode(res.data);
-      
+
       final returnData = datas.map((e) => CartModel.fromJson(e)).toList();
-   
+
       return returnData;
-      
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }
@@ -119,4 +116,33 @@ class ApiService {
     }
   }
 
+  Future<void> createBook(
+      String title,
+      String author,
+      String description,
+      String genre,
+      dynamic image,
+      String price,
+      String releasedate,
+      String length,
+      String language) async {
+    const url = "/book/createBook";
+    var data = FormData.fromMap({
+      "title": title,
+      "authorId": author,
+      "description": description,
+      "genre": genre,
+      "file": image == null ? null: await MultipartFile.fromFile(image.path),
+      "price": price,
+      "releasedate": releasedate,
+      "length": length,
+      "language": language,
+    });
+    print(data);
+    try {
+      final res = await Api().post(getAppUrl() + url, data: data);
+    } catch (e) {
+      throw Exception('Error getting suggestion $e');
+    }
+  }
 }

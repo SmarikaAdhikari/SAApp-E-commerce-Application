@@ -21,6 +21,7 @@ class SignUpRepo {
     };
     try {
       final res = await Api().post(getAppUrl() + url, data: data);
+  //  return res.data;
       if (res.statusCode == 200) {
         Get.toNamed('/login');
         Fluttertoast.showToast(msg: "Registered Successfully");

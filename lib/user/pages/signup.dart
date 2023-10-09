@@ -27,9 +27,8 @@ class _SignupState extends ConsumerState<Signup> {
   final phoneEditingController = TextEditingController();
   final passwordEditingController = TextEditingController();
   final bioEditingController = TextEditingController();
-
-  final locationEditingController = TextEditingController();
-
+ final locationEditingController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     //  final ApiService = ref.watch(userFutureProvider);

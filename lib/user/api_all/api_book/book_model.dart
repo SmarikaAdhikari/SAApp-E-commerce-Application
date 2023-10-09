@@ -141,44 +141,43 @@ class Book {
       );
 }
 
-// class CartModel {
-//   String id;
-//   String userId;
-//   String bookId;
-//   String publisherId;
-//   Kitab kitab;
 
-//   CartModel({
-//     required this.id,
-//     required this.userId,
-//     required this.bookId,
-//     required this.publisherId,
-//     required this.kitab,
-//   });
 
-//   factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
-//         id: json["id"],
-//         userId: json["userId"],
-//         bookId: json["bookId"],
-//         publisherId: json["publisherId"],
-//         kitab: Kitab.fromJson(json["book"]),
-//       );
-// }
+ class Publish 
+ {
+  final String title;
+ final String description;
+ final dynamic image;
+ final String author;
+ final String language;
+ final String length;
+ final String releasedate;
+ final int genre;
+ final String price;
 
-// class Kitab {
-//   String title;
-//   int price;
-//   dynamic image;
 
-//   Kitab({
-//     required this.title,
-//     required this.price,
-//     required this.image,
-//   });
+  Publish({
+    required this.title,
+    required this.description,
+    required this.image,
+    required this.author,
+    required this.language,
+    required this.length,
+    required  this.releasedate,
+    required this.genre,
+    required this.price,
+  });
+  factory Publish.fromJson(Map<String, dynamic> json) => Publish(
+    title: json["title"],
+    description: json["description"],
+    image: json["image"],
+    author: json["author"],
+    language: json["language"],
+    length: json["length"],
+    releasedate: json["releasedate"],
+    genre: json["genre"],
+    price: json["price"],
 
-//   factory Kitab.fromJson(Map<String, dynamic> json) => Kitab(
-//         title: json["title"],
-//         price: json["price"],
-//         image: json["image"],
-//       );
-// }
+  );
+
+ }

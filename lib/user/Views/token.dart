@@ -1,6 +1,11 @@
 // import 'package:app/user/pages/signup.dart';
+// ignore_for_file: unused_local_variable
+
+// import 'package:app/user/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:get/get.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:pinput/pinput.dart';
 
 import '../api_all/Auth/signup_repo.dart';
@@ -19,8 +24,11 @@ class _TokenPageState extends ConsumerState<TokenPage> {
    
     final otpEditingController = TextEditingController();
     final formKey = GlobalKey<FormState>();
+
+  
   @override
   Widget build(BuildContext context) {
+   final data = ref.watch(verifyServiceProvider);
    return Scaffold(
         backgroundColor: const Color.fromARGB(255, 147, 201, 245),
         body: Padding(
@@ -44,19 +52,6 @@ class _TokenPageState extends ConsumerState<TokenPage> {
                       length: 6,
                       forceErrorState: true,
                       pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                      // validator: (pin) {
-                      //   if (pin == emailEditingController) 
-                      //   {
-                      //     return 'Success';
-                      //   }
-                        
-                        
-                      //   else{
-                      //     return 'Pin is incorrect';
-                      //   }
-
-                      
-                      // },
                     ),
                   ),
                 ),
@@ -64,22 +59,20 @@ class _TokenPageState extends ConsumerState<TokenPage> {
                 ElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      // Get.to(() => const LoginPage());
- 
+     
                       ref
                           .read(verifyServiceProvider)
                           .verifyotp(widget.signupData.email, otpEditingController.text).then((value) {
                             if(value == 200){
+                              Fluttertoast.showToast(msg: "Registered Successfully");
+
                                  ref
                           .read(signUpServiceProvider)
                           .signUp(
                             widget.signupData);
                             }
                           });
-                
-
-                   
-                          
+                  //  Get.toNamed('/login');
                     }
                   },
                   child: const Text("Submit"),

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:app/user/pages/signup.dart';
 import 'package:app/user/widgets/Try/loginfield.dart';
 import 'package:flutter/material.dart';

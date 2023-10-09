@@ -8,15 +8,20 @@ import 'package:app/dio.dart';
 import 'package:app/user/utils/my_config.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final autServiceProvider = Provider<ApiService>((ref) => ApiService());
+final autServiceProvider = Provider<AuthorService>((ref) => AuthorService());
 
-class ApiService {
-  Future<Authors> getAuthor() async {
-    const url = "/book/getallauthors";
+// final authorFutureProvider = FutureProvider.autoDispose<List<Authors>>((ref) async {
+//   final ApiService = ref.watch(autServiceProvider);
+//   return ApiService.getAuthor();
+// });
+
+class AuthorService {
+  Future<List<Authors>>getAuthor() async {
+    const url = "/author/getallauthors";
     try {
       final res = await Api().get(getAppUrl() + url);
-      final data = json.decode(res.data);
-      return Authors.fromJson(data);
+      List data = json.decode(res.data);
+      return data.map((e) => Authors.fromJson(e)).toList();
     } catch (e) {
       throw Exception('Error getting suggestion $e');
     }
