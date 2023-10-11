@@ -5,13 +5,12 @@ import 'package:app/user/api_all/api_author/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// import '../../api_book/api_model.dart';
-// import '../../api_book/api_service.dart';
 
 final authorFutureProvider = FutureProvider.autoDispose<List<Authors>>((ref) async {
   final ApiService = ref.watch(autServiceProvider);
   return ApiService.getAuthor();
 });
+
 
 class AuthorProviderPage extends ConsumerWidget {
   const AuthorProviderPage({super.key});
@@ -26,15 +25,7 @@ class AuthorProviderPage extends ConsumerWidget {
         body: Center(
           child: authorProvider.when(data: (data) {
             return const Card();
-            // return Column(
-            //   children: [
-            //     Text(data.name),
-            //     Text(data.bio),
-            //     Text(data.dob),
-            //     Text(data.address),
-            //     Text(data.description),
-            //   ],
-            // );
+       
           }, error: (error, _) {
             return Text(error.toString());
           }, loading: () {

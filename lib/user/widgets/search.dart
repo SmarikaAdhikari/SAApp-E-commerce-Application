@@ -29,6 +29,7 @@ Widget searchWidget(
                         height: 120,
                         width: 100,
                       ),
+                      const SizedBox(width: 20,),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

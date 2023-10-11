@@ -1,6 +1,7 @@
 import 'package:app/admin/Pages/dash.dart';
 import 'package:app/admin/Pages/profit.dart';
 import 'package:app/publisher/publish.dart';
+// import 'package:app/user/Trial/trial_model.dart';
 import 'package:app/user/Views/bookdetails.dart';
 import 'package:app/user/Views/page5.dart';
 // import 'package:app/user/Views/token.dart';
@@ -69,6 +70,7 @@ List<GetPage> pages = [
     transition: Transition.leftToRightWithFade,
     transitionDuration: const Duration(milliseconds: 500),
   ),
+
 ];
 
 class RouteMiddleware extends GetMiddleware {

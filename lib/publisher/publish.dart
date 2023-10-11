@@ -6,6 +6,7 @@ import 'dart:io';
 // import 'package:app/user/api_all/api_book/api_service.dart';
 // import 'package:app/user/api_all/api_book/api_service.dart';
 import 'package:app/main.dart';
+import 'package:app/publisher/authpub.dart';
 import 'package:app/user/api_all/api_author/api_model.dart';
 import 'package:app/user/api_all/api_author/api_provider.dart';
 import 'package:app/user/api_all/api_book/api_service.dart';
@@ -32,7 +33,7 @@ class PublishPage extends ConsumerStatefulWidget {
 
 class _PublishPageState extends ConsumerState<PublishPage> {
   String dropdownValue = 'Literary Fiction';
-  late String authorValue ;
+  late String authorValue;
   bool isFile = false;
   File? image;
   Future pickGallery() async {
@@ -51,8 +52,6 @@ class _PublishPageState extends ConsumerState<PublishPage> {
 
   final _formKey = GlobalKey<FormState>();
   TextEditingController _titleController = TextEditingController();
-  // TextEditingController _authorController = TextEditingController();
-  // TextEditingController _genreController = TextEditingController();
   TextEditingController _descriptionController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
   TextEditingController _releaseDateController = TextEditingController();
@@ -68,7 +67,7 @@ class _PublishPageState extends ConsumerState<PublishPage> {
         backgroundColor: const Color.fromARGB(255, 181, 215, 226),
         title: const Center(
           child: Text(
-            'Publish Book', 
+            'Publish Book',
             style: TextStyle(
               color: Color.fromARGB(255, 0, 0, 0),
             ),
@@ -152,25 +151,35 @@ class _PublishPageState extends ConsumerState<PublishPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                authorProvider.when(data: (data) {
-                  return DropdownMenu<String>(
-                    initialSelection: data.first.id,
-                     onSelected: (String? value) {
-                      setState(() {
-                        authorValue = value!;
-                      });
-                    },
-                    dropdownMenuEntries:
-                        data.map<DropdownMenuEntry<String>>((Authors value) {
-                      return DropdownMenuEntry<String>(
-                          value: value.id, label: value.name);
-                    }).toList(),
-                  );
-                }, error: (error, _) {
-                  return Text(error.toString());
-                }, loading: () {
-                  return const SizedBox();
-                }),
+                Row(
+                  children: [
+                    authorProvider.when(data: (data) {
+                      return DropdownMenu<String>(
+                        initialSelection: data.first.id,
+                        onSelected: (String? value) {
+                          setState(() {
+                            authorValue = value!;
+                          });
+                        },
+                        dropdownMenuEntries: data
+                            .map<DropdownMenuEntry<String>>((Authors value) {
+                          return DropdownMenuEntry<String>(
+                              value: value.id, label: value.name);
+                        }).toList(),
+                      );
+                    }, error: (error, _) {
+                      return Text(error.toString());
+                    }, loading: () {
+                      return const SizedBox();
+                    }),
+                    const SizedBox(width: 30),
+                    ElevatedButton(
+                        onPressed: () {
+                          Get.to(() => const AuthorPublish());
+                        },
+                        child: const Text("Add Author")),
+                  ],
+                ),
                 const SizedBox(height: 20),
                 Container(
                   width: 400,
@@ -199,18 +208,16 @@ class _PublishPageState extends ConsumerState<PublishPage> {
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: TextFormField(
-                        controller: _descriptionController,
-                        decoration:
-                            const InputDecoration(hintText: '   Description'),
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(),
-                        ]),
-                        onSaved: (value) {},
-                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: TextFormField(
+                      controller: _descriptionController,
+                      decoration:
+                          const InputDecoration(hintText: '   Description'),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(),
+                      ]),
+                      onSaved: (value) {},
                     ),
                   ),
                 ),
@@ -246,9 +253,11 @@ class _PublishPageState extends ConsumerState<PublishPage> {
                     child: TextFormField(
                       controller: _releaseDateController,
                       decoration:
-                          const InputDecoration(hintText: '   Release Date'),
+                          const InputDecoration(hintText: ' Release Date'),
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(),
+                        FormBuilderValidators.numeric(),
+
                       ]),
                       onSaved: (value) {},
                     ),
@@ -298,18 +307,6 @@ class _PublishPageState extends ConsumerState<PublishPage> {
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // final publish = Publish(
-                      //   title: _titleController.text,
-                      //   description: _descriptionController.text,
-                      //   image: image,
-                      //   author: _authorController.text,
-                      //   language: _languageController.text,
-                      //   length: _lengthController.text,
-                      //   releasedate: _releaseDateController.text,
-                      //   genre: Genres.indexOf(dropdownValue),
-                      //   price: _priceController.text,
-                      // );
-
                       ref
                           .read(apiServiceProvider)
                           .createBook(
@@ -322,7 +319,6 @@ class _PublishPageState extends ConsumerState<PublishPage> {
                             _releaseDateController.value.text,
                             _lengthController.value.text,
                             _languageController.text,
-                          
                           )
                           .then((value) {
                         Get.to(() => const MyHomePage());
@@ -340,4 +336,3 @@ class _PublishPageState extends ConsumerState<PublishPage> {
     );
   }
 }
-

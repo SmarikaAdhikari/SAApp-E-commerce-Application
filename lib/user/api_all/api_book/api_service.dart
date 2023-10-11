@@ -134,11 +134,11 @@ class ApiService {
       "genre": genre,
       "file": image == null ? null: await MultipartFile.fromFile(image.path),
       "price": price,
-      "releasedate": releasedate,
+      "releasedAt": releasedate,
       "length": length,
       "language": language,
     });
-    print(data);
+    // print(data);
     try {
       final res = await Api().post(getAppUrl() + url, data: data);
     } catch (e) {

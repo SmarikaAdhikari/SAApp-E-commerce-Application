@@ -122,7 +122,7 @@ class Firstpage extends ConsumerWidget {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
-                          childAspectRatio: 1.4 / 2,
+                          childAspectRatio: 1.5 / 2.2,
                           crossAxisSpacing: 0,
                           mainAxisSpacing: 5,
                         ),
