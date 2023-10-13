@@ -21,7 +21,6 @@ import 'package:nb_utils/nb_utils.dart';
 import 'user/api_all/Auth/constants.dart';
 import 'user/api_all/api_cart/api_service.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialize();
