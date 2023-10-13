@@ -1,4 +1,4 @@
-import 'package:app/user/widgets/trial.dart';
+// import 'package:app/publisher/trial.dart';
 import 'package:flutter/material.dart';
 
 class Pageseven extends StatefulWidget {
@@ -18,7 +18,7 @@ class _PagesevenState extends State<Pageseven> {
         body : ListView.builder(
           itemCount: 20,
           itemBuilder: (context, position) {
-            return trial();
+            return  const Card();
        } ),),
     );
     }

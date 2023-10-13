@@ -1,6 +1,7 @@
-import 'package:app/admin/Pages/dash.dart';
-import 'package:app/admin/Pages/profit.dart';
+import 'package:app/admin/Admin/dash.dart';
+import 'package:app/admin/Admin/profit.dart';
 import 'package:app/publisher/publish.dart';
+import 'package:app/publisher/pubdash.dart';
 // import 'package:app/user/Trial/trial_model.dart';
 import 'package:app/user/Views/bookdetails.dart';
 import 'package:app/user/Views/page5.dart';
@@ -70,6 +71,19 @@ List<GetPage> pages = [
     transition: Transition.leftToRightWithFade,
     transitionDuration: const Duration(milliseconds: 500),
   ),
+   GetPage(
+    name: '/pubprofile',
+    page: () => const PubProfilePage(),
+    transition: Transition.leftToRightWithFade,
+    transitionDuration: const Duration(milliseconds: 500),
+  ),
+     GetPage(
+    name: '/pubdash',
+    page: () => const PubProfilePage(),
+    transition: Transition.leftToRightWithFade,
+    transitionDuration: const Duration(milliseconds: 500),
+  ),
+
 
 ];
 

@@ -1,4 +1,4 @@
-import 'package:app/user/widgets/trial.dart';
+// import 'package:app/publisher/trial.dart';
 import 'package:flutter/material.dart';
 
 class TryPage extends StatefulWidget {
@@ -20,7 +20,7 @@ class _TryPageState extends State<TryPage> {
         return ExpansionTile(title: Card(
           child: Column(
             children: [
-              trial(),
+              // trial(),
               const Icon(Icons.add),
               Text("New $index"),
             ],
@@ -38,12 +38,12 @@ class _TryPageState extends State<TryPage> {
           ListView.builder(
              shrinkWrap: true,
             itemCount: 3,
-            itemBuilder:  (context, index) => Card(
+            itemBuilder:  (context, index) => const Card(
             child: ListTile(
               title: Column(
                 children: [
-                  trial(),
-                  const Text("Old"),
+                  // trial(),
+                  Text("Old"),
                 ],
               ),
             ),

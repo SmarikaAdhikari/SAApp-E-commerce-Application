@@ -1,8 +1,6 @@
+
 // ignore_for_file: must_be_immutable, unused_local_variable
 
-// import 'package:app/publisher/publish.dart';
-// import 'package:app/user/Trial/first/trial_provider.dart';
-import 'package:app/user/Trial/second/star_provider.dart';
 import 'package:app/user/Views/buynow%20.dart';
 import 'package:app/user/pages/favoritepage.dart';
 import 'package:app/user/pages/firstpage.dart';
@@ -22,7 +20,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'user/api_all/Auth/constants.dart';
 import 'user/api_all/api_cart/api_service.dart';
-// import 'package:badges/badges.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +43,8 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       initialRoute:
-          // '/publish',
+           
+          // '/pubdash',
           isLogin == null
               ? '/login'
               : !isLogin!
@@ -200,21 +199,21 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             ),
           ),
           const Divider(),
-            InkWell(
-            onTap: () => Get.to(() => const StarWars()),
-            child: Row(
-              children: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.book)),
-                const Text(
-                  "Publish",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ],
-            ),
-          ),
-          const Divider()
 
-          
+          //   InkWell(
+          //   onTap: () => Get.to(() => const PublishPage()),
+          //   child: Row(
+          //     children: [
+          //       IconButton(onPressed: () {}, icon: const Icon(Icons.book)),
+          //       const Text(
+          //         "Publish",
+          //         style: TextStyle(fontSize: 20),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // const Divider(),
+
         ]),
       ),
       appBar: AppBar(

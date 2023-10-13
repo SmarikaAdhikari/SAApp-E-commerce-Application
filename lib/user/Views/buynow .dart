@@ -372,7 +372,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                                               context: context,
                                               eSewaConfig: config);
                                         } else {
-                                          Navigator.pop(context);
+                                         Get.back();
                                         }
                                       });
                                     }

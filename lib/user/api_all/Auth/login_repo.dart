@@ -1,11 +1,9 @@
 import 'dart:convert';
-
 import 'package:app/user/api_all/Auth/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
-
 import '../../../main.dart';
 import '../../../dio.dart';
 import '../../utils/my_config.dart';
@@ -22,9 +20,18 @@ class LoginRepo {
       final res = await Api().post(getAppUrl() + url, data: data);
 
       final token = json.decode(res.data)['token'];
+      bool isPublisher  = json.decode(res.data)['isPublisher'];
+      bool isAdmin  = json.decode(res.data)['isAdmin'];
       await setValue(accessToken, token);
-      RestartAppTry.isL = true;
-      Get.reset();
+      // RestartAppTry.isL = true;
+      // Get.reset();
+
+      isAdmin
+          ? Get.offAllNamed('/dash')
+          : isPublisher
+              ? Get.offAllNamed('/pubprofile')
+              : Get.offAllNamed('/home');
+
       // ignore: use_build_context_synchronously
       RestartAppTry.init(context);
       return res.statusCode;

@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+// import 'package:app/publisher/pubprofile.dart';
 import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ProfitPage extends StatefulWidget {
@@ -21,7 +23,6 @@ class _ProfitPageState extends State<ProfitPage> {
         children: [
          const  SizedBox(height: 10),
          const Text("Product Stock", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        //  const SizedBox(height: 10),
         Row(
           children: [
             SfCircularChart(
@@ -87,6 +88,7 @@ class _ProfitPageState extends State<ProfitPage> {
             ),
           ],
         ),
+
    ] ),);
   }
 }

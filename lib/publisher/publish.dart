@@ -7,6 +7,7 @@ import 'dart:io';
 // import 'package:app/user/api_all/api_book/api_service.dart';
 import 'package:app/main.dart';
 import 'package:app/publisher/authpub.dart';
+import 'package:app/user/Views/page8.dart';
 import 'package:app/user/api_all/api_author/api_model.dart';
 import 'package:app/user/api_all/api_author/api_provider.dart';
 import 'package:app/user/api_all/api_book/api_service.dart';
@@ -20,7 +21,7 @@ import 'package:get/get.dart';
 // import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../user/pages/genrepage.dart';
+// import '../user/pages/genrepage.dart';
 
 // import '../user/widgets/author.dart';
 
@@ -188,17 +189,21 @@ class _PublishPageState extends ConsumerState<PublishPage> {
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: DropdownMenu<String>(
-                    initialSelection: Genres.first,
+                    initialSelection: Genre.values.first.name,
                     onSelected: (String? value) {
                       setState(() {
                         dropdownValue = value!;
                       });
                     },
                     dropdownMenuEntries:
-                        Genres.map<DropdownMenuEntry<String>>((String value) {
+                        Genre.values.map<DropdownMenuEntry<String>>((value) {
                       return DropdownMenuEntry<String>(
-                          value: value, label: value);
+                          value: value.name, label: value.name);
                     }).toList(),
+                    //     Genre.map<DropdownMenuEntry<String>>((String value) {
+                    //   return DropdownMenuEntry<String>(
+                    //       value: value, label: value);
+                    // }).toList(),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -253,7 +258,7 @@ class _PublishPageState extends ConsumerState<PublishPage> {
                     child: TextFormField(
                       controller: _releaseDateController,
                       decoration:
-                          const InputDecoration(hintText: ' Release Date'),
+                          const InputDecoration(hintText: ' Released Year'),
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(),
                         FormBuilderValidators.numeric(),

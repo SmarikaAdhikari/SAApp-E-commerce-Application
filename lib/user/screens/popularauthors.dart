@@ -3,7 +3,7 @@
 
 // import 'package:app/widgets/drawerWidget.dart';
 // ignore: unused_import
-import 'package:app/user/widgets/trial.dart';
+import 'package:app/publisher/trial.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

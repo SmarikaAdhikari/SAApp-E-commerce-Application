@@ -1,6 +1,9 @@
+// import 'dart:js_interop';
+
 import 'package:app/user/Trial/second/star_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:get/get.dart';
 // import 'package:nb_utils/nb_utils.dart';
 
 class StarWars extends ConsumerWidget {
@@ -23,7 +26,7 @@ class StarWars extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ListTile(
-                    title: Text(data[index].films.toString()),
+                    title: Text("Flims\n ${data[index].films.toString()}\n"),
                   ),
                 ],
               ),

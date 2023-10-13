@@ -97,7 +97,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage>
                 return Text(error.toString());
               },
               loading: () {
-                return const SizedBox();
+                return const  CircularProgressIndicator();
               },
             ),
             SizedBox(
