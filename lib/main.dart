@@ -22,8 +22,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'user/api_all/Auth/constants.dart';
 import 'user/api_all/api_cart/api_service.dart';
-// import 'package:badges/badges.dart';
-//prasanna
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
