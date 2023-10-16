@@ -226,27 +226,7 @@ class _SignupState extends ConsumerState<Signup> {
                     
                     });
 
-                    // ref
-                    //     .read(signUpServiceProvider)
-                    //     .signUp(
-                    //         nameEditingController.text,
-                    //         emailEditingController.text,
-                    //         phoneEditingController.text,
-                    //         passwordEditingController.text,
-                    //         locationEditingController.text,
-                    //         bioEditingController.text,
-                    //         isCheck,
-                    //         null
-                    //         )
-                    //     .then((value) {
-                    //   nameEditingController.clear();
-                    //   emailEditingController.clear();
-                    //   phoneEditingController.clear();
-                    //   passwordEditingController.clear();
-                    //   locationEditingController.clear();
-                    //   bioEditingController.clear();
-                    //   isCheck = false;
-                    // });
+             
                   }
                 },
               ),

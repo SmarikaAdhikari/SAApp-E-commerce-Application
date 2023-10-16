@@ -23,8 +23,7 @@ class LoginRepo {
       bool isPublisher  = json.decode(res.data)['isPublisher'];
       bool isAdmin  = json.decode(res.data)['isAdmin'];
       await setValue(accessToken, token);
-      // RestartAppTry.isL = true;
-      // Get.reset();
+   
 
       isAdmin
           ? Get.offAllNamed('/dash')

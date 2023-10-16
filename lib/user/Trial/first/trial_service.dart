@@ -23,7 +23,7 @@ class ApiService {
     try {
       final res = await Dio().get('https://dogapi.dog/api/facts');
       final data = res.data;
-      print(data);
+      // print(data);
       return Trialy.fromJson(data);
     
  

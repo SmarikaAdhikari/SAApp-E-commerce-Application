@@ -23,7 +23,7 @@ Future<List<Starwars>> getStarwars() async {
   try {
     final res = await Api().get(url);
     List data = json.decode(res.data)['results'];
-    print (res.data);
+    // print (res.data);
 
     return data.map((e) => Starwars.fromJson(e)).toList();
 

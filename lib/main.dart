@@ -43,12 +43,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute:
            
-          // '/pubdash',
-          isLogin == null
-              ? '/login'
-              : !isLogin!
-                  ? '/welcome'
-                  : '/home',
+          '/log',
+          // isLogin == null
+          //     ? '/login'
+          //     : !isLogin!
+          //         ? '/welcome'
+          //         : '/home',
       getPages: pages,
     );
   }
@@ -198,21 +198,6 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
             ),
           ),
           const Divider(),
-
-          //   InkWell(
-          //   onTap: () => Get.to(() => const PublishPage()),
-          //   child: Row(
-          //     children: [
-          //       IconButton(onPressed: () {}, icon: const Icon(Icons.book)),
-          //       const Text(
-          //         "Publish",
-          //         style: TextStyle(fontSize: 20),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-          // const Divider(),
-
         ]),
       ),
       appBar: AppBar(
@@ -226,7 +211,8 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: ()
+             {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => (const CartPage())));
             },

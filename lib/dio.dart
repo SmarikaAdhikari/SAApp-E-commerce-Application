@@ -209,7 +209,7 @@ class AppInterceptors extends Interceptor {
       case DioErrorType.receiveTimeout:
         throw DeadlineExceededException(err.requestOptions, "");
       case DioErrorType.response:
-        String errorMsg = json.decode(err.response.toString())["message"];
+        String errorMsg = json.decode(err.response.toString())["error"]["message"];
         Fluttertoast.showToast(msg: errorMsg);
         switch (err.response?.statusCode) {
           case 400:
@@ -308,3 +308,17 @@ class DeadlineExceededException extends DioError {
     return error.toString();
   }
 }
+
+
+
+// String errorMsg = json.decode(err.response.toString())["message"];
+
+
+
+
+
+
+// replace
+
+// String errorMsg =
+//             json.decode(err.response.toString())["error"]["message"];
