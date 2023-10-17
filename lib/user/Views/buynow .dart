@@ -80,7 +80,6 @@ class _CartPageState extends ConsumerState<CartPage> {
                                   0
                               ? 0
                               : 100;
-
                           formGroup.control('Subtotal').value = formGroup
                               .control('books')
                               .value
@@ -95,7 +94,6 @@ class _CartPageState extends ConsumerState<CartPage> {
 
                           setState(() {});
                         }
-
                         return Column(
                           children: [
                             SizedBox(

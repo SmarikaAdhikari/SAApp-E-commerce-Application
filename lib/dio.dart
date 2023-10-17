@@ -42,10 +42,7 @@ class Api {
         return handler.next(e);
       },
     ));
-    // dio.options.headers = {
-    //   'Content-Type': 'application/json; charset=UTF-8',
-    //   'Authorization': 'Bearer $accesstoken',
-    // };
+  
     dio.interceptors.addAll({
       AppInterceptors(dio),
     });
@@ -309,16 +306,3 @@ class DeadlineExceededException extends DioError {
   }
 }
 
-
-
-// String errorMsg = json.decode(err.response.toString())["message"];
-
-
-
-
-
-
-// replace
-
-// String errorMsg =
-//             json.decode(err.response.toString())["error"]["message"];
