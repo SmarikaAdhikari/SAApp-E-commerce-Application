@@ -91,18 +91,7 @@ class _LogsPageState extends ConsumerState<LogsPage> {
                   ref.read(loginProvider).login(emailEditingController.text,
                       passwordEditingController.text, context);
                 } 
-                // else {
-                //   ref.read(loginProvider).login(emailEditingController.text,
-                //       passwordEditingController.text, context);
-                //   final snackBar = SnackBar(
-                //     content: const Text('invalid email or password'),
-                //     action: SnackBarAction(
-                //       label: 'Check again',
-                //       onPressed: () {},
-                //     ),
-                //   );
-                //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                // }
+           
               },
             ),
           ]),

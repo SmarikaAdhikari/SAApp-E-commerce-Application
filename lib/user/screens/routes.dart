@@ -1,5 +1,6 @@
 import 'package:app/admin/Admin/dash.dart';
 import 'package:app/admin/Admin/profit.dart';
+import 'package:app/demo/getapi/provider.dart';
 import 'package:app/demo/logs.dart';
 import 'package:app/publisher/publish.dart';
 import 'package:app/publisher/pubdash.dart';
@@ -87,6 +88,12 @@ List<GetPage> pages = [
       GetPage(
     name: '/log',
     page: () => const LogsPage(),
+    transition: Transition.leftToRightWithFade,
+    transitionDuration: const Duration(milliseconds: 500),
+  ),
+    GetPage(
+    name: '/acc',
+    page: () => const AccountPage(),
     transition: Transition.leftToRightWithFade,
     transitionDuration: const Duration(milliseconds: 500),
   ),

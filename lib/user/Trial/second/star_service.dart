@@ -30,7 +30,5 @@ Future<List<Starwars>> getStarwars() async {
   } catch (e) {
     throw Exception('Error getting suggestion $e');
   }
-
 }
-
 }
