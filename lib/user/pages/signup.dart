@@ -1,7 +1,7 @@
 import 'package:app/user/Views/token.dart';
 import 'package:app/user/api_all/api_user/api_user_model.dart';
 // import 'package:app/user/api_all/Auth/signup_repo.dart';
-import 'package:app/user/pages/update_ip_page.dart';
+import 'package:app/user/pages/updateIp/update_ip_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';

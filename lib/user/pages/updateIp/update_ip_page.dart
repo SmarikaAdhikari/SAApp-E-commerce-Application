@@ -1,4 +1,6 @@
+// import 'package:app/admin/supabase/supabase_curd.dart';
 import 'package:app/user/api_all/Auth/constants.dart';
+import 'package:app/user/pages/updateIp/supabase_curd.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -35,14 +37,23 @@ class _UpdateIpPageState extends ConsumerState<UpdateIpPage> {
                 labelText: 'IP Address',
               ),
             ),
+
             const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () async {
-                await setValue(address, addressEditingController.text);
-                Fluttertoast.showToast(msg: "Updated Successfully");
+            // ElevatedButton(
+            //   onPressed: () async {
+            //     await setValue(address, addressEditingController.text);
+            //     Fluttertoast.showToast(msg: "Updated Successfully");
+            //   },
+            //   child: const Text('Update'),
+            // )
+                ElevatedButton(
+              onPressed: () 
+              {
+                ref
+                    .read(crudIpServiceProvider)
+                    .updateUserIp(addressEditingController.text);
               },
-              child: const Text('Update'),
-            )
+              child: const Text("Update")),
           ],
         ),
       ),

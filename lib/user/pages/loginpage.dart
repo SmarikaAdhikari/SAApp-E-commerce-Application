@@ -127,7 +127,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => LoginFieldPage(
-                                      userData.photoUrl!,
+                                      userData.photoUrl,
                                       userData.displayName!,
                                       userData.email),
                                 ));

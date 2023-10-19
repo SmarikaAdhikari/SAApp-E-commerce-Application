@@ -10,7 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginFieldPage extends ConsumerStatefulWidget {
   const LoginFieldPage(this.image, this.name, this.email, {super.key});
-  final String image;
+  final String? image;
   final String name;
   final String email;
   @override
@@ -146,7 +146,7 @@ class _LoginFieldPageState extends ConsumerState<LoginFieldPage> {
               ),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  final modell = SignupModel(name: widget.name, email: widget.email, phone: phoneEditingController.text, password: '123456', address: locationEditingController.text, bio: bioEditingController.text, isPublisher:  isCheck);
+                  final modell = SignupModel(name: widget.name, email: widget.email, phone: phoneEditingController.text, password: '123456', address: locationEditingController.text, bio: bioEditingController.text, isPublisher:  isCheck, image: widget.image);
 
                   ref
                       .read(signUpServiceProvider)

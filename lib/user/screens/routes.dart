@@ -1,18 +1,17 @@
 import 'package:app/admin/Admin/dash.dart';
 import 'package:app/admin/Admin/profit.dart';
+
 import 'package:app/demo/getapi/provider.dart';
 import 'package:app/demo/logs.dart';
 import 'package:app/publisher/publish.dart';
 import 'package:app/publisher/pubdash.dart';
-// import 'package:app/user/Trial/trial_model.dart';
 import 'package:app/user/Views/bookdetails.dart';
 import 'package:app/user/Views/page5.dart';
-// import 'package:app/user/Views/token.dart';
 import 'package:app/user/api_all/Auth/constants.dart';
 import 'package:app/main.dart';
-// import 'package:app/user/api_all/Auth/signup_repo.dart';
 import 'package:app/user/pages/loginpage.dart';
 import 'package:app/user/pages/signup.dart';
+import 'package:app/user/pages/updateIp/update_ip_page.dart';
 import 'package:app/user/widgets/welcomepage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -94,6 +93,13 @@ List<GetPage> pages = [
     GetPage(
     name: '/acc',
     page: () => const AccountPage(),
+    transition: Transition.leftToRightWithFade,
+    transitionDuration: const Duration(milliseconds: 500),
+  ),
+  
+       GetPage(
+    name: '/upip',
+    page: () => const UpdateIpPage(),
     transition: Transition.leftToRightWithFade,
     transitionDuration: const Duration(milliseconds: 500),
   ),

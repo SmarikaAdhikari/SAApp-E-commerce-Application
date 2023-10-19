@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute:
            
-          '/log',
+          '/upip',
           // isLogin == null
           //     ? '/login'
           //     : !isLogin!
