@@ -1,8 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, use_build_context_synchronously
 
-// import 'package:app/demo/getapi/provider.dart';
 import 'package:app/demo/getapi/provider.dart';
-// import 'package:app/demo/try.dart';
 import 'package:app/dio.dart';
 import 'package:app/user/api_all/Auth/constants.dart';
 import 'package:flutter/material.dart';

@@ -46,6 +46,4 @@ class Item {
         accountGroupName: json["accountGroupName"],
         id: json["id"],
     );
-
-
 }

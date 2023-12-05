@@ -39,21 +39,21 @@ class _UpdateIpPageState extends ConsumerState<UpdateIpPage> {
             ),
 
             const SizedBox(height: 10),
-            // ElevatedButton(
-            //   onPressed: () async {
-            //     await setValue(address, addressEditingController.text);
-            //     Fluttertoast.showToast(msg: "Updated Successfully");
-            //   },
-            //   child: const Text('Update'),
-            // )
-                ElevatedButton(
-              onPressed: () 
-              {
-                ref
-                    .read(crudIpServiceProvider)
-                    .updateUserIp(addressEditingController.text);
+            ElevatedButton(
+              onPressed: () async {
+                await setValue(address, addressEditingController.text);
+                Fluttertoast.showToast(msg: "Updated Successfully");
               },
-              child: const Text("Update")),
+              child: const Text('Update'),
+            )
+              //   ElevatedButton(
+              // onPressed: () 
+              // {
+              //   ref
+              //       .read(crudIpServiceProvider)
+              //       .updateUserIp(addressEditingController.text);
+              // },
+              // child: const Text("Update")),
           ],
         ),
       ),

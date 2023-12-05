@@ -226,7 +226,6 @@ class AppInterceptors extends Interceptor {
       case DioErrorType.cancel:
         break;
     }
-
     return handler.next(err);
   }
 }
@@ -278,7 +277,6 @@ class UnauthorizedException extends DioError {
 class NotFoundException extends DioError {
   NotFoundException(RequestOptions r, String errorMsg)
       : super(requestOptions: r, error: errorMsg);
-
   @override
   String toString() {
     return error.toString();

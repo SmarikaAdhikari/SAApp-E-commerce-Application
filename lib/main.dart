@@ -43,12 +43,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute:
            
-          '/upip',
-          // isLogin == null
-          //     ? '/login'
-          //     : !isLogin!
-          //         ? '/welcome'
-          //         : '/home',
+          // '/upip',
+          isLogin == null
+              ? '/login'
+              : !isLogin!
+                  ? '/welcome'
+                  : '/home',
       getPages: pages,
     );
   }
