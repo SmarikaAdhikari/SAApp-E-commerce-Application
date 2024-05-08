@@ -1,16 +1,9 @@
 # app
 
-A new Flutter project.
+A E-commerce application for book enthusiast using Flutter framework.
 
-## Getting Started
+<img width="326" alt="Screenshot 2024-02-21 at 15 03 48" src="https://github.com/SmarikaAdhikari/SAApp/assets/108568838/82e5898c-8eee-4af3-b7af-c114f4173a22">
+<img width="326" alt="Screenshot 2024-02-21 at 15 03 55" src="https://github.com/SmarikaAdhikari/SAApp/assets/108568838/67533992-bffb-43da-9504-6e0cdbcec8ae">
+<img width="326" alt="Screenshot 2024-02-21 at 15 01 36" src="https://github.com/SmarikaAdhikari/SAApp/assets/108568838/af5d4480-f263-4034-957f-077695eccb3a">
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
