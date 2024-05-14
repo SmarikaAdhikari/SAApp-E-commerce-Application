@@ -1,6 +1,11 @@
 # app
 
-A E-commerce application for book enthusiast using Flutter framework.
+A E-commerce application for book enthusiast built using Flutter framework and Riverpod State Management.
+
+
+Snapshots of Application
+
+
 
 <img width="326" alt="Screenshot 2024-02-21 at 15 03 48" src="https://github.com/SmarikaAdhikari/SAApp/assets/108568838/82e5898c-8eee-4af3-b7af-c114f4173a22">
 <img width="326" alt="Screenshot 2024-02-21 at 15 03 55" src="https://github.com/SmarikaAdhikari/SAApp/assets/108568838/67533992-bffb-43da-9504-6e0cdbcec8ae">
